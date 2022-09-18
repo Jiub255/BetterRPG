@@ -39,23 +39,32 @@ public class InventoryUI : MonoBehaviour
     EquipmentManager equipmentManager;
 
     InventorySlot[] slots;
-    EquipSlot[] equipmentSlots;
+    EquipmentSlot[] equipmentSlots;
 
     public static event Action OnToggleInventory;
 
+    // new SO inventory style stuff
+    public InventorySO inventorySO;
+    public EquipmentSO equipmentSO;
+
     void Start()
     {
-        inventory = MasterSingleton.Instance.Inventory;
-        inventory.onItemChangedCallback += UpdateUI;
+        inventorySO.onItemChangedCallback += UpdateUI;
 
-        equipmentManager = MasterSingleton.Instance.EquipmentManager;
-        equipmentManager.onEquipmentChanged += UpdateEquip;
+        /*inventory = MasterSingleton.Instance.Inventory;
+        inventory.onItemChangedCallback += UpdateUI;*/
+
+        equipmentSO.onEquipmentChanged += UpdateEquip;
+
+        /*equipmentManager = MasterSingleton.Instance.EquipmentManager;
+        equipmentManager.onEquipmentChanged += UpdateEquip;*/
 
         playerStats.onStatsChanged += UpdateStats;
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
-        equipmentSlots = equipmentParent.GetComponentsInChildren<EquipSlot>();
+        equipmentSlots = equipmentParent.GetComponentsInChildren<EquipmentSlot>();
 
+        UpdateUI();
         UpdateStats();
     }
 
@@ -68,9 +77,36 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    void UpdateEquip(Equipment a, Equipment b)
+    public void UpdateEquipment(EquipmentItem newItem)
+    {
+        equipmentSO.Equip(newItem);
+        UpdateUI();
+    }
+
+    public void UpdateInventory(Item newItem)
+    {
+        inventorySO.Add(newItem);
+        UpdateUI();
+    }
+
+    public void UpdateInvRemove(Item item)
+    {
+        inventorySO.Remove(item);
+        UpdateUI();
+    }
+
+   // [ExposeMethodInEditor]
+    public void ClearInvAndEquip()
+    {
+        inventorySO.ClearInventory();
+        equipmentSO.ClearEquipment();
+    }
+
+    void UpdateEquip(EquipmentItem a, EquipmentItem b)
     {
         UpdateUI();
+        // update equipmentSO
+
     }
 
     void UpdateUI()
@@ -79,9 +115,10 @@ public class InventoryUI : MonoBehaviour
 
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i < inventory.items.Count)
+            // might be an issue here...
+            if (i < inventorySO.inventoryList.Count)
             {
-                slots[i].AddItem(inventory.items[i]);
+                slots[i].AddItem(inventorySO.inventoryList[i]);
             }
             else
             {
@@ -89,9 +126,52 @@ public class InventoryUI : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < equipmentSlots.Length; i++)
+/*      for (int i = 0; i < equipmentSlots.Length; i++) */       
+        foreach (EquipmentSlot equipmentSlot in equipmentSlots)
+        { 
+            //get slot's equipment type
+            EquipmentTypeSO slotType = equipmentSlot/*s[i]*/.equipmentType;
+
+            bool slotTypeEquipped = false;
+
+            // for each currently equipped item
+            foreach (EquipmentItem currentlyEquippedItem in /*equipmentManager*/equipmentSO.currentEquipment)
+            {
+                Debug.Log("slot type: " + slotType.equipmentType + " currently equipped type: " 
+                    + currentlyEquippedItem.equipmentTypeSO.equipmentType);
+
+                // if it's of the same type as the current slot
+                // ie, if this slot does have equipment
+                if (slotType.equipmentType == currentlyEquippedItem.equipmentTypeSO.equipmentType)
+                {
+                    // update current slot's display and functionality with equipped item
+                    equipmentSlot/*s[i]*/.AddItem(currentlyEquippedItem);
+                    slotTypeEquipped = true;
+                }
+            }
+
+            // if current slot doesn't have equipment
+            if (!slotTypeEquipped)
+            {
+                equipmentSlot/*s[i]*/.ClearSlot();
+            }
+
+        }
+
+  /*      for (int i = 0; i < equipmentSlots.Length; i++)
         {
-            if (equipmentManager.currentEquipment[i] != null)
+            // maybe need to go by EquipmentType here instead of index, doesn't work with new system
+            EquipmentTypeSO type = equipmentSlots[i].equipmentType;
+            foreach (EquipmentItem equipment in equipmentManager.currentEquipment)
+            {
+                if (type = equipment.equipmentType) // if there is something of this type equipped
+                {
+
+                }
+            }*/
+
+
+/*                    if (equipmentManager.currentEquipment[i] != null)
             {
                 equipmentSlots[i].AddItem(equipmentManager.currentEquipment[i]);
             }
@@ -99,7 +179,7 @@ public class InventoryUI : MonoBehaviour
             {
                 equipmentSlots[i].ClearSlot();
             }
-        }
+        }*/
     }
 
     void UpdateStats()
@@ -107,5 +187,10 @@ public class InventoryUI : MonoBehaviour
         healthText.text = "Health: " + playerStats.CurrentHealth + " / " + playerStats.maxHealth.GetValue();
         attackText.text = "Attack: " + playerStats.attack.GetValue();
         defenseText.text = "Defense: " + playerStats.defense.GetValue();
+    }
+
+    private void OnApplicationQuit()
+    {
+        ClearInvAndEquip();
     }
 }

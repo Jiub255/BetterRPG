@@ -11,6 +11,8 @@ public class InventorySlot : MonoBehaviour
 
     Item item;
 
+    public InventorySO playerInventorySO;
+
     public void AddItem(Item newItem)
     {
         item = newItem;
@@ -33,7 +35,8 @@ public class InventorySlot : MonoBehaviour
 
     public void OnRemoveButton()
     {
-        MasterSingleton.Instance.Inventory.Remove(item);
+        playerInventorySO.Remove(item);
+        //MasterSingleton.Instance.Inventory.Remove(item);
     }
 
     public void UseItem()

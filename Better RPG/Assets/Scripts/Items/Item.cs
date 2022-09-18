@@ -7,8 +7,12 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     public string itemName = "New Item";
+    [TextArea(3, 20)]
+    public string itemDescription = "Item Description";
     public Sprite icon = null;
     //public bool isDefaultItem = false;
+
+    public GameEventItem onRemoveItem;
 
     public virtual void Use()
     {
@@ -19,6 +23,7 @@ public class Item : ScriptableObject
 
     public void RemoveFromInventory()
     {
-        MasterSingleton.Instance.Inventory.Remove(this);
+        onRemoveItem.Raise(this);
+        //MasterSingleton.Instance.Inventory.Remove(this);
     }
 }

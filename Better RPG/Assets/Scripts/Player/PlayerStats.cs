@@ -6,6 +6,8 @@ public class PlayerStats : CharacterStats
     public delegate void OnStatsChanged();
     public OnStatsChanged onStatsChanged;
 
+    public EquipmentSO equipmentSO;
+
     public int Experience { get; private set; }
     [SerializeField] private List<int> expLevels;
     public int Level { get; private set; } = 1;
@@ -14,8 +16,9 @@ public class PlayerStats : CharacterStats
     [SerializeField] private float nextLvlMultiplier = 1.3f;
 
     void Start()
-    {  
-        MasterSingleton.Instance.EquipmentManager.onEquipmentChanged += OnEquipmentChanged;
+    {
+        equipmentSO.onEquipmentChanged += OnEquipmentChanged;
+        //MasterSingleton.Instance.EquipmentManager.onEquipmentChanged += OnEquipmentChanged;
         expLevels = new List<int>();
         int expToNextLvlUp = expToFirstLevelUp;
         for (int i = 0; i < maxLevel; i++)
@@ -49,7 +52,7 @@ public class PlayerStats : CharacterStats
         }
     }
 
-    void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
+    void OnEquipmentChanged(EquipmentItem newItem, EquipmentItem oldItem)
     {
         if (newItem != null)
         {

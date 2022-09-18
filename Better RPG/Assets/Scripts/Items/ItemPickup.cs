@@ -1,14 +1,21 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class ItemPickup : Interactable
 {
     public Item item;
+
+    public GameEventItem OnPickUp;
 
     public override void Interact()
     {
         base.Interact();
 
-        Pickup();
+        OnPickUp.Raise(item);
+
+        Destroy(gameObject);
+
+        //Pickup();
     }
 
     void Pickup()
