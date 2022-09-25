@@ -7,9 +7,9 @@ public class ItemPickup : Interactable
 
     public GameEventItem OnPickUp;
 
-    public override void Interact()
+    public override void Interact(Collider2D collision)
     {
-        base.Interact();
+        base.Interact(collision);
 
         OnPickUp.Raise(item);
 
@@ -18,7 +18,7 @@ public class ItemPickup : Interactable
         //Pickup();
     }
 
-    void Pickup()
+/*    void Pickup()
     {
         Debug.Log("Picking up " + item.itemName);
 
@@ -27,5 +27,5 @@ public class ItemPickup : Interactable
 
         if (wasPickedUp)
             Destroy(gameObject);
-    } 
+    } */
 }

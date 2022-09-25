@@ -13,6 +13,8 @@ public class InventorySlot : MonoBehaviour
 
     public InventorySO playerInventorySO;
 
+    public GameEventItem onDropItem;
+
     public void AddItem(Item newItem)
     {
         item = newItem;
@@ -36,10 +38,20 @@ public class InventorySlot : MonoBehaviour
     public void OnRemoveButton()
     {
         playerInventorySO.Remove(item);
+        onDropItem.Raise(item);
         //MasterSingleton.Instance.Inventory.Remove(item);
     }
 
-    public void UseItem()
+/*    public void DropItem(Item item)
+    {
+        Vector3 playerPosition = new Vector3(playerStats.transform.position.x, playerStats.transform.position.y - 1, 0);
+        GameObject droppedItem = Instantiate(itemPickup, playerPosition, Quaternion.identity);
+        droppedItem.GetComponent<SpriteRenderer>().sprite = item.icon;
+        droppedItem.GetComponent<ItemPickup>().item = item;
+        UpdateUI();
+    }*/
+
+    public void OnUseButton()
     {
         if (item != null)
         {

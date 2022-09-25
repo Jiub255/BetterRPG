@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyStats : CharacterStats
 {
+    public PlayerStats playerStats;
+
     public int CalculateExperience()
     {
         // or whatever formula, this is just to start
@@ -16,7 +18,11 @@ public class EnemyStats : CharacterStats
     {
         base.Die();
 
-        MasterSingleton.Instance.Player.GetComponent<PlayerStats>().GainExperience(CalculateExperience());
+        // get reference in better way? use signal?
+        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+
+        playerStats.GainExperience(CalculateExperience());
+        //MasterSingleton.Instance.Player.GetComponent<PlayerStats>().GainExperience(CalculateExperience());
        
         //death animation
         //death sounds

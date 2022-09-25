@@ -5,13 +5,15 @@ public class AAAAAAAAAA
     TODO
 -------------
 
-    Set up cinemachine/virtual cameras
+    Finish new SO style UI/stats
+        maybe go back to inv/equip manager scripts to manage the SO's? like how stats is done?
+        finish setting up new game event signal system, disable old callbacks and stuff
 
-    redo attack anims to make the empty game object which holds the actual weapon sprites
-        be the one to move instead of the sprite. Allows for easy weapon changing. Same thing
-        for ranged and magic attacks
+    fix item dropping (in InventoryUI script)
 
-    set up usable (from inv) items, and ones that act immediately when you touch them
+
+
+
 
 
 

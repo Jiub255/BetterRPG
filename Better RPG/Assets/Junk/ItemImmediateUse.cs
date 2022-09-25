@@ -8,9 +8,9 @@ public class ItemImmediateUse : Interactable
 {
     public UnityEvent itemUseEvent;
 
-    public override void Interact()
+    public override void Interact(Collider2D collision)
     {
-        base.Interact();
+        base.Interact(collision);
 
         UseItem();
     }

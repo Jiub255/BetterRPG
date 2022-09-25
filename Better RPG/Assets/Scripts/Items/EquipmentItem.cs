@@ -6,8 +6,8 @@ public class EquipmentItem : Item
     // public EquipmentSlot equipmentSlot;
 
     public EquipmentTypeSO equipmentTypeSO;
-    public int armorModifier;
-    public int damageModifier;
+    public int defenseModifier;
+    public int attackModifier;
 
     public delegate void OnEquipmentChanged(EquipmentItem equipmentItem);
     public OnEquipmentChanged onEquipmentChangedCallback;

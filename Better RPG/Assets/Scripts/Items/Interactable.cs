@@ -4,7 +4,7 @@ public class Interactable : MonoBehaviour
 {
     bool objectActive = true;
 
-    public virtual void Interact()
+    public virtual void Interact(Collider2D collision)
     {
         //this method is meant to be overwritten
         Debug.Log("interacted with " + transform);
@@ -15,7 +15,7 @@ public class Interactable : MonoBehaviour
         if (collision.CompareTag("Player") && objectActive && !collision.isTrigger)
         {
             objectActive = false;
-            Interact();
+            Interact(collision);
         }
     }
 

@@ -10,9 +10,16 @@ public class EquipmentSO : ScriptableObject
     public delegate void OnEquipmentChanged(EquipmentItem newItem, EquipmentItem oldItem);
     public OnEquipmentChanged onEquipmentChanged;
 
-    Inventory inventory;
+    // is this any better than above?
+    public GameEventEquipmentItem newItm;
+    public GameEventEquipmentItem oldItm;
+    // or this?
+    public GameEvent onEquipChanged;
+
+    //Inventory inventory;
 
     public InventorySO inventorySO;
+    public GameObject weapon;
 
     private void OnEnable()
     {
@@ -21,7 +28,7 @@ public class EquipmentSO : ScriptableObject
 
     private void Start()
     {
-        inventory = MasterSingleton.Instance.Inventory;
+      //  inventory = MasterSingleton.Instance.Inventory;
 
         //  int numberOfSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
         currentEquipment = new List<EquipmentItem>();
@@ -37,15 +44,18 @@ public class EquipmentSO : ScriptableObject
         /*foreach (EquipmentItem equipmentItem in currentEquipment)*/
         for (int i = 0; i < currentEquipment.Count; i++)
         {
-            // if there is something equipped in this slot
+            // if there is something already equipped in this slot
             if (type.equipmentType == currentEquipment[i].equipmentTypeSO.equipmentType)
             {
+                // add old item to invSO
                 oldItem = currentEquipment[i];
                 inventorySO.Add(oldItem);
+                // remove old item from equipmentSO
                 currentEquipment.Remove(oldItem);
             }
         }
 
+        // add new item to equipmentSO
         currentEquipment.Add(newItem);
 
         /*if (currentEquipment[slotIndex] != null)
@@ -56,7 +66,19 @@ public class EquipmentSO : ScriptableObject
 
         //currentEquipment[slotIndex] = newItem;
 
+        ChangeEquipmentSprite(newItem);
+
+
+        // only need one of these signals
         onEquipmentChanged?.Invoke(newItem, oldItem);
+
+        //SO gameEvent style
+        // sends out signals with new/old item info. 
+        newItm.Raise(newItem);
+        oldItm.Raise(oldItem);
+
+        // Equipment UI, statManager, statsUI, inventorySO, InventoryUI, all need listeners for this
+        onEquipChanged.Raise();
     }
 
     public void Unequip(/*int slotIndex*/ EquipmentItem equipmentItem)
@@ -76,8 +98,13 @@ public class EquipmentSO : ScriptableObject
                 currentEquipment.Remove(oldItem);
 
                 onEquipmentChanged?.Invoke(null, oldItem);
+
+                newItm.Raise(null);//???
+                oldItm.Raise(oldItem);
             }
         }
+
+        UnequipSprite();
         /*        if (currentEquipment[slotIndex] != null)
                 {
                     Equipment oldItem = currentEquipment[slotIndex];
@@ -108,5 +135,15 @@ public class EquipmentSO : ScriptableObject
         {
             UnequipAll();
         }
+    }
+
+    public void ChangeEquipmentSprite(EquipmentItem newItem)
+    {
+        weapon.GetComponent<SpriteRenderer>().sprite = newItem.icon;
+    }
+
+    public void UnequipSprite()
+    {
+        weapon.GetComponent<SpriteRenderer>().sprite = null;
     }
 }

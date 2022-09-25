@@ -35,8 +35,8 @@ public class InventoryUI : MonoBehaviour
     public Text attackText;
     public Text defenseText;
 
-    Inventory inventory;
-    EquipmentManager equipmentManager;
+   // Inventory inventory;
+   // EquipmentManager equipmentManager;
 
     InventorySlot[] slots;
     EquipmentSlot[] equipmentSlots;
@@ -46,6 +46,13 @@ public class InventoryUI : MonoBehaviour
     // new SO inventory style stuff
     public InventorySO inventorySO;
     public EquipmentSO equipmentSO;
+
+    public GameObject itemPickup;
+
+    // new SO Stats stuff
+/*    public HealthManagerSO healthManagerSO;
+    public StatsSO statsSO;
+    public ExperienceManagerSO experienceManagerSO;*/
 
     void Start()
     {
@@ -92,7 +99,20 @@ public class InventoryUI : MonoBehaviour
     public void UpdateInvRemove(Item item)
     {
         inventorySO.Remove(item);
+
         UpdateUI();
+    }
+
+    // should this method be on Item script?
+    public void DropItem(Item item)
+    {
+        // gonna need a better way to find drop position. What if theres a wall just south of player?
+        Vector3 playerPosition = new Vector3(playerStats.transform.position.x, playerStats.transform.position.y - 1, 0);
+        GameObject droppedItem = Instantiate(itemPickup, playerPosition, Quaternion.identity);
+        droppedItem.GetComponent<SpriteRenderer>().sprite = item.icon;
+        droppedItem.GetComponent<ItemPickup>().item = item;
+
+        UpdateInvRemove(item);
     }
 
    // [ExposeMethodInEditor]
@@ -184,10 +204,17 @@ public class InventoryUI : MonoBehaviour
 
     void UpdateStats()
     {
-        healthText.text = "Health: " + playerStats.CurrentHealth + " / " + playerStats.maxHealth.GetValue();
+        healthText.text = "Health: " + playerStats.currentHealth + " / " + playerStats.maxHealth.GetValue();
         attackText.text = "Attack: " + playerStats.attack.GetValue();
         defenseText.text = "Defense: " + playerStats.defense.GetValue();
     }
+/*
+    void UpdateSOStats()
+    {
+        healthText.text = "Health: " + healthManagerSO.currentHealth + " / " + healthManagerSO.maxHealth;
+        attackText.text = "Attack: " + statsSO.attack;
+        defenseText.text = "Defense: " + statsSO.defense;
+    }*/
 
     private void OnApplicationQuit()
     {

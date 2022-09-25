@@ -13,14 +13,15 @@ public class SceneTransition : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             // store player position for when you return to this scene
-            ChangeScene();
+            ChangeScene(collision);
         }
     }
 
-    public void ChangeScene()
+    public void ChangeScene(Collider2D collision)
     {
         SceneManager.LoadScene(sceneToLoad);
-        MasterSingleton.Instance.GameManager.SetPlayerPosition(startingPosition);
+        collision.transform.position = startingPosition;
+       // MasterSingleton.Instance.GameManager.SetPlayerPosition(startingPosition);
         Debug.Log("last line of ChangeScene method");
     }
 }

@@ -56,15 +56,15 @@ public class PlayerStats : CharacterStats
     {
         if (newItem != null)
         {
-            defense.AddModifier(newItem.armorModifier);
-            attack.AddModifier(newItem.damageModifier);
+            defense.AddModifier(newItem.defenseModifier);
+            attack.AddModifier(newItem.attackModifier);
             onStatsChanged?.Invoke();
         }
 
         if (oldItem != null)
         {
-            defense.RemoveModifier(oldItem.armorModifier);
-            attack.RemoveModifier(oldItem.damageModifier);
+            defense.RemoveModifier(oldItem.defenseModifier);
+            attack.RemoveModifier(oldItem.attackModifier);
             onStatsChanged?.Invoke();
         }
     }

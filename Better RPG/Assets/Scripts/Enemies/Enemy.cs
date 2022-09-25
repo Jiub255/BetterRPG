@@ -15,9 +15,9 @@ public class Enemy : Interactable
         myStats = GetComponent<CharacterStats>();                            
     }
 
-    public override void Interact()
+    public override void Interact(Collider2D collision)
     {
-        base.Interact();
+        base.Interact(collision);
 
         //attack the enemy
         CharacterCombat playerCombat = playerManager.player.GetComponent<CharacterCombat>();

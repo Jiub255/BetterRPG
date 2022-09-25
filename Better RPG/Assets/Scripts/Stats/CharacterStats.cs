@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterStats : MonoBehaviour
 {
     public Stat maxHealth;
-    public int CurrentHealth { get; private set; }
+    public int currentHealth { get; private set; }
 
     public Stat maxMagic;
     public int CurrentMagic { get; private set; }
@@ -15,7 +15,7 @@ public class CharacterStats : MonoBehaviour
 
     private void Awake()
     {
-        CurrentHealth = maxHealth.GetValue();
+        currentHealth = maxHealth.GetValue();
     }
 
     public void ChangeStat(Stat stat, int amount)
@@ -30,10 +30,10 @@ public class CharacterStats : MonoBehaviour
         if (damage <= 0)
             damage = 0;
 
-        CurrentHealth -= damage;
+        currentHealth -= damage;
         Debug.Log(transform.name + " takes " + damage + " damage");
 
-        if (CurrentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -49,12 +49,12 @@ public class CharacterStats : MonoBehaviour
                 amount = 0;
         }
 
-        CurrentHealth += amount;
+        currentHealth += amount;
 
-        if (CurrentHealth > maxHealth.GetValue())
-            CurrentHealth = maxHealth.GetValue();
+        if (currentHealth > maxHealth.GetValue())
+            currentHealth = maxHealth.GetValue();
 
-        if (CurrentHealth <= 0)
+        if (currentHealth <= 0)
             Die();
     }
 

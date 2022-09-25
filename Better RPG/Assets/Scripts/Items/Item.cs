@@ -26,4 +26,15 @@ public class Item : ScriptableObject
         onRemoveItem.Raise(this);
         //MasterSingleton.Instance.Inventory.Remove(this);
     }
+
+/*    public void DropItem(Item item)
+    {
+        // gonna need a better way to find drop position. What if theres a wall just south of player?
+        Vector3 playerPosition = new Vector3(playerStats.transform.position.x, playerStats.transform.position.y - 1, 0);
+        GameObject droppedItem = Instantiate(itemPickup, playerPosition, Quaternion.identity);
+        droppedItem.GetComponent<SpriteRenderer>().sprite = item.icon;
+        droppedItem.GetComponent<ItemPickup>().item = item;
+
+        UpdateInvRemove(item);
+    }*/
 }

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a6e3c9eae77e0543b42477a3e04213e, type: 3}
   m_Name: Player Equipment
   m_EditorClassIdentifier: 
-  currentEquipment:
-  - {fileID: 11400000, guid: 0d31beb3e50007d499ba181ad2ca0223, type: 2}
+  currentEquipment: []
+  newItm: {fileID: 11400000, guid: 53786deb9b47b6b4881fd8590fecf78e, type: 2}
+  oldItm: {fileID: 11400000, guid: 805b1005750881d4baa3ceb42f899f3d, type: 2}
+  onEquipChanged: {fileID: 11400000, guid: d4d60f03ac5dd5a4e819a7fe66e1e43b, type: 2}
   inventorySO: {fileID: 11400000, guid: b108ddc68e190b4408c35a095a1ffd91, type: 2}
+  weapon: {fileID: 513485958581397759, guid: 44adf9e424ac6414f85e19e7ae19b06f, type: 3}

@@ -1,16 +1,20 @@
+using UnityEngine;
+
 public class ItemHealing : Interactable
 {
     public int healingAmount = 1;
+    PlayerStats playerStats;
 
-    public override void Interact()
+    public override void Interact(Collider2D collision)
     {
-        base.Interact();
-
+        base.Interact(collision);
+        playerStats = collision.gameObject.GetComponent<PlayerStats>();
         UseItem();
     }
 
     private void UseItem()
     {
-        MasterSingleton.Instance.Player.GetComponent<PlayerStats>().ChangeHealth(healingAmount);
+        playerStats.ChangeHealth(healingAmount);
+        //MasterSingleton.Instance.Player.GetComponent<PlayerStats>().ChangeHealth(healingAmount);
     }
 }

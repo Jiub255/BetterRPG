@@ -8,12 +8,15 @@ public class InventorySO : ScriptableObject
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
 
+    // new SO-style
+    public GameEvent onItemChanged;
+
     public int space = 20;
 
     public List<Item> inventoryList = new List<Item>();
 
-    public int money;
-    public int arrows;
+    int money;
+    int arrows;
 
     public bool Add(Item item)
     {
@@ -28,6 +31,9 @@ public class InventorySO : ScriptableObject
 
         onItemChangedCallback?.Invoke();
 
+        // inv UI manager needs to hear this
+        onItemChanged.Raise();
+
         Debug.Log("Add method returned true");
         return true;
     }
@@ -37,10 +43,22 @@ public class InventorySO : ScriptableObject
         inventoryList.Remove(item);
 
         onItemChangedCallback?.Invoke();
+
+        // inv UI manager needs to hear this
+        onItemChanged.Raise();
     }
 
     public void ClearInventory()
     {
         inventoryList.Clear();
+    }
+
+    public void AddMoney(int amount)
+    {
+        money += amount;
+    }
+    public void AddArrows(int amount)
+    {
+        arrows += amount;
     }
 }
