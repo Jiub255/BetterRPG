@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterStats))]
+//[RequireComponent(typeof(CharacterStats))]
 public class Enemy : Interactable
 {
-    PlayerManager playerManager;
+/*    PlayerManager playerManager;
 
     CharacterStats myStats;
 
@@ -22,5 +22,5 @@ public class Enemy : Interactable
         //attack the enemy
         CharacterCombat playerCombat = playerManager.player.GetComponent<CharacterCombat>();
         playerCombat?.Attack(myStats);
-    }
+    }*/
 }

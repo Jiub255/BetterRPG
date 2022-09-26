@@ -13,7 +13,7 @@ public class Knockback : MonoBehaviour
 
     private void OnEnable()
     {
-        CharacterCombat.hit += GetHit;
+       // CharacterCombat.hit += GetHit;
     }
 
     public void GetHit(float force, Vector3 direction)
@@ -23,6 +23,6 @@ public class Knockback : MonoBehaviour
 
     private void OnDisable()
     {
-        CharacterCombat.hit -= GetHit;
+        //CharacterCombat.hit -= GetHit;
     }
 }

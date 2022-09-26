@@ -18,12 +18,12 @@ public class RoomTransition : MonoBehaviour
     private void Awake()
     {
         //c_VirtualCamera = GetComponent<Cinemachine.CinemachineVirtualCamera>();
-        target = MasterSingleton.Instance.Player.transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
     private void Start()
     {
-        c_VirtualCamera.m_LookAt = target.transform;
-        c_VirtualCamera.m_Follow = target.transform;
+        c_VirtualCamera.m_LookAt = target;
+        c_VirtualCamera.m_Follow = target;
     }
 
 

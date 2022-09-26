@@ -32,7 +32,7 @@ public class EquipmentUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        Debug.Log("Updating UI");
+        Debug.Log("Updating Equipment UI");
 
         foreach (EquipmentSlot equipmentSlot in equipmentSlots)
         {
@@ -44,8 +44,8 @@ public class EquipmentUI : MonoBehaviour
             // for each currently equipped item
             foreach (EquipmentItem currentlyEquippedItem in equipmentSO.currentEquipment)
             {
-                Debug.Log("slot type: " + slotType.equipmentType + " currently equipped type: "
-                    + currentlyEquippedItem.equipmentTypeSO.equipmentType);
+                /*Debug.Log("slot type: " + slotType.equipmentType + " currently equipped type: "
+                    + currentlyEquippedItem.equipmentTypeSO.equipmentType);*/
 
                 // if it's of the same type as the current slot
                 // ie, if this slot does have equipment

@@ -10,21 +10,19 @@ public class Item : ScriptableObject
     [TextArea(3, 20)]
     public string itemDescription = "Item Description";
     public Sprite icon = null;
-    //public bool isDefaultItem = false;
 
     public GameEventItem onRemoveItem;
 
     public virtual void Use()
     {
         // use the item
-
         Debug.Log("Using " + name);
     }
 
     public void RemoveFromInventory()
     {
+        // InvManager listens for this, removes from InvSO(2)
         onRemoveItem.Raise(this);
-        //MasterSingleton.Instance.Inventory.Remove(this);
     }
 
 /*    public void DropItem(Item item)

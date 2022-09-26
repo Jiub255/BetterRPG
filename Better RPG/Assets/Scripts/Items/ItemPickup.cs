@@ -11,6 +11,7 @@ public class ItemPickup : Interactable
     {
         base.Interact(collision);
 
+        // InvManager listens for this, adds item to inv
         OnPickUp.Raise(item);
 
         Destroy(gameObject);

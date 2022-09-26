@@ -10,7 +10,7 @@ public class StatSO : ScriptableObject
     [SerializeField] string statName;
     [SerializeField] int moddedValue;
 
-    private List<int> modifiers = new List<int>();
+    [SerializeField] private List<int> modifiers = new List<int>();
 
     public int GetValue()
     {
@@ -27,14 +27,19 @@ public class StatSO : ScriptableObject
     public void AddModifier(int modifier)
     {
         if (modifier != 0)
+        {
             modifiers.Add(modifier);
+        }
+
         moddedValue = GetValue();
     }
 
     public void RemoveModifier(int modifier)
     {
         if (modifier != 0)
+        {
             modifiers.Remove(modifier);
+        }
         moddedValue = GetValue();
     }
 }

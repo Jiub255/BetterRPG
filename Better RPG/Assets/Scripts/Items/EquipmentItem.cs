@@ -9,9 +9,6 @@ public class EquipmentItem : Item
     public int defenseModifier;
     public int attackModifier;
 
-    public delegate void OnEquipmentChanged(EquipmentItem equipmentItem);
-    public OnEquipmentChanged onEquipmentChangedCallback;
-
     public GameEventEquipmentItem OnUseEquipmentItem;
 
     public override void Use()
@@ -22,16 +19,8 @@ public class EquipmentItem : Item
         // do this first in case inventory is full, makes space for the old item
         RemoveFromInventory();
 
+        // Equipmanager listens for this, equips item
         OnUseEquipmentItem.Raise(this);
-       // onEquipmentChangedCallback?.Invoke(this);
-
-       // RemoveFromInventory();
-
-        // equip the item
-
-
-
-       // MasterSingleton.Instance.EquipmentManager.Equip(this);
     }
 }
 

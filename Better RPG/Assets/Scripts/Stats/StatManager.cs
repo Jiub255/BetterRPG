@@ -7,26 +7,12 @@ public class StatManager : MonoBehaviour
     public StatSO attack;
     public StatSO defense;
 
-    void ChangeStat(Stat stat, int amount)
+    public GameEvent onStatsChanged;
+
+    void ChangeStat(StatSO stat, int amount)
     {
         stat.ChangeBaseValue(amount);
     }
-
-    // Have a couple GameEventListenerEquipmentItems as components on the player object, along with this script
-    /*    void OnEquipmentChanged(EquipmentItem newItem, EquipmentItem oldItem)
-        {
-            if (newItem != null)
-            {
-                defense.AddModifier(newItem.armorModifier);
-                attack.AddModifier(newItem.damageModifier);
-            }
-
-            if (oldItem != null)
-            {
-                defense.RemoveModifier(oldItem.armorModifier);
-                attack.RemoveModifier(oldItem.damageModifier);
-            }
-        }*/
 
     public void AddModifiers(EquipmentItem newItem)
     {
@@ -34,6 +20,7 @@ public class StatManager : MonoBehaviour
         {
             defense.AddModifier(newItem.defenseModifier);
             attack.AddModifier(newItem.attackModifier);
+            onStatsChanged.Raise();
         }
     }
 
@@ -43,6 +30,7 @@ public class StatManager : MonoBehaviour
         {
             defense.RemoveModifier(oldItem.defenseModifier);
             attack.RemoveModifier(oldItem.attackModifier);
+            onStatsChanged.Raise();
         }
     }
 }

@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("FirstScene");
-        MasterSingleton.Instance.Canvas.SetActive(true);
-        MasterSingleton.Instance.Player.SetActive(true);
+       // MasterSingleton.Instance.Canvas.SetActive(true);
+      //  MasterSingleton.Instance.Player.SetActive(true);
     }
 }

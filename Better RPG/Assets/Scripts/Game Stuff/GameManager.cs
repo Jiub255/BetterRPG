@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public void SetPlayerPosition(Vector2 position)
     {
-        MasterSingleton.Instance.Player.transform.position = position;
-        Debug.Log(MasterSingleton.Instance.Player.transform.position);
+        //MasterSingleton.Instance.Player.transform.position = position;
+      //  Debug.Log(MasterSingleton.Instance.Player.transform.position);
     }
 }

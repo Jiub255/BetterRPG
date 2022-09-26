@@ -11,13 +11,13 @@ public class EnemyController : MonoBehaviour
 
     Rigidbody2D rb;
     Transform target;
-    CharacterCombat characterCombat;
+   // CharacterCombat characterCombat;
 
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
-        characterCombat = GetComponent<CharacterCombat>();
+      //  characterCombat = GetComponent<CharacterCombat>();
     }
 
     private void Update()
@@ -32,11 +32,11 @@ public class EnemyController : MonoBehaviour
 
             if (distance <= stoppingDistance)
             {
-                CharacterStats targetStats = target.GetComponent<CharacterStats>();
+               /* CharacterStats targetStats = target.GetComponent<CharacterStats>();
                 if (targetStats != null)
                 {
                     characterCombat.Attack(targetStats);
-                }
+                }*/
             }
         }
     }
