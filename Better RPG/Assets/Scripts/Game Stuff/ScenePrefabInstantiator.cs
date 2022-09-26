@@ -30,7 +30,7 @@ public class ScenePrefabInstantiator : MonoBehaviour
         Transform playerTransform = Instantiate(player).transform;
 
         // Send signal for RoomTransition scripts to get reference to player,
-        // now that its instantiated in the scene
+        // now that it is instantiated in the scene
         onPlayerInstantiated.Raise(playerTransform);
 
         // Move player to starting position

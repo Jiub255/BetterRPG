@@ -3542,17 +3542,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 423151911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e5319b33a4de641acc81318a429094, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b89df5469940c44591288d5a23e3511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: TestScene1
   startingPosition: {x: -6, y: -1}
-  thingsToKeepInNextScene:
-  - {fileID: 8042634751891204170, guid: 5f91253f9f8b85547adb918181097866, type: 3}
-  - {fileID: 8842613099498414152, guid: 3de3d02bdc43cf649944ca5617168a22, type: 3}
-  - {fileID: 5636097392888216528, guid: b3b4a864a17ff964a9f9be98bb073c85, type: 3}
-  player: {fileID: 2730089303733002807, guid: 17e1d93783ce57441b1faf78b5e3f249, type: 3}
-  onPlayerInstantiated: {fileID: 11400000, guid: c482a24ee626aec43b2ffc3bbfa991cb, type: 2}
+  onSceneChanged: {fileID: 11400000, guid: e215378234accd840b6143e66ed65364, type: 2}
 --- !u!1 &457342828
 GameObject:
   m_ObjectHideFlags: 0
@@ -4777,17 +4772,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1676980038}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e5319b33a4de641acc81318a429094, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b89df5469940c44591288d5a23e3511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: House
   startingPosition: {x: 0.5, y: -2}
-  thingsToKeepInNextScene:
-  - {fileID: 8042634751891204170, guid: 5f91253f9f8b85547adb918181097866, type: 3}
-  - {fileID: 8842613099498414152, guid: 3de3d02bdc43cf649944ca5617168a22, type: 3}
-  - {fileID: 5636097392888216528, guid: b3b4a864a17ff964a9f9be98bb073c85, type: 3}
-  player: {fileID: 2730089303733002807, guid: 17e1d93783ce57441b1faf78b5e3f249, type: 3}
-  onPlayerInstantiated: {fileID: 11400000, guid: c482a24ee626aec43b2ffc3bbfa991cb, type: 2}
+  onSceneChanged: {fileID: 11400000, guid: e215378234accd840b6143e66ed65364, type: 2}
 --- !u!4 &1676980040
 Transform:
   m_ObjectHideFlags: 0
