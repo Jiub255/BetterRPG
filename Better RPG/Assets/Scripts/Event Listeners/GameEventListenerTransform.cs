@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameEventListenerItem : MonoBehaviour
+public class GameEventListenerTransform : MonoBehaviour
 {
-    public GameEventItem Event;
-    public UnityEvent<Item> Response;
+    public GameEventTransform Event;
+    public UnityEvent<Transform> Response;
 
     private void OnEnable()
     {
@@ -16,8 +16,8 @@ public class GameEventListenerItem : MonoBehaviour
         Event.UnregisterListener(this);
     }
 
-    public void OnEventRaised(Item Item)
+    public void OnEventRaised(Transform Transform)
     {
-        Response.Invoke(Item);
+        Response.Invoke(Transform);
     }
 }

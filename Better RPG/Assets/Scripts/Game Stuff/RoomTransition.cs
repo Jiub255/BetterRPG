@@ -12,26 +12,33 @@ public class RoomTransition : MonoBehaviour
             virtualCamera.SetActive(true); //for loading new scenes?
         }*/
 
-    public Cinemachine.CinemachineVirtualCamera c_VirtualCamera;
+    public Cinemachine.CinemachineVirtualCamera virtualCamera;
     [SerializeField] Transform target;
 
-    private void Awake()
+/*    private void Awake()
     {
         //c_VirtualCamera = GetComponent<Cinemachine.CinemachineVirtualCamera>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-    private void Start()
+    }*/
+
+    public void GetPlayerReference(Transform player)
     {
-        c_VirtualCamera.m_LookAt = target;
-        c_VirtualCamera.m_Follow = target;
+        target = player;
+
+        virtualCamera.m_LookAt = target;
+        virtualCamera.m_Follow = target;
     }
 
+/*    private void Start()
+    {
+
+    }*/
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !collision.isTrigger)
         {
-            c_VirtualCamera.gameObject.SetActive(true);
+            virtualCamera.gameObject.SetActive(true);
         }
     }
 
@@ -39,7 +46,7 @@ public class RoomTransition : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !collision.isTrigger)
         {
-            c_VirtualCamera.gameObject.SetActive(false);
+            virtualCamera.gameObject.SetActive(false);
         }
     }
 
