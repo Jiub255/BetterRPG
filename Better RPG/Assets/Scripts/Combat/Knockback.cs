@@ -11,18 +11,8 @@ public class Knockback : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable()
-    {
-       // CharacterCombat.hit += GetHit;
-    }
-
-    public void GetHit(float force, Vector3 direction)
+    public void KnockBack(float force, Vector3 direction)
     {
         rb.AddForce(direction * force, ForceMode2D.Impulse);
-    }
-
-    private void OnDisable()
-    {
-        //CharacterCombat.hit -= GetHit;
     }
 }

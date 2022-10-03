@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class StatsUI : MonoBehaviour
@@ -22,17 +23,36 @@ public class StatsUI : MonoBehaviour
     public IntSO experienceSO;
     public Text experienceText;
 
+    // new input system stuff
+    public PlayerInputActions playerControls;
+
+    private InputAction openInventory;
+
+    private void Awake()
+    {
+        playerControls = new PlayerInputActions();
+    }
+
+    private void OnEnable()
+    {
+        openInventory = playerControls.Player.OpenInventory;
+        openInventory.Enable();
+        openInventory.performed += OpenStats;
+    }
+
+    private void OnDisable()
+    {
+        openInventory.Disable();
+    }
+
     void Start()
     {
         UpdateStats();
     }
 
-    void Update()
+    void OpenStats(InputAction.CallbackContext context)
     {
-        if (Input.GetButtonDown("Inventory"))
-        {
-            statsUI.SetActive(!statsUI.activeSelf);
-        }
+        statsUI.SetActive(!statsUI.activeSelf);
     }
 
     public void UpdateStats()

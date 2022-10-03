@@ -1,26 +1,31 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(CharacterStats))]
-public class Enemy : Interactable
+public class Enemy : MonoBehaviour
 {
-/*    PlayerManager playerManager;
+    public string enemyName = "Enter Enemy Name";
+    public int maxHealth = 1;
+    public int currentHealth = 1;
+    public int attack;
+    public int defense;
+    public int experience;
+    public int moveSpeed;
+    public int chaseRadius;
+    public List<Item> itemsToDrop;
 
-    CharacterStats myStats;
+    // not sure about this
+    public Guid UniqueId { get; }
 
-    private void Start()
+    public Enemy()
     {
-        playerManager = MasterSingleton.Instance.PlayerManager;
-        myStats = GetComponent<CharacterStats>();                            
+        UniqueId = Guid.NewGuid();
     }
 
-    public override void Interact(Collider2D collision)
+    // just to see guid in inspector
+    [SerializeField] string guid;
+    private void Start()
     {
-        base.Interact(collision);
-
-        //attack the enemy
-        CharacterCombat playerCombat = playerManager.player.GetComponent<CharacterCombat>();
-        playerCombat?.Attack(myStats);
-    }*/
+        guid = UniqueId.ToString();
+    }
 }

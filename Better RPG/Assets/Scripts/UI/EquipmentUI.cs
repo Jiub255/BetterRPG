@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EquipmentUI : MonoBehaviour
 {
@@ -13,6 +14,28 @@ public class EquipmentUI : MonoBehaviour
 
     public EquipmentSO equipmentSO;
 
+    // new input system stuff
+    public PlayerInputActions playerControls;
+
+    private InputAction openInventory;
+
+    private void Awake()
+    {
+        playerControls = new PlayerInputActions();
+    }
+
+    private void OnEnable()
+    {
+        openInventory = playerControls.Player.OpenInventory;
+        openInventory.Enable();
+        openInventory.performed += OpenEquipment;
+    }
+
+    private void OnDisable()
+    {
+        openInventory.Disable();
+    }
+
     // will this work in start? should i use awake? onEnable? what about when changing scenes?
     void Start()
     {
@@ -21,13 +44,9 @@ public class EquipmentUI : MonoBehaviour
         UpdateUI();
     }
 
-    // do this from input manager
-    void Update()
+    void OpenEquipment(InputAction.CallbackContext context)
     {
-        if (Input.GetButtonDown("Inventory"))
-        {
             equipmentUIpanel.SetActive(!equipmentUIpanel.activeSelf);
-        }
     }
 
     public void UpdateUI()

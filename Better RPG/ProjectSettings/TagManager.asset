@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Weapon
   - Enemy
+  - Damageable
   layers:
   - Default
   - TransparentFX
@@ -42,6 +43,9 @@ TagManager:
   m_SortingLayers:
   - name: Ground
     uniqueID: 2990343445
+    locked: 0
+  - name: Above Ground
+    uniqueID: 482433185
     locked: 0
   - name: Default
     uniqueID: 0

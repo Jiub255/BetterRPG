@@ -3,8 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Equipment Item", menuName = "Inventory/Equipment Item")]
 public class EquipmentItem : Item
 {
-    // public EquipmentSlot equipmentSlot;
-
     public EquipmentTypeSO equipmentTypeSO;
     public int defenseModifier;
     public int attackModifier;
@@ -16,6 +14,7 @@ public class EquipmentItem : Item
         base.Use();
 
         // remove from inventory
+
         // do this first in case inventory is full, makes space for the old item
         RemoveFromInventory();
 
@@ -23,13 +22,3 @@ public class EquipmentItem : Item
         OnUseEquipmentItem.Raise(this);
     }
 }
-
-/*public enum EquipmentSlot
-{
-    Head,
-    Chest,
-    Legs,
-    Weapon,
-    Shield,
-    Feet
-}*/

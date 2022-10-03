@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -16,6 +17,29 @@ public class InventoryUI : MonoBehaviour
 
     public InventorySO inventorySO;
 
+
+    // new input system stuff
+    public PlayerInputActions playerControls;
+
+    private InputAction openInventory;
+
+    private void Awake()
+    {
+        playerControls = new PlayerInputActions();
+    }
+
+    private void OnEnable()
+    {
+        openInventory = playerControls.Player.OpenInventory;
+        openInventory.Enable();
+        openInventory.performed += OpenInventory;
+    }
+
+    private void OnDisable()
+    {
+        openInventory.Disable();
+    }
+
     void Start()
     {
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
@@ -23,14 +47,10 @@ public class InventoryUI : MonoBehaviour
         UpdateUI();
     }
 
-    // maybe have an input manager script that can trigger this?
-    void Update()
+    void OpenInventory(InputAction.CallbackContext context)
     {
-        if (Input.GetButtonDown("Inventory"))
-        {
-            inventoryUI2.SetActive(!inventoryUI2.activeSelf);
-            OnToggleInventory?.Invoke();
-        }
+        inventoryUI2.SetActive(!inventoryUI2.activeSelf);
+        OnToggleInventory?.Invoke();
     }
 
     public void UpdateUI()

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,16 +9,42 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5f;
     public float atkSpdMultiplier = 0.2f;
 
+    PlayerMelee playerMelee;
+
+    // new input system stuff
+    public PlayerInputActions playerControls;
+
+    private InputAction move;
+
+    private void Awake()
+    {
+        playerControls = new PlayerInputActions();
+
+        playerMelee = gameObject.GetComponent<PlayerMelee>();
+    }
+
+    private void OnEnable()
+    {
+        move = playerControls.Player.Move;
+        move.Enable();
+    }
+
+    private void OnDisable()
+    {
+        move.Disable();
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        animator.SetFloat("LastVert", -1);
     }
 
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        movement = move.ReadValue<Vector2>();
+
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
         movement.Normalize();
@@ -34,13 +61,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (animator.GetBool("IsAttacking") == true || animator.GetBool("IsShooting") == true)
+        if (playerMelee.canAttack)
         {
-            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime * atkSpdMultiplier);
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         }
         else
         {
-            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime * atkSpdMultiplier);
         }
     }
 }

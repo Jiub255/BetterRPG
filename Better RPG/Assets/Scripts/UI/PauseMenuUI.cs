@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuUI : MonoBehaviour
@@ -10,9 +11,33 @@ public class PauseMenuUI : MonoBehaviour
 
     public GameObject MenuPanel;
 
+    // new input system stuff
+    public PlayerInputActions playerControls;
+
+    private InputAction openPauseMenu;
+
+    private void Awake()
+    {
+        playerControls = new PlayerInputActions();
+    }
+
+    private void OnEnable()
+    {
+        openPauseMenu = playerControls.Player.OpenPauseMenu;
+        openPauseMenu.Enable();
+    }
+
+    private void OnDisable()
+    {
+        openPauseMenu.Disable();
+    }
+
+
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        if (openPauseMenu.WasPressedThisFrame())
         {
             TogglePauseMenu();
         }

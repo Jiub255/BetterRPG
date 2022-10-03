@@ -468,7 +468,7 @@ MonoBehaviour:
   icon: {fileID: 5301729835907053225}
   useButton: {fileID: 6100051832226785032}
   removeButton: {fileID: 3223985809694901619}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &697099747974222013
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +597,7 @@ MonoBehaviour:
   icon: {fileID: 3383657038600756381}
   useButton: {fileID: 1962868934079056383}
   removeButton: {fileID: 563579734666654002}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &911179744864642408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,7 +1388,7 @@ MonoBehaviour:
   icon: {fileID: 7160838431888053434}
   useButton: {fileID: 4076350548364300506}
   removeButton: {fileID: 2535034133257576379}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &1229889373213410447
 GameObject:
   m_ObjectHideFlags: 0
@@ -2727,7 +2727,7 @@ MonoBehaviour:
   icon: {fileID: 1223166586868650604}
   useButton: {fileID: 2368184712354885482}
   removeButton: {fileID: 5471050768787632486}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &1822416182493369519
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,7 +3117,7 @@ MonoBehaviour:
   icon: {fileID: 7022718643738201777}
   useButton: {fileID: 1401605736932976414}
   removeButton: {fileID: 8676090617391347788}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &2376276218923378950
 GameObject:
   m_ObjectHideFlags: 0
@@ -3489,7 +3489,7 @@ MonoBehaviour:
   icon: {fileID: 7257871977715237591}
   useButton: {fileID: 3952841210049904203}
   removeButton: {fileID: 6048283890595895989}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &2847802943398255543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3543,7 +3543,7 @@ MonoBehaviour:
   icon: {fileID: 3419482078258160187}
   useButton: {fileID: 4431348445461542685}
   removeButton: {fileID: 7572263418915363246}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &3172501610181412784
 GameObject:
   m_ObjectHideFlags: 0
@@ -3914,7 +3914,7 @@ MonoBehaviour:
   icon: {fileID: 3547289829618439873}
   useButton: {fileID: 7587105814415046367}
   removeButton: {fileID: 956938670521969475}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &4058584464477153472
 GameObject:
   m_ObjectHideFlags: 0
@@ -4549,7 +4549,7 @@ MonoBehaviour:
   icon: {fileID: 6815392674746449675}
   useButton: {fileID: 7815749572500692416}
   removeButton: {fileID: 6438766935651375488}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &4932886338255716608
 GameObject:
   m_ObjectHideFlags: 0
@@ -4603,7 +4603,7 @@ MonoBehaviour:
   icon: {fileID: 7800771359318239920}
   useButton: {fileID: 7618689824499820644}
   removeButton: {fileID: 4023633936055354125}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &4954880991082812218
 GameObject:
   m_ObjectHideFlags: 0
@@ -5468,7 +5468,7 @@ MonoBehaviour:
   icon: {fileID: 1252121848441770930}
   useButton: {fileID: 8748962190094572170}
   removeButton: {fileID: 885866000427740749}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &5767932149188429987
 GameObject:
   m_ObjectHideFlags: 0
@@ -5654,7 +5654,7 @@ MonoBehaviour:
   icon: {fileID: 435577083241265854}
   useButton: {fileID: 9009195199095363510}
   removeButton: {fileID: 5761542335434292846}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &5786494167271761888
 GameObject:
   m_ObjectHideFlags: 0
@@ -6182,7 +6182,7 @@ MonoBehaviour:
   icon: {fileID: 4594846791573465863}
   useButton: {fileID: 1299077849812659682}
   removeButton: {fileID: 1362946660150756471}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &6002708973323462930
 GameObject:
   m_ObjectHideFlags: 0
@@ -6311,7 +6311,7 @@ MonoBehaviour:
   icon: {fileID: 8248948284927415085}
   useButton: {fileID: 2004139412908025965}
   removeButton: {fileID: 8497596638064517489}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &6160614145145256901
 GameObject:
   m_ObjectHideFlags: 0
@@ -6440,7 +6440,7 @@ MonoBehaviour:
   icon: {fileID: 7442589932953384966}
   useButton: {fileID: 3812143206891596860}
   removeButton: {fileID: 248389057273692483}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &6286710231381040472
 GameObject:
   m_ObjectHideFlags: 0
@@ -7357,7 +7357,7 @@ MonoBehaviour:
   icon: {fileID: 3410071020058191430}
   useButton: {fileID: 2180194967554614713}
   removeButton: {fileID: 4906021672295417515}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &7312132898531776818
 GameObject:
   m_ObjectHideFlags: 0
@@ -7561,7 +7561,7 @@ MonoBehaviour:
   icon: {fileID: 4044289610720759662}
   useButton: {fileID: 4011947393223790554}
   removeButton: {fileID: 6686879544932727624}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &7686334184969300186
 GameObject:
   m_ObjectHideFlags: 0
@@ -11294,7 +11294,7 @@ MonoBehaviour:
   icon: {fileID: 3376102439329288980}
   useButton: {fileID: 3764389832793292040}
   removeButton: {fileID: 4653339776236566415}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &8355444054942756221
 GameObject:
   m_ObjectHideFlags: 0
@@ -11348,7 +11348,7 @@ MonoBehaviour:
   icon: {fileID: 2174858678309145094}
   useButton: {fileID: 853906219403727572}
   removeButton: {fileID: 4058753213946358047}
-  onDropItem: {fileID: 0}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &8566770508025298393
 GameObject:
   m_ObjectHideFlags: 0
