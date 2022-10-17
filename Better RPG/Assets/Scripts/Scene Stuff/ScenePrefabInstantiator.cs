@@ -34,7 +34,17 @@ public class ScenePrefabInstantiator : MonoBehaviour
         // could have SceneMusic listen for this to send its signal to AudioManager
         onPlayerInstantiated.Raise(playerTransform);
 
+       // StartCoroutine(PlayerInstantiatedSignalDelayed(playerTransform));
+
         // Move player to starting position
         playerTransform.position = startingPosition;
     }
+
+/*    IEnumerator PlayerInstantiatedSignalDelayed(Transform playerTransform)
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        onPlayerInstantiated.Raise(playerTransform);
+        Debug.Log("Delayed signal raised");
+    }*/
 }

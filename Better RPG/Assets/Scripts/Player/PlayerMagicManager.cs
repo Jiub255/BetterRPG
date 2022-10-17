@@ -25,8 +25,6 @@ public class PlayerMagicManager : MonoBehaviour
     {
         buttonPressed = isPressed;
 
-        Debug.Log("buttonPressed == " + buttonPressed, this);
-
         if (isPressed == false)
         {
             timer = delay;

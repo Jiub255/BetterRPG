@@ -10,6 +10,8 @@ public class AAAAAAAAAA
         Not activating already instantiated objects, just keeps instantiating new ones. defeats the purpose
 
     Magic 
+    REDO entire system. SpellSO doesn't work like I wanted
+
         Fix projectile/fireball
     Can't get reference to playerAnimator in SpellFireball. Getting unassigned reference error. Is it because of all the events/listeners?
     There is only one actual instance of SpellFireball in the scene, on the SpellEffects object. 

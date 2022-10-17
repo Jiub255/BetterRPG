@@ -57,8 +57,6 @@ public class StatsUI : MonoBehaviour
 
     public void UpdateStats()
     {
-        Debug.Log("Updating Stats UI");
-
         healthText.text = "Health: " + healthSO.currentValue + " / " + healthSO.maxValue;
         attackText.text = "Attack: " + attackSO.GetValue();
         defenseText.text = "Defense: " + defenseSO.GetValue();

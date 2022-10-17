@@ -15,7 +15,7 @@ MonoBehaviour:
   spellEffect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2573221178062346529, guid: 17e1d93783ce57441b1faf78b5e3f249, type: 3}
+      - m_Target: {fileID: 8740440326538457120, guid: 64c713580fe252f47bf68d11b9b628fd, type: 3}
         m_TargetAssemblyTypeName: SpellFireball, Assembly-CSharp
         m_MethodName: MakeMagic
         m_Mode: 1

@@ -51,8 +51,6 @@ public class EquipmentUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        Debug.Log("Updating Equipment UI");
-
         foreach (EquipmentSlot equipmentSlot in equipmentSlots)
         {
             //get slot's equipment type

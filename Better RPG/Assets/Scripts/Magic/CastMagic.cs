@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class CastMagic : MonoBehaviour
 {
@@ -79,18 +80,11 @@ public class CastMagic : MonoBehaviour
         }
     }
 
-    // call this from magic menu UI
-    // not working, why?
-    // only changing the player prefab, not the instance
-    // how do i get it to change on the player instance?
     public void ChangeSpell(SpellSO spell)
     {
         currentSpell = spell;
 
-        // these debugs say the correct thing, but it's not changing in inspector
-        // and it's not casting spells after
-        Debug.Log("ChangeSpell called");
-        Debug.Log(currentSpell, this);
+        Debug.Log("Spell changed to " + spell.name);
     }
 
     public void TogglePlayerControls(bool gameIsPaused)

@@ -34,7 +34,6 @@ GameObject:
   - component: {fileID: 5673493077231083415}
   - component: {fileID: -7903140233344272677}
   - component: {fileID: 3544248295094023495}
-  - component: {fileID: 2573221178062346529}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -632,22 +631,6 @@ MonoBehaviour:
   - objectToPool: {fileID: 543767941430921109, guid: b6f64ff958c825b46a25b14e3d4f1dac, type: 3}
     amountToPool: 3
     shouldExpand: 1
---- !u!114 &2573221178062346529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730089303733002807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e31f84059f6654184cfa449f85c92b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1053580348917793364}
-  playerAnimator: {fileID: 4785350982932361540}
-  objectPool: {fileID: 3544248295094023495}
-  fireballPrefab: {fileID: 543767941430921109, guid: b6f64ff958c825b46a25b14e3d4f1dac, type: 3}
 --- !u!1 &4805492291370193639
 GameObject:
   m_ObjectHideFlags: 0

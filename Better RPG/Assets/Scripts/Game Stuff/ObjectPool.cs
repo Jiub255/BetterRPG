@@ -35,18 +35,18 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    public GameObject GetPooledObject(/*string tag*/GameObject gameObject)
+    public GameObject GetPooledObject(string tag/*GameObject gameObject*/)
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {
-            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i]/*.tag*/ == /*tag*/gameObject)
+            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag/*gameObject*/)
             {
                 return pooledObjects[i];
             }
         }
         foreach (ObjectPoolItem item in itemsToPool)
         {
-            if (item.objectToPool/*.tag*/ == /*tag*/gameObject)
+            if (item.objectToPool.tag == tag/*gameObject*/)
             {
                 if (item.shouldExpand)
                 {
