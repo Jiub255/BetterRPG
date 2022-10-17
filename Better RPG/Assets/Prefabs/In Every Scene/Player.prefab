@@ -13,7 +13,11 @@ GameObject:
   - component: {fileID: 1484465893500902627}
   - component: {fileID: 2386429486267950135}
   - component: {fileID: 4785350982932361540}
+  - component: {fileID: 6603746197830486677}
   - component: {fileID: 5579630649817513474}
+  - component: {fileID: 6178865899331241264}
+  - component: {fileID: 5638727969727987059}
+  - component: {fileID: 5598120536260541508}
   - component: {fileID: 2365181350524745077}
   - component: {fileID: 5332837048349261374}
   - component: {fileID: 1666355470636881861}
@@ -25,10 +29,13 @@ GameObject:
   - component: {fileID: 5015697566744524904}
   - component: {fileID: 2155961087374534378}
   - component: {fileID: 4080114770630114532}
-  - component: {fileID: 6178865899331241264}
-  - component: {fileID: 6603746197830486677}
-  - component: {fileID: 5638727969727987059}
-  m_Layer: 0
+  - component: {fileID: 4323764475296653801}
+  - component: {fileID: 1347675580356472069}
+  - component: {fileID: 5673493077231083415}
+  - component: {fileID: -7903140233344272677}
+  - component: {fileID: 3544248295094023495}
+  - component: {fileID: 2573221178062346529}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -167,6 +174,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6603746197830486677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 671b286a155d9be4884b81f3994a8f5f, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &5579630649817513474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +218,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   atkSpdMultiplier: 0.2
+  canMove: 1
+--- !u!114 &6178865899331241264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ef0ab31f63d9e49acd8a817d9117ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTimerLength: 0.4
+  onPlayClip: {fileID: 11400000, guid: 4cfe2c1dfb846854693a2a63ff80faf9, type: 2}
+  swingClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+--- !u!114 &5638727969727987059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cfb32131fe5dfd4186460594882e83b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 11400000, guid: 565d7205a0bf9fb4ba4fd224191c3c46, type: 2}
+  onDied: {fileID: 11400000, guid: 79a2283ed1111b94aa5405099e57e76f, type: 2}
+  sceneNameSO: {fileID: 11400000, guid: 9fb7f93360fc44a46926079d7549ad21, type: 2}
+  invulnerable: 0
+  onHealthChanged: {fileID: 11400000, guid: 78a0332011e29724f94e747e0d9436df, type: 2}
+--- !u!114 &5598120536260541508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1cfdfd2475002d4bb841d3b18292d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magic: {fileID: 11400000, guid: 6d79a91baeedc054891c8e70877d59ab, type: 2}
+  onMagicChanged: {fileID: 11400000, guid: 78a0332011e29724f94e747e0d9436df, type: 2}
+  timerLength: 0.03
+  delay: 0.5
 --- !u!114 &2365181350524745077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +299,8 @@ MonoBehaviour:
   onEquipChanged: {fileID: 11400000, guid: d4d60f03ac5dd5a4e819a7fe66e1e43b, type: 2}
   onEquip: {fileID: 11400000, guid: b387384893219674f97ba70b405770e2, type: 2}
   onUnequip: {fileID: 11400000, guid: dce8e2ceaca4ae640b998e939143c5a7, type: 2}
+  spriteRenderer: {fileID: 0}
+  weaponEquipmentType: {fileID: 11400000, guid: c9b69109724988848a8a124492a6b0e2, type: 2}
 --- !u!114 &1666355470636881861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +315,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 11400000, guid: 5b6838f74c22824489dac353d530f9a1, type: 2}
   defense: {fileID: 11400000, guid: b3a96ba4822e03f44a067aa983036419, type: 2}
+  knockbackForce: {fileID: 11400000, guid: 411369db12cc37e4b84b0873ed21458d, type: 2}
+  knockbackDuration: {fileID: 11400000, guid: 81ad0f495c422064fbe09b5df17041f7, type: 2}
   onStatsChanged: {fileID: 11400000, guid: 20a0d3ff2e3bcc048ba604905f7d231e, type: 2}
+  equipmentSO: {fileID: 11400000, guid: 609589a58ad0f6d4183850e793b94ba0, type: 2}
 --- !u!114 &386510385724314069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +332,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Experience: {fileID: 11400000, guid: c6d1ae30fd0c874409da3958c93e86fb, type: 2}
+  attack: {fileID: 0}
+  defense: {fileID: 0}
   expLevels: 
   Level: {fileID: 11400000, guid: 1b4b594d8396f10499ad05db1c0306aa, type: 2}
   maxLevel: 25
@@ -454,7 +547,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6178865899331241264
+--- !u!114 &4323764475296653801
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -463,11 +556,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 2730089303733002807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7ef0ab31f63d9e49acd8a817d9117ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 51a2ef861b5290241a5d481819fa4f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimerLength: 0.4
---- !u!114 &6603746197830486677
+  Event: {fileID: 11400000, guid: 963d88785cc915943add9a8d492274d1, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6178865899331241264}
+        m_TargetAssemblyTypeName: PlayerMelee, Assembly-CSharp
+        m_MethodName: TogglePlayerControls
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1347675580356472069
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -476,28 +584,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2730089303733002807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b07684ba8cd71549ba15e9b9bbd18b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 671b286a155d9be4884b81f3994a8f5f, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &5638727969727987059
+--- !u!114 &5673493077231083415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -506,12 +596,58 @@ MonoBehaviour:
   m_GameObject: {fileID: 2730089303733002807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfb32131fe5dfd4186460594882e83b, type: 3}
+  m_Script: {fileID: 11500000, guid: 51edd3036f03c364c8d695f4888a1e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 11400000, guid: 565d7205a0bf9fb4ba4fd224191c3c46, type: 2}
-  onDied: {fileID: 11400000, guid: 79a2283ed1111b94aa5405099e57e76f, type: 2}
-  sceneNameSO: {fileID: 11400000, guid: 9fb7f93360fc44a46926079d7549ad21, type: 2}
+--- !u!114 &-7903140233344272677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ac98f14d2c95341b6790eb497038d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSpell: {fileID: 11400000, guid: 34bf4e473ba5ee444ae1225859c1db4e, type: 2}
+  playerMagicManager: {fileID: 5598120536260541508}
+  magicTimerLength: 0.4
+  onPlayClip: {fileID: 11400000, guid: 4cfe2c1dfb846854693a2a63ff80faf9, type: 2}
+--- !u!114 &3544248295094023495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfe29526eb7aab4a83ac07adb7543c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  itemsToPool:
+  - objectToPool: {fileID: 543767941430921109, guid: b6f64ff958c825b46a25b14e3d4f1dac, type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+--- !u!114 &2573221178062346529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e31f84059f6654184cfa449f85c92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1053580348917793364}
+  playerAnimator: {fileID: 4785350982932361540}
+  objectPool: {fileID: 3544248295094023495}
+  fireballPrefab: {fileID: 543767941430921109, guid: b6f64ff958c825b46a25b14e3d4f1dac, type: 3}
 --- !u!1 &4805492291370193639
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,7 +660,7 @@ GameObject:
   - component: {fileID: 1172996747285961250}
   - component: {fileID: 1708073534840916464}
   - component: {fileID: 9076791514914835987}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Melee Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,3 +770,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 800151ce79039504cb7afcc385620955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPlayClip: {fileID: 11400000, guid: 4cfe2c1dfb846854693a2a63ff80faf9, type: 2}
+  hitClip: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}

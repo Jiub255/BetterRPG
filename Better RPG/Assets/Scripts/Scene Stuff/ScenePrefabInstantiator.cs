@@ -31,6 +31,7 @@ public class ScenePrefabInstantiator : MonoBehaviour
 
         // Send signal for RoomTransition scripts to get reference to player,
         // now that it is instantiated in the scene
+        // could have SceneMusic listen for this to send its signal to AudioManager
         onPlayerInstantiated.Raise(playerTransform);
 
         // Move player to starting position

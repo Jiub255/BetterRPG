@@ -5,11 +5,15 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Animator animator;
+
     private Vector2 movement;
+
     public float speed = 5f;
     public float atkSpdMultiplier = 0.2f;
 
     PlayerMelee playerMelee;
+
+    public bool canMove = true;
 
     // new input system stuff
     public PlayerInputActions playerControls;
@@ -43,31 +47,37 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        movement = move.ReadValue<Vector2>();
-
-        animator.SetFloat("Speed", movement.sqrMagnitude);
-
-        movement.Normalize();
-
-        animator.SetFloat("Horiz", movement.x);
-        animator.SetFloat("Vert", movement.y);
-
-        if (movement.x == 1 || movement.x == -1 || movement.y == 1 || movement.y == -1)
+        if (canMove)
         {
-            animator.SetFloat("LastHoriz", movement.x);
-            animator.SetFloat("LastVert", movement.y);
+            movement = move.ReadValue<Vector2>();
+
+            animator.SetFloat("Speed", movement.sqrMagnitude);
+
+            movement.Normalize();
+
+            animator.SetFloat("Horiz", movement.x);
+            animator.SetFloat("Vert", movement.y);
+
+            if (movement.x == 1 || movement.x == -1 || movement.y == 1 || movement.y == -1)
+            {
+                animator.SetFloat("LastHoriz", movement.x);
+                animator.SetFloat("LastVert", movement.y);
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        if (playerMelee.canAttack)
+        if (canMove)
         {
-            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-        }
-        else
-        {
-            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime * atkSpdMultiplier);
+            if (playerMelee.canAttack)
+            {
+                rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+            }
+            else
+            {
+                rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime * atkSpdMultiplier);
+            }
         }
     }
 }

@@ -1,11 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
     public static bool gameIsPaused;
+    public GameEventBool onPauseToggled;
 
     private void OnEnable()
     {
@@ -16,6 +14,9 @@ public class PauseManager : MonoBehaviour
     public void TogglePause()
     {
         gameIsPaused = !gameIsPaused;
+
+        // player listens, to disable/enable playercontrols
+        onPauseToggled.Raise(gameIsPaused);
 
         if (gameIsPaused)
         {

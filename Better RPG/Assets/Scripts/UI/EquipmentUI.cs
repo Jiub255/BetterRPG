@@ -8,7 +8,7 @@ public class EquipmentUI : MonoBehaviour
 {
     public Transform equipmentParent;
 
-    public GameObject equipmentUIpanel;
+    public GameObject equipmentUIPanel;
 
     EquipmentSlot[] equipmentSlots;
 
@@ -46,7 +46,7 @@ public class EquipmentUI : MonoBehaviour
 
     void OpenEquipment(InputAction.CallbackContext context)
     {
-            equipmentUIpanel.SetActive(!equipmentUIpanel.activeSelf);
+            equipmentUIPanel.SetActive(!equipmentUIPanel.activeSelf);
     }
 
     public void UpdateUI()

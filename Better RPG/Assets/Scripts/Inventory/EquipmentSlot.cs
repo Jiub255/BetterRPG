@@ -11,9 +11,6 @@ public class EquipmentSlot : MonoBehaviour
 
     EquipmentItem equipmentItem;
 
-    /*   public EquipmentSO2 equipmentSO2;
-       public EquipmentManager2 equipmentManager2;*/
-
     public GameEventEquipmentItem onClickRemoveButton;
 
     public void AddItem(EquipmentItem newItem)
@@ -36,8 +33,7 @@ public class EquipmentSlot : MonoBehaviour
 
     public void RemoveEquipment()
     {
+        // who hears this signal?
         onClickRemoveButton.Raise(equipmentItem);
-       // equipmentManager2.Unequip(equipmentItem);
-        //equipmentSO2.Unequip(equipmentItem);
     }
 }

@@ -18,13 +18,4 @@ public class Interactable : MonoBehaviour
             Interact(collision);
         }
     }
-
-/*    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.CompareTag("Player") && objectActive && !collision.isTrigger)
-        {
-            objectActive = false;
-            Interact();
-        }
-    }*/
 }

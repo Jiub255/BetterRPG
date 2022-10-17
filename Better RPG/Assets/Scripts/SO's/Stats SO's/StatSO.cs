@@ -5,12 +5,21 @@ using UnityEngine;
 public class StatSO : ScriptableObject
 {
     [SerializeField] int baseValue;
+    [SerializeField] List<int> modifiers = new List<int>();
 
     // just to see in the inspector, var has no real use
     [SerializeField] string statName;
     [SerializeField] int moddedValue;
 
-    [SerializeField] private List<int> modifiers = new List<int>();
+
+    // stat based experience. not sure about this yet
+    /*public int experience;
+    public int level = 1;*/
+
+/*    public void GainExperience(int amount)
+    {
+        experience += amount;
+    }*/
 
     public int GetValue()
     {
@@ -41,5 +50,10 @@ public class StatSO : ScriptableObject
             modifiers.Remove(modifier);
         }
         moddedValue = GetValue();
+    }
+
+    public void ClearModifiers()
+    {
+        modifiers.Clear();
     }
 }

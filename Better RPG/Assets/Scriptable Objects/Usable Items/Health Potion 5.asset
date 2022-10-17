@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98ef7410c9497eb4681813a0a8fafcff, type: 3}
+  m_Name: Health Potion 5
+  m_EditorClassIdentifier: 
+  itemName: Health Potion 5
+  itemDescription: Heals 5 health
+  icon: {fileID: 21300000, guid: f11fe1946f3181a4bbfd42141fa60022, type: 3}
+  onRemoveItem: {fileID: 11400000, guid: 5357ab732c6b26345902af32da31a0ae, type: 2}
+  itemEffect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5638727969727987059, guid: 17e1d93783ce57441b1faf78b5e3f249, type: 3}
+        m_TargetAssemblyTypeName: PlayerHealthManager, Assembly-CSharp
+        m_MethodName: Heal
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

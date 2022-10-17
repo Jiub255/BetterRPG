@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Health SO", menuName = "Stats/Health SO")]
 public class HealthSO : ScriptableObject
 {
-    public int maxHealth;
-    public int currentHealth;
+    public int maxValue;
+    public int currentValue;
 }

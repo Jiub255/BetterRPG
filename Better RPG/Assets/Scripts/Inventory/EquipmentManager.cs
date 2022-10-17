@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour
@@ -9,6 +7,15 @@ public class EquipmentManager : MonoBehaviour
     public GameEvent onEquipChanged;
     public GameEventEquipmentItem onEquip;
     public GameEventEquipmentItem onUnequip;
+
+    public SpriteRenderer spriteRenderer;
+
+    public EquipmentTypeSO weaponEquipmentType;
+
+    private void Start()
+    {
+        spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+    }
 
     public void Equip(EquipmentItem newItem)
     {
@@ -34,6 +41,10 @@ public class EquipmentManager : MonoBehaviour
 
         // StatManager will listen for this, to add modifiers from new item
         onEquip.Raise(newItem);
+
+        // Change weapon sprite on player
+        if (newItem.equipmentTypeSO == weaponEquipmentType)
+            spriteRenderer.sprite = newItem.icon;
     }
 
     // have unequip button in EquipUI call this function
@@ -45,9 +56,13 @@ public class EquipmentManager : MonoBehaviour
         // EquipmentUI will listen for this, to updateUI
         onEquipChanged.Raise();
 
-        // InventoryManager(2) will listen for this, to add item to invSO
+        // InventoryManager will listen for this, to add item to invSO
         // StatManager will listen for this, to remove modifiers from new item
         onUnequip.Raise(itemToUnequip);
+
+        // Change weapon sprite on player
+        if (itemToUnequip.equipmentTypeSO == weaponEquipmentType)
+            spriteRenderer.sprite = null;
     }
 
     public void ClearEquipment()

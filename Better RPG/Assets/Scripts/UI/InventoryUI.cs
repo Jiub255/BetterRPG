@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +6,7 @@ public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
 
-    public GameObject inventoryUI2;
+    public GameObject inventoryUIPanel;
 
     InventorySlot[] slots;
 
@@ -49,7 +47,7 @@ public class InventoryUI : MonoBehaviour
 
     void OpenInventory(InputAction.CallbackContext context)
     {
-        inventoryUI2.SetActive(!inventoryUI2.activeSelf);
+        inventoryUIPanel.SetActive(!inventoryUIPanel.activeSelf);
         OnToggleInventory?.Invoke();
     }
 

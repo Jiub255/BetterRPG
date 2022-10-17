@@ -12,26 +12,26 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        health.currentHealth -= amount;
+        health.currentValue -= amount;
 
-        if (health.currentHealth <= 0)
+        if (health.currentValue <= 0)
         {
-            health.currentHealth = 0;
+            health.currentValue = 0;
             Die();
         }
     }
 
     public void Heal(int amount)
     {
-        health.currentHealth += amount;
+        health.currentValue += amount;
 
-        if (health.currentHealth > health.maxHealth)
-            health.currentHealth = health.maxHealth;
+        if (health.currentValue > health.maxValue)
+            health.currentValue = health.maxValue;
     }
 
     public void MaxHeal()
     {
-        health.currentHealth = health.maxHealth;
+        health.currentValue = health.maxValue;
     }
 
     // overwrite this for different enemies?

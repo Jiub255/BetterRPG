@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageMeleeWeapon : MonoBehaviour
 {
     StatManager statManager;
 
-   // [SerializeField] GameEventInt onDamaged;
+    public GameEventAudioClip onPlayClip;
+    public AudioClip hitClip;
 
     private void Awake()
     {
@@ -22,15 +21,22 @@ public class DamageMeleeWeapon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // only send OnDamaged signal if collision has HealthManager script
-        if (collision.GetComponent<EnemyHealthManager>() != null)
+        if (!collision.isTrigger)
         {
+            if (collision.GetComponent<EnemyHealthManager>() != null)
+            {
+                collision.GetComponent<EnemyHealthManager>().TakeDamage(statManager.attack.GetValue());
 
-            collision.GetComponent<EnemyHealthManager>().TakeDamage(statManager.attack.GetValue());
+                // knockback & temporary invulnerability
+                Vector2 direction = collision.transform.position - transform.position;
+                direction.Normalize();
 
-            // but will this damage all enemies with a similar listener?
-            // maybe need to pass through a unique enemy ID or something too?
-           // onDamaged.Raise(statManager.attack.GetValue()); ;
+                collision.gameObject.GetComponent<KnockbackEnemy>().GetKnockedBack
+                    (statManager.knockbackForce.GetValue() * direction,
+                     statManager.knockbackDuration.GetValue());
+
+                onPlayClip.Raise(hitClip);
+            }
         }
     }
 }

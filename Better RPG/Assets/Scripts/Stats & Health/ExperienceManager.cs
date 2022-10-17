@@ -3,8 +3,12 @@ using UnityEngine;
 
 public class ExperienceManager : MonoBehaviour
 {
-    //public int Experience { get; private set; }
     public IntSO Experience;
+
+    //stat based exp
+    public StatSO attack;
+    public StatSO defense;
+    //public List<StatSO> stats;
 
     [SerializeField] private List<int> expLevels;
     //public int Level { get; private set; } = 1;

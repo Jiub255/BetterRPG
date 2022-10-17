@@ -12,6 +12,10 @@ public class PlayerMelee : MonoBehaviour
     private float attackTimer;
     public bool canAttack { get; private set; } = true;
 
+    // sound effect
+    public GameEventAudioClip onPlayClip;
+    public AudioClip swingClip;
+
     // new input system stuff
     public PlayerInputActions playerControls;
 
@@ -50,27 +54,41 @@ public class PlayerMelee : MonoBehaviour
             {
                 attackTimer = attackTimerLength;
                 canAttack = true;
-                swing.performed += Swing;
+                EnableSwing();
             }
         }
     }
 
     void Swing(InputAction.CallbackContext context)
     {
-        //Debug.Log("Swing button pressed");
-
         animator.SetTrigger("AttackTrigger");
-        //animator.SetBool("IsAttacking", true);
+
+        onPlayClip.Raise(swingClip);
 
         canAttack = false;
         attackTimer = attackTimerLength;
-        swing.performed -= Swing;
+        DisableSwing();
     }
 
-    // not getting called at end of animation by animation event
-/*    public void StopAttack()
+    public void TogglePlayerControls(bool gameIsPaused)
     {
-        Debug.Log("StopAttack called");
-        //animator.SetBool("IsAttacking", false);
-    }*/
+        if (gameIsPaused)
+        {
+            DisableSwing();
+        }
+        else if (!gameIsPaused)
+        {
+            EnableSwing();
+        }
+    }
+
+    public void EnableSwing()
+    {
+        swing.performed += Swing;
+    }
+
+    public void DisableSwing()
+    {
+        swing.performed -= Swing;
+    }
 }

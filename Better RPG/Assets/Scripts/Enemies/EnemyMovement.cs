@@ -6,21 +6,20 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy))]
 public class EnemyMovement : MonoBehaviour
 {
-   // [SerializeField] float moveSpeed = 1f;
-
     Transform target;
 
     Rigidbody2D rb;
 
     float distance;
 
-   // [SerializeField] float chaseRadius = 5f;
-
     Enemy enemy;
+
+    bool playerInstantiated = false;
+
+    public bool canMove = true;
 
     private void Start()
     {
-        // target = GameObject.FindWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         enemy = GetComponent<Enemy>();
     }
@@ -28,20 +27,42 @@ public class EnemyMovement : MonoBehaviour
     public void GetPlayerReference(Transform playerTransform)
     {
         target = playerTransform;
+        playerInstantiated = true;
     }
 
     private void Update()
     {
-        distance = Vector2.Distance(target.position, transform.position);
+        if (playerInstantiated && canMove)
+        {
+            distance = Vector2.Distance(target.position, transform.position);
+        }
     }
 
+    // could do this inside OnTriggerStay? 
     private void FixedUpdate()
     {
-        if (distance < enemy.chaseRadius)
+        if (playerInstantiated && canMove) 
         {
-            Vector2 movementVector = Vector2.MoveTowards(transform.position, target.position,
-                enemy.moveSpeed * Time.deltaTime);
-            rb.MovePosition(movementVector);
+            if (distance < enemy.chaseRadius)
+            {
+                ChaseTarget();
+            }
+            else
+            {
+                Wander();
+            }
         }
+    }
+
+    private void ChaseTarget()
+    {
+        Vector2 movementVector = Vector2.MoveTowards(transform.position, target.position,
+            enemy.moveSpeed * Time.deltaTime);
+        rb.MovePosition(movementVector);
+    }
+
+    private void Wander()
+    {
+        // some random wandering stuff
     }
 }

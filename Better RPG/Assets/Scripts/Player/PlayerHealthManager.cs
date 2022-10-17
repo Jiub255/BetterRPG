@@ -9,63 +9,79 @@ public class PlayerHealthManager : MonoBehaviour , IDamageable<int>
 
     public GameEventSceneVector3 onDied;
 
-    // new input system stuff
-    public PlayerInputActions playerControls;
-
-    private InputAction hurtSelf;
+    StatManager statManager;
 
     public StringSO sceneNameSO;
 
-    private void Awake()
-    {
-        playerControls = new PlayerInputActions();
-    }
+    public bool invulnerable = false;
 
-    private void OnEnable()
-    {
-        hurtSelf = playerControls.Player.Shoot;
-        hurtSelf.Enable();
-        hurtSelf.performed += HurtSelf;
-    }
+    // statUI listens for this
+    public GameEvent onHealthChanged;
 
-    private void OnDisable()
-    {
-        hurtSelf.Disable();
-    }
-
-    // just for testing. dont want to heal player/enemies every scene change
     private void Start()
     {
+        statManager = gameObject.GetComponent<StatManager>();
+
+        // just for testing. dont want to heal player every scene change
         MaxHeal();
     }
 
     public void TakeDamage(int amount)
     {
-        health.currentHealth -= amount;
-
-        if (health.currentHealth <= 0)
+        if (!invulnerable)
         {
-            health.currentHealth = 0;
-            Die();
+            health.currentValue -= amountAfterDefense(amount);
+
+            if (health.currentValue <= 0)
+            {
+                health.currentValue = 0;
+                onHealthChanged.Raise();
+                Die();
+            }
+
+            onHealthChanged.Raise();
         }
+    }
+
+    public void TakeDamageNoArmor(int amount)
+    {
+        if (!invulnerable)
+        {
+            health.currentValue -= amount;
+
+            if (health.currentValue <= 0)
+            {
+                health.currentValue = 0;
+                onHealthChanged.Raise();
+                Die();
+            }
+
+            onHealthChanged.Raise();
+        }
+    }
+
+    int amountAfterDefense(int amount)
+    {
+        amount -= statManager.defense.GetValue();
+        if (amount <= 0)
+            return 0;
+        return amount;
     }
 
     public void Heal(int amount)
     {
-        health.currentHealth += amount;
+        health.currentValue += amount;
 
-        if (health.currentHealth > health.maxHealth)
-            health.currentHealth = health.maxHealth;
+        if (health.currentValue > health.maxValue)
+            health.currentValue = health.maxValue;
+
+        onHealthChanged.Raise();
     }
 
     public void MaxHeal()
     {
-        health.currentHealth = health.maxHealth;
-    }
-
-    void HurtSelf(InputAction.CallbackContext context)
-    {
-        TakeDamage(1);
+        health.currentValue = health.maxValue;
+        onHealthChanged.Raise();
     }
 
     public void Die()

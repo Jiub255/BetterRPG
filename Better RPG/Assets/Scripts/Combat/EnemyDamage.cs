@@ -1,18 +1,20 @@
 using UnityEngine;
-
+ 
 [RequireComponent(typeof(Enemy))]
 public class EnemyDamage : MonoBehaviour
 {
     Enemy enemy;
 
     float attackTimer;
-    [SerializeField] float attackTimerLength = 0.5f;
     bool canAttack;
+
+    // sound effect signal
+    public GameEventAudioClip onPlayClip;
 
     private void Start()
     {
         enemy = GetComponent<Enemy>();
-        attackTimer = attackTimerLength;
+        attackTimer = enemy.attackTimerLength;
     }
 
     private void Update()
@@ -22,30 +24,31 @@ public class EnemyDamage : MonoBehaviour
             attackTimer -= Time.deltaTime;
             if (attackTimer <= 0)
             {
-                attackTimer = attackTimerLength;
+                attackTimer = enemy.attackTimerLength;
                 canAttack = true;
             }
         }
     }
 
-/*    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(enemy.attack);
-        }
-    }*/
-
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (canAttack)
+        if (canAttack) // && not stunned
         {
             if (collision.gameObject.CompareTag("Player"))
             {
                 collision.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(enemy.attack);
+
+                // knockback & temporary invulnerability
+                Vector3 direction = collision.transform.position - transform.position;
+                direction.Normalize();
+
+                collision.gameObject.GetComponent<KnockbackPlayer>().GetKnockedBack
+                    (enemy.knockbackForce * direction, enemy.knockbackDuration);
+
+                onPlayClip.Raise(enemy.hitPlayerClip);
+
                 canAttack = false;
             }
         }
-
     }
 }
