@@ -4,7 +4,10 @@ using UnityEngine.UI;
 
 public class CastMagic : MonoBehaviour
 {
-    public SpellSO currentSpell;
+    public Spell/*SO*/ currentSpell;
+
+    // Non SO attempt
+   // public Spell currentSpell2;
 
     // do i need the animator in this script?
     Animator animator;
@@ -80,7 +83,7 @@ public class CastMagic : MonoBehaviour
         }
     }
 
-    public void ChangeSpell(SpellSO spell)
+    public void ChangeSpell(Spell/*SO*/ spell)
     {
         currentSpell = spell;
 

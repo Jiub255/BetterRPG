@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]//makes instances of this class editable from within the inspector
+[System.Serializable] // makes instances of this class editable from within the inspector
 public class ObjectPoolItem
 {
     public GameObject objectToPool;
@@ -11,16 +11,10 @@ public class ObjectPoolItem
 
 public class ObjectPool : MonoBehaviour
 {
-  //  public static ObjectPool SharedInstance;
     public List<GameObject> pooledObjects;
     public List<ObjectPoolItem> itemsToPool;
 
-/*    private void Awake()
-    {
-        SharedInstance = this;
-    }*/
-
-    private void /*Start*/Awake()
+    private void Awake()
     {
         pooledObjects = new List<GameObject>();
         foreach (ObjectPoolItem item in itemsToPool)
@@ -35,18 +29,19 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    public GameObject GetPooledObject(string tag/*GameObject gameObject*/)
+    public GameObject GetPooledObject(string tag)
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {
-            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag/*gameObject*/)
+            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag)
             {
+                Debug.Log(pooledObjects[i].tag);
                 return pooledObjects[i];
             }
         }
         foreach (ObjectPoolItem item in itemsToPool)
         {
-            if (item.objectToPool.tag == tag/*gameObject*/)
+            if (item.objectToPool.tag == tag)
             {
                 if (item.shouldExpand)
                 {

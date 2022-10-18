@@ -3541,7 +3541,7 @@ GameObject:
   - component: {fileID: 195613821}
   - component: {fileID: 195613822}
   - component: {fileID: 195613823}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Room 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3647,7 +3647,7 @@ GameObject:
   - component: {fileID: 205278168}
   - component: {fileID: 205278170}
   - component: {fileID: 205278169}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4579,7 +4579,7 @@ GameObject:
   - component: {fileID: 457342830}
   - component: {fileID: 457342831}
   - component: {fileID: 457342832}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Room 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4683,7 +4683,7 @@ GameObject:
   - component: {fileID: 491501742}
   - component: {fileID: 491501744}
   - component: {fileID: 491501743}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CM vcam1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4884,7 +4884,7 @@ GameObject:
   - component: {fileID: 554922407}
   - component: {fileID: 554922409}
   - component: {fileID: 554922408}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4971,7 +4971,7 @@ GameObject:
   - component: {fileID: 556387015}
   - component: {fileID: 556387017}
   - component: {fileID: 556387016}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CM vcam4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5045,6 +5045,67 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 554922407}
+--- !u!1 &602159504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 602159505}
+  - component: {fileID: 602159506}
+  m_Layer: 0
+  m_Name: Heal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &602159505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602159504}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1027627894}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &602159506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602159504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28a1c904b3452846887ae1f1d9922ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellEffect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5638727969727987059, guid: 17e1d93783ce57441b1faf78b5e3f249, type: 3}
+        m_TargetAssemblyTypeName: PlayerHealthManager, Assembly-CSharp
+        m_MethodName: Heal
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  spellCost: 1
+  magicClip: {fileID: 8300000, guid: 5620bff0de4714d4a885bb6c3a1e0bb9, type: 3}
+  gameEventTransform: {fileID: 0}
 --- !u!1 &635350535
 GameObject:
   m_ObjectHideFlags: 0
@@ -5397,7 +5458,7 @@ GameObject:
   - component: {fileID: 956107592}
   - component: {fileID: 956107593}
   - component: {fileID: 956107594}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Room 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5501,7 +5562,7 @@ GameObject:
   - component: {fileID: 990506521}
   - component: {fileID: 990506523}
   - component: {fileID: 990506522}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CM vcam2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5607,6 +5668,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1027627893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1027627894}
+  m_Layer: 0
+  m_Name: Spells
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1027627894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027627893}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.9168555, y: -1.4390941, z: -1.1544789}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1107239930}
+  - {fileID: 602159505}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1035110705
 GameObject:
   m_ObjectHideFlags: 0
@@ -5689,6 +5782,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1107239929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1107239930}
+  - component: {fileID: 1107239932}
+  - component: {fileID: 1107239931}
+  m_Layer: 0
+  m_Name: Fireball
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1107239930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107239929}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1027627894}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1107239931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107239929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e31f84059f6654184cfa449f85c92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballPrefab: {fileID: 543767941430921109, guid: b6f64ff958c825b46a25b14e3d4f1dac, type: 3}
+--- !u!114 &1107239932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107239929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28a1c904b3452846887ae1f1d9922ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellEffect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1107239931}
+        m_TargetAssemblyTypeName: SpellFireball, Assembly-CSharp
+        m_MethodName: MakeMagic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  spellCost: 1
+  magicClip: {fileID: 8300000, guid: 5620bff0de4714d4a885bb6c3a1e0bb9, type: 3}
+  gameEventTransform: {fileID: 0}
 --- !u!1001 &1117496071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5700,6 +5868,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Person
       objectReference: {fileID: 0}
+    - target: {fileID: 7185492544200695337, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
+      propertyPath: deathAnimation
+      value: 
+      objectReference: {fileID: 985873132031105105, guid: 500476ad10fdd2f4a9ef1b3b91b21e24, type: 3}
     - target: {fileID: 7185492544200695338, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -5800,7 +5972,8 @@ PrefabInstance:
       propertyPath: itemsToDrop.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 528ce8262f1ecfe4ba2c053ead6dd1c0, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7185492544200695342, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
 --- !u!4 &1117496072 stripped
 Transform:
@@ -5818,7 +5991,7 @@ GameObject:
   - component: {fileID: 1334134616}
   - component: {fileID: 1334134618}
   - component: {fileID: 1334134617}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5987,7 +6160,7 @@ GameObject:
   - component: {fileID: 1393554013}
   - component: {fileID: 1393554015}
   - component: {fileID: 1393554014}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CM vcam3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6250,7 +6423,7 @@ GameObject:
   - component: {fileID: 1932004132}
   - component: {fileID: 1932004134}
   - component: {fileID: 1932004133}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6420,7 +6593,7 @@ GameObject:
   - component: {fileID: 2004388203}
   - component: {fileID: 2004388204}
   - component: {fileID: 2004388205}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Room 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18320,6 +18493,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Angry Blob
       objectReference: {fileID: 0}
+    - target: {fileID: 7185492544200695337, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
+      propertyPath: deathAnimation
+      value: 
+      objectReference: {fileID: 985873132031105105, guid: 500476ad10fdd2f4a9ef1b3b91b21e24, type: 3}
     - target: {fileID: 7185492544200695341, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -18368,5 +18545,6 @@ PrefabInstance:
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7185492544200695340, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7185492544200695342, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}

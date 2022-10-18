@@ -6,7 +6,17 @@ public class SpellButton : MonoBehaviour
 {
     [SerializeField] CastMagic playerCastMagic;
 
-    [SerializeField] SpellSO spellSO;
+    //[SerializeField] SpellSO spellSO;
+
+    // how to get this reference? with another signal?
+    [SerializeField] GameObject spellObject;
+    Spell spell;
+
+    public void GetSpellObjectReference(Transform spellObj)
+    {
+        spellObject = spellObj.gameObject;
+        spell = spellObject.GetComponent<Spell>();
+    }
 
     // have a Transform listener on the canvas for this
     // didn't work when i put the listeners on the buttons
@@ -19,6 +29,6 @@ public class SpellButton : MonoBehaviour
     // button event in UI does this
     public void Click()
     {
-        playerCastMagic.ChangeSpell(spellSO);
+        playerCastMagic.ChangeSpell(spell);
     }
 }

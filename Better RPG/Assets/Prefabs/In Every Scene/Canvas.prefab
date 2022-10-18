@@ -5270,7 +5270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCastMagic: {fileID: 0}
-  spellSO: {fileID: 11400000, guid: 275b9a60a6f13fe4092b718412ca16fb, type: 2}
+  spellObject: {fileID: 2730089303733002807, guid: 17e1d93783ce57441b1faf78b5e3f249, type: 3}
 --- !u!1 &4625387542601799488
 GameObject:
   m_ObjectHideFlags: 0
@@ -9988,7 +9988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCastMagic: {fileID: 0}
-  spellSO: {fileID: 11400000, guid: c2eebbc83bdded649b9143b0809a55b2, type: 2}
+  spellObject: {fileID: 0}
 --- !u!1 &7788404741794373098
 GameObject:
   m_ObjectHideFlags: 0
@@ -12944,6 +12944,8 @@ GameObject:
   - component: {fileID: 681176351477093847}
   - component: {fileID: 4949600694394398611}
   - component: {fileID: 7423456236588530361}
+  - component: {fileID: 4110209733843626983}
+  - component: {fileID: 2377162805611589305}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -13273,6 +13275,62 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &7423456236588530361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042634751891204170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64932ed59f5aec24d8700fde6fd22f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: fcb04f77c70ff624683022a0d591b5d0, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7106687181097385424}
+        m_TargetAssemblyTypeName: SpellButton, Assembly-CSharp
+        m_MethodName: GetSpellObjectReference
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4110209733843626983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042634751891204170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64932ed59f5aec24d8700fde6fd22f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 07926f8e20190984f82c5caee51c68c1, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4057170294734718239}
+        m_TargetAssemblyTypeName: SpellButton, Assembly-CSharp
+        m_MethodName: GetSpellObjectReference
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2377162805611589305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

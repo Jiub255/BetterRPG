@@ -1,22 +1,14 @@
-using System.Collections;
 using UnityEngine;
 
 public class SpellFireball : MonoBehaviour
 {
-    /*public*/ Transform player;
+    Transform player;
 
-    /*public*/ Animator playerAnimator;
+    Animator playerAnimator;
 
-    /*public*/ ObjectPool objectPool;
+    ObjectPool objectPool;
 
     [SerializeField] GameObject fireballPrefab;
-
-/*    void Awake()
-    {
-        player = GetComponent<Transform>();
-        playerAnimator = GetComponent<Animator>();
-        objectPool = GetComponent<ObjectPool>();
-    }*/
 
     public void GetPlayerReference(Transform playerTransform)
     {
@@ -31,15 +23,8 @@ public class SpellFireball : MonoBehaviour
 
     public void MakeMagic()
     {
-        Debug.Log("MakeMagic invoked"); // this displays in console
-
-        //Debug.Log(playerAnimator.gameObject.name, this); // this doesn't, but does in GetPlayerReference
-
-        if (playerAnimator != null) // apparently it's null. but why?
+        if (playerAnimator != null) 
         {
-            Debug.Log("playerAnimator NOT null");
-
-            // seems to not have reference to animator here, but it does?
             if (playerAnimator.GetFloat("Speed") <= 0.1f)
             {
                 Vector2 temp = new Vector2(playerAnimator.GetFloat("LastHoriz"), playerAnimator.GetFloat("LastVert"));
@@ -49,6 +34,7 @@ public class SpellFireball : MonoBehaviour
                     fireball.transform.position = player.position;
                     fireball.transform.rotation = player.rotation;
                     fireball.SetActive(true);
+                    Debug.Log("fireball activated");
                 }
                 fireball.GetComponent<Fireball>().Setup(temp, Vector3.zero);
             }
@@ -61,16 +47,14 @@ public class SpellFireball : MonoBehaviour
                     fireball.transform.position = player.position;
                     fireball.transform.rotation = player.rotation;
                     fireball.SetActive(true);
+                    Debug.Log("fireball activated");
                 }
                 fireball.GetComponent<Fireball>().Setup(temp, Vector3.zero);
             }
         }
         else
         {
-            Debug.Log("playerAnimator null", this); // Why?
-            // pretty sure it's because the fireball SpellSO references the 
-            // spelleffects prefab to get its unity event.
-            // don't think this'll work like this
+            Debug.Log("playerAnimator null", this);
         }
     }
 }

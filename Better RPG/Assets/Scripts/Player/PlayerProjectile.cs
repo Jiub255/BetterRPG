@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerProjectile : MonoBehaviour
 {
@@ -11,7 +8,6 @@ public class PlayerProjectile : MonoBehaviour
 
     [SerializeField] float knockbackForce = 1f;
     [SerializeField] float knockbackDuration = 2f;
-    private Vector3 knockbackDirection;
 
     [SerializeField] float speed = 8f;
 
@@ -43,11 +39,12 @@ public class PlayerProjectile : MonoBehaviour
     {
         rb.velocity = direction.normalized * speed;
         transform.rotation = Quaternion.Euler(orientation);
-        knockbackDirection = direction;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.name);
+
         if (!collision.isTrigger)
         {
             if (collision.GetComponent<EnemyHealthManager>() != null)
@@ -63,8 +60,8 @@ public class PlayerProjectile : MonoBehaviour
 
                 onPlayClip.Raise(hitClip);
             }
-        }
 
-        gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
     }
 }

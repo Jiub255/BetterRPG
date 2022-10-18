@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 7185492544200695334}
   - component: {fileID: 7185492544200695337}
   - component: {fileID: 7185492544200695345}
-  - component: {fileID: 7185492544200695342}
   - component: {fileID: 1956545269746510647}
   - component: {fileID: 7185492544131047171}
   - component: {fileID: 7185492544131047172}
@@ -191,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onExperienceGained: {fileID: 11400000, guid: 24868b85df0ed9a489b7e37664059030, type: 2}
-  deathExplosion: {fileID: 985873132031105105, guid: 500476ad10fdd2f4a9ef1b3b91b21e24, type: 3}
+  deathAnimation: {fileID: 985873132031105105, guid: 500476ad10fdd2f4a9ef1b3b91b21e24, type: 3}
   invulnerable: 0
 --- !u!114 &7185492544200695345
 MonoBehaviour:
@@ -206,34 +205,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPickup: {fileID: 6361592024591748988, guid: 3ff8ec13477c67848a2723d134e93e92, type: 3}
---- !u!114 &7185492544200695342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7185492544200695335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64932ed59f5aec24d8700fde6fd22f3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: c482a24ee626aec43b2ffc3bbfa991cb, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: EnemyMovement, Assembly-CSharp
-        m_MethodName: GetPlayerReference
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1956545269746510647
 MonoBehaviour:
   m_ObjectHideFlags: 0
