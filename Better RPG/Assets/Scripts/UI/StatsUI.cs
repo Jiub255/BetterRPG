@@ -18,6 +18,9 @@ public class StatsUI : MonoBehaviour
     public IntSO experienceSO;
     public Text experienceText;
 
+    public HealthSO magicSO;
+    public Text magicText;
+
     void Start()
     {
         UpdateStats();
@@ -30,5 +33,6 @@ public class StatsUI : MonoBehaviour
         defenseText.text = "Defense: " + defenseSO.GetValue();
         levelText.text = "Level: " + levelSO.value;
         experienceText.text = "Experience: " + experienceSO.value;
+        magicText.text = "Magic: " + magicSO.currentValue + " / " + magicSO.maxValue;
     }
 }

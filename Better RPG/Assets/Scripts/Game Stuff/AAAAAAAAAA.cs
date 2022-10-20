@@ -4,9 +4,14 @@ public class AAAAAAAAAA
 
     TODO
 -------------
-
-    Either keep HUD up or make it so you can see current hp/mp and stuff while in inv menu
-        also make sure it updates as you use healing items etc
+   
+    
+    UI
+        Either keep HUD up or make it so you can see current hp/mp and stuff while in inv menu
+        Add magic to statsUI, at least for now
+        Design better looking UI, make HP/MP bars work/look fitting both in game and in inv menu
+        Change all text components to TextMeshPro, change code accordingly
+            Figure out blurry TMP issue
 
     Fix Scene Transition
 
@@ -19,7 +24,6 @@ public class AAAAAAAAAA
         Make more spells
 
     Input System
-        Have action map change to UI in menus, Player during normal gameplay
         Set up gamepad, joystick, and other controls
 
     Stats
@@ -33,6 +37,8 @@ public class AAAAAAAAAA
 
     Finish combat system
         fine tune knockback
+            fix player knockback
+                disable movement/combat while knockingback player
         Finish Exp/level up system
         Fix death load screen, works as is, but could be better
 
@@ -43,7 +49,7 @@ public class AAAAAAAAAA
 
     Procedural generation of grass/ flowers etc?
 
-
+    Fishing Minigame
 
 
 

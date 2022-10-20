@@ -67,7 +67,12 @@ public class EscapeMenuUI : MonoBehaviour
         InputManager.ToggleActionMap(InputManager.inputActions.EscapeMenu);
     }
 
-    void CloseEscapeMenu(InputAction.CallbackContext context)
+    public void CloseEscapeMenu(InputAction.CallbackContext context)
+    {
+        CloseEscWithoutContext();
+    }
+
+    public void CloseEscWithoutContext()
     {
         if (InputManager.invMenuOpen)
         {
@@ -85,15 +90,19 @@ public class EscapeMenuUI : MonoBehaviour
         EscapeMenuPanel.SetActive(false);
     }
 
-    /*    public void ToggleOptionsMenu()
+    public void ToggleOptionsMenu()
     {
-        MenuPanel.SetActive(false);
-        OptionsPanel.SetActive(true);
-    }*/
+        Debug.Log("Options Button Pressed");
+
+/*        MenuPanel.SetActive(false);
+        OptionsPanel.SetActive(true);*/
+    }
 
     public void ExitToMainMenu()
     {
         // exit save here?
+        OnTogglePause.Invoke(false);
+        InputManager.invMenuOpen = false;
         SceneManager.LoadScene("MainMenu");
     }
 }
