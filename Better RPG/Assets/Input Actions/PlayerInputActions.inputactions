@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "049928f0-50df-4a40-8370-a0760aec8dc6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -304,7 +313,7 @@
                 {
                     "name": "",
                     "id": "d7b1990d-3e77-423c-beb2-30d8fcc2296b",
-                    "path": "<Keyboard>/escape",
+                    "path": "<Keyboard>/u",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -340,8 +349,19 @@
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Cast",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "89fa3abd-df5b-48bd-8c97-74c6446b9109",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -418,6 +438,33 @@
                     "name": "RightClick",
                     "type": "PassThrough",
                     "id": "e96bdcc9-03c1-482e-ac56-7fa20ce851b8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CloseInventory",
+                    "type": "Button",
+                    "id": "5574e3f5-fa48-4e51-a85c-f8fda23097a4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ClosePauseMenu",
+                    "type": "Button",
+                    "id": "d00818b5-ad0e-4e4b-baff-e28abf3e583c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CloseAllMenus",
+                    "type": "Button",
+                    "id": "a64082fd-ac16-491f-9729-252d1ffa8c6e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -858,6 +905,39 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "41fbaaab-339b-42e2-9faf-9a2f985e75d7",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "CloseInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b4b3fa5-9df9-4b10-af93-ecccfa2d280e",
+                    "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ClosePauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4bcac2aa-03b4-430d-a017-e2653fb72165",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "CloseAllMenus",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

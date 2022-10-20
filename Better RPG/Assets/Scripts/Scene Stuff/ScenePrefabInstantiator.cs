@@ -1,20 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ScenePrefabInstantiator : MonoBehaviour
 {
-    // have this listen for a scene changed signal? then instantiate everything into new scene
-    // could use a gameEventScene thing?
-    // this way i dont have to attach all persistent prefabs to every single scenetransition script
-
     [Header("Don't put player prefab in here")]
     public List<GameObject> PrefabsToKeepInEveryScene = new List<GameObject>();
 
     [Header("Put player prefab in here")]
     public GameObject player;
 
+    [Header(" ")] // just to make it look nicer in the inspector
     public GameEventTransform onPlayerInstantiated;
 
     // calls this method when it hears the OnSceneChanged Signal
@@ -34,17 +30,7 @@ public class ScenePrefabInstantiator : MonoBehaviour
         // could have SceneMusic listen for this to send its signal to AudioManager
         onPlayerInstantiated.Raise(playerTransform);
 
-       // StartCoroutine(PlayerInstantiatedSignalDelayed(playerTransform));
-
         // Move player to starting position
         playerTransform.position = startingPosition;
     }
-
-/*    IEnumerator PlayerInstantiatedSignalDelayed(Transform playerTransform)
-    {
-        yield return new WaitForSeconds(0.2f);
-
-        onPlayerInstantiated.Raise(playerTransform);
-        Debug.Log("Delayed signal raised");
-    }*/
 }

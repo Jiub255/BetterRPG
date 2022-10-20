@@ -7,7 +7,7 @@ public class PlayerMagicManager : MonoBehaviour
     // statUI listens
     public GameEvent onMagicChanged;
 
-    #region debug button stuff
+#region debug button stuff
 
     public static bool buttonPressed = false;
     [SerializeField] float timerLength = 0.03f;
@@ -16,7 +16,7 @@ public class PlayerMagicManager : MonoBehaviour
 
     public static int eventIndex;
 
-    private void Start()
+    private void Awake()
     {
         timer = delay;
     }
@@ -76,7 +76,7 @@ public class PlayerMagicManager : MonoBehaviour
         }
     }
 
-    #endregion
+#endregion
 
     public void RegenerateMagic(int amount)
     {

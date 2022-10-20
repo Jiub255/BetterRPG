@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpellButton : MonoBehaviour
 {
     [SerializeField] CastMagic playerCastMagic;
-
-    //[SerializeField] SpellSO spellSO;
 
     // how to get this reference? with another signal?
     [SerializeField] GameObject spellObject;

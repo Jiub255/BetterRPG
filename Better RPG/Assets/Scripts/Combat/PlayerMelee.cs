@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +7,7 @@ public class PlayerMelee : MonoBehaviour
 
     //keep longer than max length of all attack animations
     public float attackTimerLength = 0.4f;
-    private float attackTimer;
+    float attackTimer;
     public bool canAttack { get; private set; } = true;
 
     // sound effect
@@ -17,26 +15,30 @@ public class PlayerMelee : MonoBehaviour
     public AudioClip swingClip;
 
     // new input system stuff
-    public PlayerInputActions playerControls;
+    InputAction swing;
 
-    private InputAction swing;
+    bool swingActive = true;
 
     private void Awake()
     {
-        playerControls = new PlayerInputActions();
         attackTimer = attackTimerLength;
     }
 
     private void OnEnable()
     {
-        swing = playerControls.Player.Swing;
+        swing = InputManager.inputActions.Player.Swing;
         swing.Enable();
         swing.performed += Swing;
+
+       // InputManager.actionMapChange += ChangeActionMap;
     }
 
     private void OnDisable()
     {
         swing.Disable();
+        swing.performed -= Swing;
+   
+       // InputManager.actionMapChange -= ChangeActionMap;
     }
 
     private void Start()
@@ -70,25 +72,32 @@ public class PlayerMelee : MonoBehaviour
         DisableSwing();
     }
 
-    public void TogglePlayerControls(bool gameIsPaused)
-    {
-        if (gameIsPaused)
-        {
-            DisableSwing();
-        }
-        else if (!gameIsPaused)
-        {
-            EnableSwing();
-        }
-    }
-
     public void EnableSwing()
     {
         swing.performed += Swing;
+        swingActive = true;
     }
 
     public void DisableSwing()
     {
         swing.performed -= Swing;
+        swingActive = false;
+    }
+
+    // listens for dontAttack signal
+    // called when near signs, maybe other things
+    public void ToggleSwing()
+    {
+        if (swingActive)
+            DisableSwing();
+        else
+            EnableSwing();
+    }
+
+    void ChangeActionMap(InputActionMap actionMap)
+    {
+        actionMap.Enable();
+ 
+        Debug.Log("Player Melee using " + actionMap.name);
     }
 }

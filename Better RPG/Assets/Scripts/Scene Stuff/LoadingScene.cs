@@ -27,13 +27,13 @@ public class LoadingScene : MonoBehaviour
         }
 
         // Set newly loaded scene as active
-        SceneManager.SetActiveScene(/*currentScene*/ SceneManager.GetSceneByName(sceneNameSO.String));
+        SceneManager.SetActiveScene(/*currentScene*/ SceneManager.GetSceneByName(sceneNameSO.text));
 
         // Getting stuck here
         //Debug.Log("Scene to load: " + currentScene.name + "Position at death: " + positionAtDeath.ToString());
 
         // Send signal to ScenePrefabInstantiator, it instantiates the prefabs and moves player to starting position
-        onSceneChanged.Raise(/*currentScene*/ SceneManager.GetSceneByName(sceneNameSO.String), positionAtDeath);
+        onSceneChanged.Raise(/*currentScene*/ SceneManager.GetSceneByName(sceneNameSO.text), positionAtDeath);
 
         // Unload loading scene
         SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("LoadingScene"));

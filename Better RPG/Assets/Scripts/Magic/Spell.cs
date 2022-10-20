@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
 public class Spell : MonoBehaviour
 {
     public UnityEvent spellEffect;
@@ -9,10 +10,11 @@ public class Spell : MonoBehaviour
 
     public AudioClip magicClip;
 
-    public GameEventTransform gameEventTransform;
+    // player listens to this for CastMagic reference?
+    public GameEventTransform onSpellInstantiated;
 
     private void OnEnable()
     {
-        gameEventTransform.Raise(transform);
+        onSpellInstantiated.Raise(this.transform);
     }
 }

@@ -16,26 +16,49 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove = true;
 
     // new input system stuff
-    public PlayerInputActions playerControls;
-
     private InputAction move;
 
     private void Awake()
     {
-        playerControls = new PlayerInputActions();
-
         playerMelee = gameObject.GetComponent<PlayerMelee>();
     }
 
     private void OnEnable()
     {
-        move = playerControls.Player.Move;
+        move = InputManager.inputActions.Player.Move;
         move.Enable();
+
+        Sign.signalEventString += ToggleControls;
+
+       // InputManager.actionMapChange += ChangeActionMap;
     }
 
     private void OnDisable()
     {
         move.Disable();
+
+        Sign.signalEventString -= ToggleControls;
+
+       // InputManager.actionMapChange -= ChangeActionMap;
+    }
+
+    // Do I need these in all "controller" scripts?
+    // ie ones that take input from player
+    void ChangeActionMap(InputActionMap actionMap)
+    {
+        actionMap.Enable();
+
+        Debug.Log("Player Movement using " + actionMap.name);
+    }
+
+    // string argument here is just for getting the signal from the sign script
+    // string doesn't have any real use
+    public void ToggleControls(string asdf)
+    {
+        if (!move.enabled)
+            move.Enable();
+        else    
+            move.Disable();
     }
 
     void Start()

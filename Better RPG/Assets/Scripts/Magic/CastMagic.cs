@@ -1,13 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class CastMagic : MonoBehaviour
 {
-    public Spell/*SO*/ currentSpell;
+    public Spell currentSpell { get; private set; }
 
-    // Non SO attempt
-   // public Spell currentSpell2;
+    Transform spells;
 
     // do i need the animator in this script?
     Animator animator;
@@ -20,8 +18,9 @@ public class CastMagic : MonoBehaviour
 
     // sound effect
     public GameEventAudioClip onPlayClip;
-    
-    // new input system stuff
+
+    #region Input System Stuff
+
     public PlayerInputActions playerControls;
 
     private InputAction castSpell;
@@ -44,6 +43,13 @@ public class CastMagic : MonoBehaviour
         castSpell.Disable();
     }
 
+    #endregion
+
+    public void GetSpellsReference()
+    {
+        spells = gameObject.transform.GetChild(1);
+    }
+
     private void Start()
     {
         animator = gameObject.GetComponent<Animator>();
@@ -58,7 +64,7 @@ public class CastMagic : MonoBehaviour
             {
                 magicTimer = magicTimerLength;
                 canCastSpell = true;
-                EnableCastSpell();
+                castSpell.Enable();
             }
         }
     }
@@ -68,47 +74,52 @@ public class CastMagic : MonoBehaviour
         // checks if you have enough mp to cast, and subtracts spell cost from your mp if you do
         if (playerMagicManager.UseMagic(currentSpell.spellCost))
         {
-            // want to have a variable event here so you can call any script from the cast button
-            currentSpell.spellEffect.Invoke();
+            if (currentSpell != null)
+            {
+                // want to have a variable event here so you can call any script from the cast button
+                currentSpell.spellEffect.Invoke();
 
-            // make a spell animation
-            // animator.SetTrigger("AttackTrigger");
+                // make a spell animation
+                // animator.SetTrigger("AttackTrigger");
 
-            // signal to AudioManager
-            onPlayClip.Raise(currentSpell.magicClip);
+                // signal to AudioManager
+                onPlayClip.Raise(currentSpell.magicClip);
 
-            canCastSpell = false;
-            magicTimer = magicTimerLength;
-            DisableCastSpell();
+                canCastSpell = false;
+                magicTimer = magicTimerLength;
+                castSpell.Disable();
+            }
+            else
+            {
+                Debug.Log("No Spell Selected");
+            }
         }
     }
 
-    public void ChangeSpell(Spell/*SO*/ spell)
+    public void ChangeSpell(Spell spell)
     {
         currentSpell = spell;
 
-        Debug.Log("Spell changed to " + spell.name);
+        Debug.Log("Current Spell: " + spell.name);
     }
 
     public void TogglePlayerControls(bool gameIsPaused)
     {
         if (gameIsPaused)
         {
-            DisableCastSpell();
+            castSpell.Disable();
         }
         else if (!gameIsPaused)
         {
-            EnableCastSpell();
+            castSpell.Enable();
         }
     }
 
-    public void EnableCastSpell()
+    public void ToggleCastSpell()
     {
-        castSpell.performed += CastSpell;
-    }
-
-    public void DisableCastSpell()
-    {
-        castSpell.performed -= CastSpell;
+        if (castSpell.enabled)
+            castSpell.Disable();
+        else
+            castSpell.Enable();
     }
 }

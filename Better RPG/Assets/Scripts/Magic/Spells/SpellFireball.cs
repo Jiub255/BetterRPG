@@ -15,40 +15,29 @@ public class SpellFireball : MonoBehaviour
         player = playerTransform;
         playerAnimator = playerTransform.gameObject.GetComponent<Animator>();
         objectPool = playerTransform.gameObject.GetComponent<ObjectPool>();
-
-        Debug.Log("Got Player References");
-        Debug.Log(player.name);
-        Debug.Log(playerAnimator.gameObject.name, this);
     }
 
-    public void MakeMagic()
+    public void CreateFireball()
     {
         if (playerAnimator != null) 
         {
+            GameObject fireball = objectPool.GetPooledObject("Fireball");
+            if (fireball != null)
+            {
+                fireball.transform.position = player.position;
+                fireball.transform.rotation = player.rotation;
+                fireball.SetActive(true);
+                Debug.Log("fireball activated");
+            }
+
             if (playerAnimator.GetFloat("Speed") <= 0.1f)
             {
                 Vector2 temp = new Vector2(playerAnimator.GetFloat("LastHoriz"), playerAnimator.GetFloat("LastVert"));
-                GameObject fireball = objectPool.GetPooledObject("Fireball");
-                if (fireball != null)
-                {
-                    fireball.transform.position = player.position;
-                    fireball.transform.rotation = player.rotation;
-                    fireball.SetActive(true);
-                    Debug.Log("fireball activated");
-                }
                 fireball.GetComponent<Fireball>().Setup(temp, Vector3.zero);
             }
             else
             {
                 Vector2 temp = new Vector2(playerAnimator.GetFloat("Horiz"), playerAnimator.GetFloat("Vert"));
-                GameObject fireball = objectPool.GetPooledObject("Fireball");
-                if (fireball != null)
-                {
-                    fireball.transform.position = player.position;
-                    fireball.transform.rotation = player.rotation;
-                    fireball.SetActive(true);
-                    Debug.Log("fireball activated");
-                }
                 fireball.GetComponent<Fireball>().Setup(temp, Vector3.zero);
             }
         }

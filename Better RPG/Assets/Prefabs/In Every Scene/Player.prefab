@@ -60,7 +60,7 @@ MonoBehaviour:
         m_CallState: 2
   spellCost: 1
   magicClip: {fileID: 8300000, guid: 5620bff0de4714d4a885bb6c3a1e0bb9, type: 3}
-  gameEventTransform: {fileID: 11400000, guid: fcb04f77c70ff624683022a0d591b5d0, type: 2}
+  onSpellInstantiated: {fileID: 11400000, guid: fcb04f77c70ff624683022a0d591b5d0, type: 2}
 --- !u!1 &2730089303733002807
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,28 +74,28 @@ GameObject:
   - component: {fileID: 1484465893500902627}
   - component: {fileID: 2386429486267950135}
   - component: {fileID: 4785350982932361540}
-  - component: {fileID: 6603746197830486677}
-  - component: {fileID: 5579630649817513474}
-  - component: {fileID: 6178865899331241264}
-  - component: {fileID: 5638727969727987059}
-  - component: {fileID: 5598120536260541508}
-  - component: {fileID: 2365181350524745077}
-  - component: {fileID: 5332837048349261374}
-  - component: {fileID: 1666355470636881861}
-  - component: {fileID: 386510385724314069}
   - component: {fileID: 7574991592151894689}
   - component: {fileID: 7743046629935487939}
   - component: {fileID: 5015697566744524905}
   - component: {fileID: 8328269597947336804}
+  - component: {fileID: 3456541251999140876}
   - component: {fileID: 5015697566744524904}
   - component: {fileID: 2155961087374534378}
   - component: {fileID: 4080114770630114532}
-  - component: {fileID: 4323764475296653801}
-  - component: {fileID: 1347675580356472069}
-  - component: {fileID: 5673493077231083415}
-  - component: {fileID: -7903140233344272677}
+  - component: {fileID: 2780401409862514379}
+  - component: {fileID: 6960522182346250333}
+  - component: {fileID: 727681567251734516}
   - component: {fileID: 3544248295094023495}
-  - component: {fileID: 3456541251999140876}
+  - component: {fileID: 5638727969727987059}
+  - component: {fileID: 5598120536260541508}
+  - component: {fileID: 1666355470636881861}
+  - component: {fileID: 386510385724314069}
+  - component: {fileID: 2365181350524745077}
+  - component: {fileID: 5332837048349261374}
+  - component: {fileID: 6178865899331241264}
+  - component: {fileID: 1347675580356472069}
+  - component: {fileID: -7903140233344272677}
+  - component: {fileID: 5579630649817513474}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -156,8 +156,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 225473059
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5d3bdcf04e71dcd46bf393a69e431bf6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -236,171 +236,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6603746197830486677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730089303733002807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 671b286a155d9be4884b81f3994a8f5f, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &5579630649817513474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730089303733002807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7746440cb432014e963f2b8146faf5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  atkSpdMultiplier: 0.2
-  canMove: 1
---- !u!114 &6178865899331241264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730089303733002807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7ef0ab31f63d9e49acd8a817d9117ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackTimerLength: 0.4
-  onPlayClip: {fileID: 11400000, guid: 4cfe2c1dfb846854693a2a63ff80faf9, type: 2}
-  swingClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
---- !u!114 &5638727969727987059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730089303733002807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfb32131fe5dfd4186460594882e83b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 11400000, guid: 565d7205a0bf9fb4ba4fd224191c3c46, type: 2}
-  onDied: {fileID: 11400000, guid: 79a2283ed1111b94aa5405099e57e76f, type: 2}
-  sceneNameSO: {fileID: 11400000, guid: 9fb7f93360fc44a46926079d7549ad21, type: 2}
-  invulnerable: 0
-  onHealthChanged: {fileID: 11400000, guid: 78a0332011e29724f94e747e0d9436df, type: 2}
---- !u!114 &5598120536260541508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730089303733002807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1cfdfd2475002d4bb841d3b18292d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magic: {fileID: 11400000, guid: 6d79a91baeedc054891c8e70877d59ab, type: 2}
-  onMagicChanged: {fileID: 11400000, guid: 78a0332011e29724f94e747e0d9436df, type: 2}
-  timerLength: 0.03
-  delay: 0.5
---- !u!114 &2365181350524745077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730089303733002807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a65a50c407f89974293d1508b8b4b1f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventorySO: {fileID: 11400000, guid: 16c8a778a690e624e94a02c7f504289b, type: 2}
-  onItemChanged: {fileID: 11400000, guid: 8987954ea7ede92469fa5a00bde0898a, type: 2}
-  space: 20
-  itemPickup: {fileID: 6361592024591748988, guid: 3ff8ec13477c67848a2723d134e93e92, type: 3}
---- !u!114 &5332837048349261374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730089303733002807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efa21c8a0a7fee14b9dc45aebee02fe7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equipmentSO: {fileID: 11400000, guid: 609589a58ad0f6d4183850e793b94ba0, type: 2}
-  onEquipChanged: {fileID: 11400000, guid: d4d60f03ac5dd5a4e819a7fe66e1e43b, type: 2}
-  onEquip: {fileID: 11400000, guid: b387384893219674f97ba70b405770e2, type: 2}
-  onUnequip: {fileID: 11400000, guid: dce8e2ceaca4ae640b998e939143c5a7, type: 2}
-  spriteRenderer: {fileID: 0}
-  weaponEquipmentType: {fileID: 11400000, guid: c9b69109724988848a8a124492a6b0e2, type: 2}
---- !u!114 &1666355470636881861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730089303733002807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cd7cbbefd0dd2f40896876898d67e00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attack: {fileID: 11400000, guid: 5b6838f74c22824489dac353d530f9a1, type: 2}
-  defense: {fileID: 11400000, guid: b3a96ba4822e03f44a067aa983036419, type: 2}
-  knockbackForce: {fileID: 11400000, guid: 411369db12cc37e4b84b0873ed21458d, type: 2}
-  knockbackDuration: {fileID: 11400000, guid: 81ad0f495c422064fbe09b5df17041f7, type: 2}
-  onStatsChanged: {fileID: 11400000, guid: 20a0d3ff2e3bcc048ba604905f7d231e, type: 2}
-  equipmentSO: {fileID: 11400000, guid: 609589a58ad0f6d4183850e793b94ba0, type: 2}
---- !u!114 &386510385724314069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730089303733002807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a0dd51ce946ff14882567034f63f4ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Experience: {fileID: 11400000, guid: c6d1ae30fd0c874409da3958c93e86fb, type: 2}
-  attack: {fileID: 0}
-  defense: {fileID: 0}
-  expLevels: 
-  Level: {fileID: 11400000, guid: 1b4b594d8396f10499ad05db1c0306aa, type: 2}
-  maxLevel: 25
-  expToFirstLevelUp: 3
-  nextLvlMultiplier: 1.3
 --- !u!114 &7574991592151894689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,6 +360,58 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3456541251999140876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64932ed59f5aec24d8700fde6fd22f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: c482a24ee626aec43b2ffc3bbfa991cb, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5820426364104367017}
+        m_TargetAssemblyTypeName: SpellFireball, Assembly-CSharp
+        m_MethodName: GetPlayerReference
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5232598676199706728}
+        m_TargetAssemblyTypeName: SpellWind, Assembly-CSharp
+        m_MethodName: GetPlayerReference
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -7903140233344272677}
+        m_TargetAssemblyTypeName: CastMagic, Assembly-CSharp
+        m_MethodName: GetSpellsReference
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5015697566744524904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,7 +496,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4323764475296653801
+--- !u!114 &2780401409862514379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -618,17 +505,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2730089303733002807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51a2ef861b5290241a5d481819fa4f0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 963d88785cc915943add9a8d492274d1, type: 2}
+  Event: {fileID: 11400000, guid: 49f85aef6d19e294b90fc7d53ef72dcf, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6178865899331241264}
         m_TargetAssemblyTypeName: PlayerMelee, Assembly-CSharp
-        m_MethodName: TogglePlayerControls
-        m_Mode: 0
+        m_MethodName: ToggleSwing
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -637,7 +524,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1347675580356472069
+--- !u!114 &6960522182346250333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -646,10 +533,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 2730089303733002807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b07684ba8cd71549ba15e9b9bbd18b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5673493077231083415
+  Event: {fileID: 11400000, guid: d0d50adb9de23f146962d2cc62046550, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5579630649817513474}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: ToggleControls
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: asdf
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -7903140233344272677}
+        m_TargetAssemblyTypeName: CastMagic, Assembly-CSharp
+        m_MethodName: ToggleCastSpell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &727681567251734516
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -658,25 +573,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 2730089303733002807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51edd3036f03c364c8d695f4888a1e7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-7903140233344272677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730089303733002807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55ac98f14d2c95341b6790eb497038d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentSpell: {fileID: 11400000, guid: 34bf4e473ba5ee444ae1225859c1db4e, type: 2}
-  playerMagicManager: {fileID: 5598120536260541508}
-  magicTimerLength: 0.4
-  onPlayClip: {fileID: 11400000, guid: 4cfe2c1dfb846854693a2a63ff80faf9, type: 2}
+  Event: {fileID: 11400000, guid: aacf59d962765b047b53552576bea16c, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5579630649817513474}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: ToggleControls
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -7903140233344272677}
+        m_TargetAssemblyTypeName: CastMagic, Assembly-CSharp
+        m_MethodName: ToggleCastSpell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3544248295094023495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,7 +621,10 @@ MonoBehaviour:
   - objectToPool: {fileID: 543767941430921109, guid: b6f64ff958c825b46a25b14e3d4f1dac, type: 3}
     amountToPool: 3
     shouldExpand: 1
---- !u!114 &3456541251999140876
+  - objectToPool: {fileID: 8359501981254682935, guid: 421ff5bb0e169b04ebef060bde7e4304, type: 3}
+    amountToPool: 3
+    shouldExpand: 1
+--- !u!114 &5638727969727987059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -703,25 +633,161 @@ MonoBehaviour:
   m_GameObject: {fileID: 2730089303733002807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64932ed59f5aec24d8700fde6fd22f3a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cfb32131fe5dfd4186460594882e83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: c482a24ee626aec43b2ffc3bbfa991cb, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5820426364104367017}
-        m_TargetAssemblyTypeName: SpellFireball, Assembly-CSharp
-        m_MethodName: GetPlayerReference
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  health: {fileID: 11400000, guid: 565d7205a0bf9fb4ba4fd224191c3c46, type: 2}
+  onDied: {fileID: 11400000, guid: 79a2283ed1111b94aa5405099e57e76f, type: 2}
+  sceneNameSO: {fileID: 11400000, guid: 9fb7f93360fc44a46926079d7549ad21, type: 2}
+  invulnerable: 0
+  onHealthChanged: {fileID: 11400000, guid: 78a0332011e29724f94e747e0d9436df, type: 2}
+  timerLength: 0.03
+  delay: 0.5
+--- !u!114 &5598120536260541508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1cfdfd2475002d4bb841d3b18292d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magic: {fileID: 11400000, guid: 6d79a91baeedc054891c8e70877d59ab, type: 2}
+  onMagicChanged: {fileID: 11400000, guid: 78a0332011e29724f94e747e0d9436df, type: 2}
+  timerLength: 0.03
+  delay: 0.5
+--- !u!114 &1666355470636881861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd7cbbefd0dd2f40896876898d67e00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 11400000, guid: 5b6838f74c22824489dac353d530f9a1, type: 2}
+  defense: {fileID: 11400000, guid: b3a96ba4822e03f44a067aa983036419, type: 2}
+  knockbackForce: {fileID: 11400000, guid: 411369db12cc37e4b84b0873ed21458d, type: 2}
+  knockbackDuration: {fileID: 11400000, guid: 81ad0f495c422064fbe09b5df17041f7, type: 2}
+  onStatsChanged: {fileID: 11400000, guid: 20a0d3ff2e3bcc048ba604905f7d231e, type: 2}
+  equipmentSO: {fileID: 11400000, guid: 609589a58ad0f6d4183850e793b94ba0, type: 2}
+--- !u!114 &386510385724314069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0dd51ce946ff14882567034f63f4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Experience: {fileID: 11400000, guid: c6d1ae30fd0c874409da3958c93e86fb, type: 2}
+  attack: {fileID: 0}
+  defense: {fileID: 0}
+  expLevels: 
+  Level: {fileID: 11400000, guid: 1b4b594d8396f10499ad05db1c0306aa, type: 2}
+  maxLevel: 25
+  expToFirstLevelUp: 3
+  nextLvlMultiplier: 1.3
+--- !u!114 &2365181350524745077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a65a50c407f89974293d1508b8b4b1f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySO: {fileID: 11400000, guid: 16c8a778a690e624e94a02c7f504289b, type: 2}
+  onItemChanged: {fileID: 11400000, guid: 8987954ea7ede92469fa5a00bde0898a, type: 2}
+  space: 20
+  itemPickup: {fileID: 6361592024591748988, guid: 3ff8ec13477c67848a2723d134e93e92, type: 3}
+--- !u!114 &5332837048349261374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa21c8a0a7fee14b9dc45aebee02fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipmentSO: {fileID: 11400000, guid: 609589a58ad0f6d4183850e793b94ba0, type: 2}
+  onEquipChanged: {fileID: 11400000, guid: d4d60f03ac5dd5a4e819a7fe66e1e43b, type: 2}
+  onEquip: {fileID: 11400000, guid: b387384893219674f97ba70b405770e2, type: 2}
+  onUnequip: {fileID: 11400000, guid: dce8e2ceaca4ae640b998e939143c5a7, type: 2}
+  spriteRenderer: {fileID: 0}
+  weaponEquipmentType: {fileID: 11400000, guid: c9b69109724988848a8a124492a6b0e2, type: 2}
+--- !u!114 &6178865899331241264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ef0ab31f63d9e49acd8a817d9117ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTimerLength: 0.4
+  onPlayClip: {fileID: 11400000, guid: 4cfe2c1dfb846854693a2a63ff80faf9, type: 2}
+  swingClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+--- !u!114 &1347675580356472069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b07684ba8cd71549ba15e9b9bbd18b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7903140233344272677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ac98f14d2c95341b6790eb497038d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMagicManager: {fileID: 5598120536260541508}
+  magicTimerLength: 0.4
+  onPlayClip: {fileID: 11400000, guid: 4cfe2c1dfb846854693a2a63ff80faf9, type: 2}
+--- !u!114 &5579630649817513474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7746440cb432014e963f2b8146faf5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  atkSpdMultiplier: 0.2
+  canMove: 1
 --- !u!1 &4805492291370193639
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +941,7 @@ Transform:
   m_Children:
   - {fileID: 3137455534391878632}
   - {fileID: 3646424358764236665}
+  - {fileID: 6403096924903473818}
   m_Father: {fileID: 1053580348917793364}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -927,7 +994,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5820426364104367017}
         m_TargetAssemblyTypeName: SpellFireball, Assembly-CSharp
-        m_MethodName: MakeMagic
+        m_MethodName: CreateFireball
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -939,7 +1006,7 @@ MonoBehaviour:
         m_CallState: 2
   spellCost: 1
   magicClip: {fileID: 8300000, guid: 5620bff0de4714d4a885bb6c3a1e0bb9, type: 3}
-  gameEventTransform: {fileID: 11400000, guid: 07926f8e20190984f82c5caee51c68c1, type: 2}
+  onSpellInstantiated: {fileID: 11400000, guid: 07926f8e20190984f82c5caee51c68c1, type: 2}
 --- !u!114 &5820426364104367017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -953,3 +1020,107 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 543767941430921109, guid: b6f64ff958c825b46a25b14e3d4f1dac, type: 3}
+--- !u!1001 &241422079145686033
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 811797907048592347}
+    m_Modifications:
+    - target: {fileID: 1804815858787921492, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: spellCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804815858787921492, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: onSpellInstantiated
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c21a79791b72c243a35b6ccaffcb98b, type: 2}
+    - target: {fileID: 1804815858787921492, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: spellEffect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5232598676199706728}
+    - target: {fileID: 1804815858787921492, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: spellEffect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Blow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804815858787921492, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: spellEffect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SpellWind, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804815858787921492, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: spellEffect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8976475532777194966, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_Name
+      value: Wind
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+--- !u!1 &9208573615874879943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8976475532777194966, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+  m_PrefabInstance: {fileID: 241422079145686033}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6403096924903473818 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+  m_PrefabInstance: {fileID: 241422079145686033}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5232598676199706728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9208573615874879943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1dcf75619bfd6844a40f926bb437574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windPrefab: {fileID: 8359501981254682935, guid: 421ff5bb0e169b04ebef060bde7e4304, type: 3}

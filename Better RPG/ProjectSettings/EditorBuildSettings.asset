@@ -26,4 +26,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: 2d876b4f368bf8a43be4145734989429
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Scenes/House2.unity
+    guid: 8cf2628249494ef4e8c9c2bcca5a0a10
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 67d05fd3bace223419dc247c9b1412ca, type: 2}

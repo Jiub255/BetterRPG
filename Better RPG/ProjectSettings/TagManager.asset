@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Damageable
   - Fireball
+  - Wind
   layers:
   - Default
   - TransparentFX
@@ -48,9 +49,18 @@ TagManager:
   - name: Above Ground
     uniqueID: 482433185
     locked: 0
+  - name: Walls
+    uniqueID: 460669933
+    locked: 0
+  - name: Over Under
+    uniqueID: 225473059
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Walls
-    uniqueID: 460669933
+  - name: Above Player
+    uniqueID: 1258823823
+    locked: 0
+  - name: UI
+    uniqueID: 1070211585
     locked: 0

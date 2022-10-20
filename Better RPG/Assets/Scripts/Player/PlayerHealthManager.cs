@@ -18,6 +18,68 @@ public class PlayerHealthManager : MonoBehaviour , IDamageable<int>
     // statUI listens for this
     public GameEvent onHealthChanged;
 
+    #region debug button stuff
+
+    public static bool buttonPressed = false;
+    [SerializeField] float timerLength = 0.03f;
+    float timer;
+    [SerializeField] float delay = 0.5f;
+
+    public static int eventIndex;
+
+    private void Awake()
+    {
+        timer = delay;
+    }
+
+    public void ChangeButtonPressed(bool isPressed)
+    {
+        buttonPressed = isPressed;
+
+        if (isPressed == false)
+        {
+            timer = delay;
+        }
+    }
+
+    public void ChangeEvent(int currentEventIndex)
+    {
+        eventIndex = currentEventIndex;
+        // 1 for Heal, 2 for TakeDamageNoArmor
+    }
+
+    private void Update()
+    {
+        // hacky fix to timer not getting reset to delay when you let go of mouse button
+        if (!buttonPressed)
+        {
+            timer = delay;
+        }
+
+        if (buttonPressed)
+        {
+            if (timer <= 0f)
+            {
+                timer = timerLength;
+
+                if (eventIndex == 1)
+                {
+                    Heal(1);
+                }
+                else if (eventIndex == 2)
+                {
+                    TakeDamageNoArmor(1);
+                }
+            }
+            else
+            {
+                timer -= Time.deltaTime;
+            }
+        }
+    }
+
+#endregion
+
     private void Start()
     {
         statManager = gameObject.GetComponent<StatManager>();
@@ -102,7 +164,7 @@ public class PlayerHealthManager : MonoBehaviour , IDamageable<int>
         Scene currentScene = SceneManager.GetActiveScene();
 
         // set into SO?
-        sceneNameSO.String = SceneManager.GetActiveScene().name;
+        sceneNameSO.text = SceneManager.GetActiveScene().name;
 
         Debug.Log("Current scene: " + currentScene.name);
 

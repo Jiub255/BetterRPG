@@ -3,36 +3,54 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
     public static bool gameIsPaused;
-    public GameEventBool onPauseToggled;
 
     private void OnEnable()
     {
-        InventoryUI.OnToggleInventory += TogglePause;
-        PauseMenuUI.OnEscapePressed += TogglePause;
+        InventoryMenuUI.OnTogglePause += TogglePause;
+        EscapeMenuUI.OnTogglePause += TogglePause;
     }
 
-    public void TogglePause()
+    private void OnDisable()
     {
-        gameIsPaused = !gameIsPaused;
+        InventoryMenuUI.OnTogglePause -= TogglePause;
+        EscapeMenuUI.OnTogglePause -= TogglePause;
+    }
 
-        // player listens, to disable/enable playercontrols
-        onPauseToggled.Raise(gameIsPaused);
-
-        if (gameIsPaused)
+    public void TogglePause(bool pausing)
+    {
+        if (pausing)
         {
             Time.timeScale = 0f;
             AudioListener.pause = true;
+
+            Debug.Log("Paused");
         }
         else
         {
             Time.timeScale = 1f;
             AudioListener.pause = false;
+
+            Debug.Log("Unpaused");
         }
     }
 
-    private void OnDisable()
+/*    public void TogglePause2()
     {
-        InventoryUI.OnToggleInventory -= TogglePause;
-        PauseMenuUI.OnEscapePressed -= TogglePause;
-    }
+        gameIsPaused = !gameIsPaused;
+
+        if (gameIsPaused)
+        {
+            Time.timeScale = 0f;
+            AudioListener.pause = true;
+
+            Debug.Log("Paused");
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            AudioListener.pause = false;
+
+            Debug.Log("Unpaused");
+        }
+    }*/
 }

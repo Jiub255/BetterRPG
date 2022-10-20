@@ -193,7 +193,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1304623851
-  m_SortingLayer: -1
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -4659,6 +4659,9 @@ MonoBehaviour:
   sceneToLoad: FirstScene
   startingPosition: {x: 6, y: 4}
   onSceneChanged: {fileID: 11400000, guid: e215378234accd840b6143e66ed65364, type: 2}
+  fadeOutCanvas: {fileID: 98678776645648967, guid: 22e0434baf3598e468db396af09c89cb, type: 3}
+  fadeInCanvas: {fileID: 3077266875108510297, guid: 12e3a5982393ba247a5a7db04da4e0c1, type: 3}
+  fadeTime: 0.5
 --- !u!58 &2034431125
 CircleCollider2D:
   m_ObjectHideFlags: 0

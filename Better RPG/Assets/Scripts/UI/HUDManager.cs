@@ -6,6 +6,8 @@ using TMPro;
 
 public class HUDManager : MonoBehaviour
 {
+    [SerializeField] GameObject HUD;
+
     [SerializeField] HealthSO playerHealthSO;
     [SerializeField] Image healthBarImage;
     [SerializeField] TextMeshProUGUI healthBarText;
@@ -17,6 +19,14 @@ public class HUDManager : MonoBehaviour
     private void Start()
     {
         UpdateHUD();
+    }
+
+    public void ToggleHUD()
+    {
+        if (HUD.activeInHierarchy)
+            HUD.SetActive(false);
+        else
+            HUD.SetActive(true);
     }
 
     public void UpdateHUD()

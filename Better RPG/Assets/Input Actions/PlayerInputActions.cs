@@ -89,6 +89,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""049928f0-50df-4a40-8370-a0760aec8dc6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -326,7 +335,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d7b1990d-3e77-423c-beb2-30d8fcc2296b"",
-                    ""path"": ""<Keyboard>/escape"",
+                    ""path"": ""<Keyboard>/u"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -362,8 +371,19 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Cast"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""89fa3abd-df5b-48bd-8c97-74c6446b9109"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -440,6 +460,33 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""name"": ""RightClick"",
                     ""type"": ""PassThrough"",
                     ""id"": ""e96bdcc9-03c1-482e-ac56-7fa20ce851b8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CloseInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""5574e3f5-fa48-4e51-a85c-f8fda23097a4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ClosePauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""d00818b5-ad0e-4e4b-baff-e28abf3e583c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CloseAllMenus"",
+                    ""type"": ""Button"",
+                    ""id"": ""a64082fd-ac16-491f-9729-252d1ffa8c6e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -882,6 +929,39 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""TrackedDeviceOrientation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41fbaaab-339b-42e2-9faf-9a2f985e75d7"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""CloseInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b4b3fa5-9df9-4b10-af93-ecccfa2d280e"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ClosePauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4bcac2aa-03b4-430d-a017-e2653fb72165"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""CloseAllMenus"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -958,6 +1038,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
         m_Player_OpenPauseMenu = m_Player.FindAction("OpenPauseMenu", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -968,6 +1049,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_UI_MiddleClick = m_UI.FindAction("MiddleClick", throwIfNotFound: true);
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
+        m_UI_CloseInventory = m_UI.FindAction("CloseInventory", throwIfNotFound: true);
+        m_UI_ClosePauseMenu = m_UI.FindAction("ClosePauseMenu", throwIfNotFound: true);
+        m_UI_CloseAllMenus = m_UI.FindAction("CloseAllMenus", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
     }
@@ -1036,6 +1120,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_OpenInventory;
     private readonly InputAction m_Player_OpenPauseMenu;
     private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1047,6 +1132,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
         public InputAction @OpenPauseMenu => m_Wrapper.m_Player_OpenPauseMenu;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1077,6 +1163,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1102,6 +1191,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -1118,6 +1210,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_ScrollWheel;
     private readonly InputAction m_UI_MiddleClick;
     private readonly InputAction m_UI_RightClick;
+    private readonly InputAction m_UI_CloseInventory;
+    private readonly InputAction m_UI_ClosePauseMenu;
+    private readonly InputAction m_UI_CloseAllMenus;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     public struct UIActions
@@ -1132,6 +1227,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @ScrollWheel => m_Wrapper.m_UI_ScrollWheel;
         public InputAction @MiddleClick => m_Wrapper.m_UI_MiddleClick;
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
+        public InputAction @CloseInventory => m_Wrapper.m_UI_CloseInventory;
+        public InputAction @ClosePauseMenu => m_Wrapper.m_UI_ClosePauseMenu;
+        public InputAction @CloseAllMenus => m_Wrapper.m_UI_CloseAllMenus;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
@@ -1167,6 +1265,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @RightClick.started -= m_Wrapper.m_UIActionsCallbackInterface.OnRightClick;
                 @RightClick.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnRightClick;
                 @RightClick.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnRightClick;
+                @CloseInventory.started -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseInventory;
+                @CloseInventory.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseInventory;
+                @CloseInventory.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseInventory;
+                @ClosePauseMenu.started -= m_Wrapper.m_UIActionsCallbackInterface.OnClosePauseMenu;
+                @ClosePauseMenu.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnClosePauseMenu;
+                @ClosePauseMenu.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnClosePauseMenu;
+                @CloseAllMenus.started -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseAllMenus;
+                @CloseAllMenus.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseAllMenus;
+                @CloseAllMenus.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseAllMenus;
                 @TrackedDevicePosition.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDevicePosition;
                 @TrackedDevicePosition.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDevicePosition;
                 @TrackedDevicePosition.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDevicePosition;
@@ -1201,6 +1308,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @RightClick.started += instance.OnRightClick;
                 @RightClick.performed += instance.OnRightClick;
                 @RightClick.canceled += instance.OnRightClick;
+                @CloseInventory.started += instance.OnCloseInventory;
+                @CloseInventory.performed += instance.OnCloseInventory;
+                @CloseInventory.canceled += instance.OnCloseInventory;
+                @ClosePauseMenu.started += instance.OnClosePauseMenu;
+                @ClosePauseMenu.performed += instance.OnClosePauseMenu;
+                @ClosePauseMenu.canceled += instance.OnClosePauseMenu;
+                @CloseAllMenus.started += instance.OnCloseAllMenus;
+                @CloseAllMenus.performed += instance.OnCloseAllMenus;
+                @CloseAllMenus.canceled += instance.OnCloseAllMenus;
                 @TrackedDevicePosition.started += instance.OnTrackedDevicePosition;
                 @TrackedDevicePosition.performed += instance.OnTrackedDevicePosition;
                 @TrackedDevicePosition.canceled += instance.OnTrackedDevicePosition;
@@ -1265,6 +1381,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnOpenInventory(InputAction.CallbackContext context);
         void OnOpenPauseMenu(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1276,6 +1393,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnScrollWheel(InputAction.CallbackContext context);
         void OnMiddleClick(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);
+        void OnCloseInventory(InputAction.CallbackContext context);
+        void OnClosePauseMenu(InputAction.CallbackContext context);
+        void OnCloseAllMenus(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
     }
