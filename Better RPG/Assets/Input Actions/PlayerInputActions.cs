@@ -73,7 +73,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""OpenPauseMenu"",
+                    ""name"": ""OpenEscapeMenu"",
                     ""type"": ""Button"",
                     ""id"": ""999fc93a-dbe1-4cd6-89d7-281c3035ad50"",
                     ""expectedControlType"": ""Button"",
@@ -335,11 +335,11 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d7b1990d-3e77-423c-beb2-30d8fcc2296b"",
-                    ""path"": ""<Keyboard>/u"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""OpenPauseMenu"",
+                    ""action"": ""OpenEscapeMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -475,18 +475,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ClosePauseMenu"",
+                    ""name"": ""OpenEscapeMenu"",
                     ""type"": ""Button"",
-                    ""id"": ""d00818b5-ad0e-4e4b-baff-e28abf3e583c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""CloseAllMenus"",
-                    ""type"": ""Button"",
-                    ""id"": ""a64082fd-ac16-491f-9729-252d1ffa8c6e"",
+                    ""id"": ""d57ac66a-f76d-4027-8e47-391bb30c3184"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -933,7 +924,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""41fbaaab-339b-42e2-9faf-9a2f985e75d7"",
-                    ""path"": ""<Keyboard>/o"",
+                    ""path"": ""<Keyboard>/i"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -943,23 +934,40 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0b4b3fa5-9df9-4b10-af93-ecccfa2d280e"",
-                    ""path"": ""<Keyboard>/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""ClosePauseMenu"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4bcac2aa-03b4-430d-a017-e2653fb72165"",
+                    ""id"": ""4b81fb32-ca61-4225-baf5-cd2416f93672"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""CloseAllMenus"",
+                    ""action"": ""OpenEscapeMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""EscapeMenu"",
+            ""id"": ""fde7f819-29cb-49ea-b8d4-00d6dee58ff1"",
+            ""actions"": [
+                {
+                    ""name"": ""CloseEscapeMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""ec1e0edd-05fd-420f-af80-8c2ec0e88c47"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3e1e9025-b959-4c1b-b785-6aa9c7ee3aa2"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""CloseEscapeMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1036,7 +1044,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Swing = m_Player.FindAction("Swing", throwIfNotFound: true);
         m_Player_Cast = m_Player.FindAction("Cast", throwIfNotFound: true);
         m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
-        m_Player_OpenPauseMenu = m_Player.FindAction("OpenPauseMenu", throwIfNotFound: true);
+        m_Player_OpenEscapeMenu = m_Player.FindAction("OpenEscapeMenu", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         // UI
@@ -1050,10 +1058,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_UI_MiddleClick = m_UI.FindAction("MiddleClick", throwIfNotFound: true);
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_CloseInventory = m_UI.FindAction("CloseInventory", throwIfNotFound: true);
-        m_UI_ClosePauseMenu = m_UI.FindAction("ClosePauseMenu", throwIfNotFound: true);
-        m_UI_CloseAllMenus = m_UI.FindAction("CloseAllMenus", throwIfNotFound: true);
+        m_UI_OpenEscapeMenu = m_UI.FindAction("OpenEscapeMenu", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // EscapeMenu
+        m_EscapeMenu = asset.FindActionMap("EscapeMenu", throwIfNotFound: true);
+        m_EscapeMenu_CloseEscapeMenu = m_EscapeMenu.FindAction("CloseEscapeMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1118,7 +1128,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Swing;
     private readonly InputAction m_Player_Cast;
     private readonly InputAction m_Player_OpenInventory;
-    private readonly InputAction m_Player_OpenPauseMenu;
+    private readonly InputAction m_Player_OpenEscapeMenu;
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Interact;
     public struct PlayerActions
@@ -1130,7 +1140,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Swing => m_Wrapper.m_Player_Swing;
         public InputAction @Cast => m_Wrapper.m_Player_Cast;
         public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
-        public InputAction @OpenPauseMenu => m_Wrapper.m_Player_OpenPauseMenu;
+        public InputAction @OpenEscapeMenu => m_Wrapper.m_Player_OpenEscapeMenu;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -1157,9 +1167,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @OpenInventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
                 @OpenInventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
                 @OpenInventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenInventory;
-                @OpenPauseMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenPauseMenu;
-                @OpenPauseMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenPauseMenu;
-                @OpenPauseMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenPauseMenu;
+                @OpenEscapeMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenEscapeMenu;
+                @OpenEscapeMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenEscapeMenu;
+                @OpenEscapeMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenEscapeMenu;
                 @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
@@ -1185,9 +1195,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @OpenInventory.started += instance.OnOpenInventory;
                 @OpenInventory.performed += instance.OnOpenInventory;
                 @OpenInventory.canceled += instance.OnOpenInventory;
-                @OpenPauseMenu.started += instance.OnOpenPauseMenu;
-                @OpenPauseMenu.performed += instance.OnOpenPauseMenu;
-                @OpenPauseMenu.canceled += instance.OnOpenPauseMenu;
+                @OpenEscapeMenu.started += instance.OnOpenEscapeMenu;
+                @OpenEscapeMenu.performed += instance.OnOpenEscapeMenu;
+                @OpenEscapeMenu.canceled += instance.OnOpenEscapeMenu;
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
@@ -1211,8 +1221,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_MiddleClick;
     private readonly InputAction m_UI_RightClick;
     private readonly InputAction m_UI_CloseInventory;
-    private readonly InputAction m_UI_ClosePauseMenu;
-    private readonly InputAction m_UI_CloseAllMenus;
+    private readonly InputAction m_UI_OpenEscapeMenu;
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     public struct UIActions
@@ -1228,8 +1237,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @MiddleClick => m_Wrapper.m_UI_MiddleClick;
         public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
         public InputAction @CloseInventory => m_Wrapper.m_UI_CloseInventory;
-        public InputAction @ClosePauseMenu => m_Wrapper.m_UI_ClosePauseMenu;
-        public InputAction @CloseAllMenus => m_Wrapper.m_UI_CloseAllMenus;
+        public InputAction @OpenEscapeMenu => m_Wrapper.m_UI_OpenEscapeMenu;
         public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
@@ -1268,12 +1276,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CloseInventory.started -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseInventory;
                 @CloseInventory.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseInventory;
                 @CloseInventory.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseInventory;
-                @ClosePauseMenu.started -= m_Wrapper.m_UIActionsCallbackInterface.OnClosePauseMenu;
-                @ClosePauseMenu.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnClosePauseMenu;
-                @ClosePauseMenu.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnClosePauseMenu;
-                @CloseAllMenus.started -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseAllMenus;
-                @CloseAllMenus.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseAllMenus;
-                @CloseAllMenus.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnCloseAllMenus;
+                @OpenEscapeMenu.started -= m_Wrapper.m_UIActionsCallbackInterface.OnOpenEscapeMenu;
+                @OpenEscapeMenu.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnOpenEscapeMenu;
+                @OpenEscapeMenu.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnOpenEscapeMenu;
                 @TrackedDevicePosition.started -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDevicePosition;
                 @TrackedDevicePosition.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDevicePosition;
                 @TrackedDevicePosition.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnTrackedDevicePosition;
@@ -1311,12 +1316,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CloseInventory.started += instance.OnCloseInventory;
                 @CloseInventory.performed += instance.OnCloseInventory;
                 @CloseInventory.canceled += instance.OnCloseInventory;
-                @ClosePauseMenu.started += instance.OnClosePauseMenu;
-                @ClosePauseMenu.performed += instance.OnClosePauseMenu;
-                @ClosePauseMenu.canceled += instance.OnClosePauseMenu;
-                @CloseAllMenus.started += instance.OnCloseAllMenus;
-                @CloseAllMenus.performed += instance.OnCloseAllMenus;
-                @CloseAllMenus.canceled += instance.OnCloseAllMenus;
+                @OpenEscapeMenu.started += instance.OnOpenEscapeMenu;
+                @OpenEscapeMenu.performed += instance.OnOpenEscapeMenu;
+                @OpenEscapeMenu.canceled += instance.OnOpenEscapeMenu;
                 @TrackedDevicePosition.started += instance.OnTrackedDevicePosition;
                 @TrackedDevicePosition.performed += instance.OnTrackedDevicePosition;
                 @TrackedDevicePosition.canceled += instance.OnTrackedDevicePosition;
@@ -1327,6 +1329,39 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // EscapeMenu
+    private readonly InputActionMap m_EscapeMenu;
+    private IEscapeMenuActions m_EscapeMenuActionsCallbackInterface;
+    private readonly InputAction m_EscapeMenu_CloseEscapeMenu;
+    public struct EscapeMenuActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public EscapeMenuActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @CloseEscapeMenu => m_Wrapper.m_EscapeMenu_CloseEscapeMenu;
+        public InputActionMap Get() { return m_Wrapper.m_EscapeMenu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(EscapeMenuActions set) { return set.Get(); }
+        public void SetCallbacks(IEscapeMenuActions instance)
+        {
+            if (m_Wrapper.m_EscapeMenuActionsCallbackInterface != null)
+            {
+                @CloseEscapeMenu.started -= m_Wrapper.m_EscapeMenuActionsCallbackInterface.OnCloseEscapeMenu;
+                @CloseEscapeMenu.performed -= m_Wrapper.m_EscapeMenuActionsCallbackInterface.OnCloseEscapeMenu;
+                @CloseEscapeMenu.canceled -= m_Wrapper.m_EscapeMenuActionsCallbackInterface.OnCloseEscapeMenu;
+            }
+            m_Wrapper.m_EscapeMenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @CloseEscapeMenu.started += instance.OnCloseEscapeMenu;
+                @CloseEscapeMenu.performed += instance.OnCloseEscapeMenu;
+                @CloseEscapeMenu.canceled += instance.OnCloseEscapeMenu;
+            }
+        }
+    }
+    public EscapeMenuActions @EscapeMenu => new EscapeMenuActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1379,7 +1414,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnSwing(InputAction.CallbackContext context);
         void OnCast(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
-        void OnOpenPauseMenu(InputAction.CallbackContext context);
+        void OnOpenEscapeMenu(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
@@ -1394,9 +1429,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnMiddleClick(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);
         void OnCloseInventory(InputAction.CallbackContext context);
-        void OnClosePauseMenu(InputAction.CallbackContext context);
-        void OnCloseAllMenus(InputAction.CallbackContext context);
+        void OnOpenEscapeMenu(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IEscapeMenuActions
+    {
+        void OnCloseEscapeMenu(InputAction.CallbackContext context);
     }
 }

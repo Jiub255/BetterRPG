@@ -29,8 +29,6 @@ public class PlayerMovement : MonoBehaviour
         move.Enable();
 
         Sign.signalEventString += ToggleControls;
-
-       // InputManager.actionMapChange += ChangeActionMap;
     }
 
     private void OnDisable()
@@ -38,17 +36,6 @@ public class PlayerMovement : MonoBehaviour
         move.Disable();
 
         Sign.signalEventString -= ToggleControls;
-
-       // InputManager.actionMapChange -= ChangeActionMap;
-    }
-
-    // Do I need these in all "controller" scripts?
-    // ie ones that take input from player
-    void ChangeActionMap(InputActionMap actionMap)
-    {
-        actionMap.Enable();
-
-        Debug.Log("Player Movement using " + actionMap.name);
     }
 
     // string argument here is just for getting the signal from the sign script

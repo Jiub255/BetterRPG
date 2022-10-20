@@ -5,10 +5,8 @@ public class AAAAAAAAAA
     TODO
 -------------
 
-    Fix InputManager bugs
-        have it so opening inv from esc menu closes esc menu and vice versa
-        or have it so you can't open inv from esc menu, but you can open esc menu from inv menu,
-            but if you exit esc menu, inv reopens and game stays paused
+    Either keep HUD up or make it so you can see current hp/mp and stuff while in inv menu
+        also make sure it updates as you use healing items etc
 
     Fix Scene Transition
 

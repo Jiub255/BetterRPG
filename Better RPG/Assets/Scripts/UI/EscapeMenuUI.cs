@@ -12,25 +12,30 @@ public class EscapeMenuUI : MonoBehaviour
     public static event Action<bool> OnTogglePause;
 
     // new input system stuff
-    private InputAction openEscapeMenu;
-    private InputAction closeEscapeMenu;
-    InputAction closeAllMenus;
+    InputAction openEscapeMenu;
+    InputAction openEscapeMenuFromInv;
+    InputAction closeEscapeMenu;
+
+    [SerializeField] InventoryMenuUI inventoryMenuUI;
+
+    private void Awake()
+    {
+        inventoryMenuUI = GetComponent<InventoryMenuUI>();
+    }
 
     private void OnEnable()
     {
-        openEscapeMenu = InputManager.inputActions.Player.OpenPauseMenu;
+        openEscapeMenu = InputManager.inputActions.Player.OpenEscapeMenu;
         openEscapeMenu.Enable();
         openEscapeMenu.performed += OpenEscapeMenu;
 
-        closeEscapeMenu = InputManager.inputActions.UI.ClosePauseMenu;
+        openEscapeMenuFromInv = InputManager.inputActions.UI.OpenEscapeMenu;
+        openEscapeMenuFromInv.Enable();
+        openEscapeMenuFromInv.performed += OpenEscapeMenu;
+
+        closeEscapeMenu = InputManager.inputActions.EscapeMenu.CloseEscapeMenu;
         closeEscapeMenu.Enable();
         closeEscapeMenu.performed += CloseEscapeMenu;
-
-        closeAllMenus = InputManager.inputActions.UI.CloseAllMenus;
-        closeAllMenus.Enable();
-        closeAllMenus.performed += CloseEscapeMenu;
-    
-       // InputManager.actionMapChange += ChangeActionMap;
     }
 
     private void OnDisable()
@@ -38,40 +43,46 @@ public class EscapeMenuUI : MonoBehaviour
         openEscapeMenu.Disable();
         openEscapeMenu.performed -= OpenEscapeMenu;
 
+        openEscapeMenuFromInv.Disable();
+        openEscapeMenuFromInv.performed -= OpenEscapeMenu;
+
         closeEscapeMenu.Disable();
         closeEscapeMenu.performed -= CloseEscapeMenu;
-
-        closeAllMenus.Disable();
-        closeAllMenus.performed -= CloseEscapeMenu;
-
-        //  InputManager.actionMapChange -= ChangeActionMap;
     }
 
     void OpenEscapeMenu(InputAction.CallbackContext context)
     {
-        Debug.Log("Open Escape Menu");
+        if (InputManager.invMenuOpen)
+        {
+            // close inv menu, stay paused
+            inventoryMenuUI.ToggleInventoryPanels(false); // how to call this from here?
+        }
+        else // if inv menu isn't open
+        {
+            OnTogglePause?.Invoke(true);
+            HUDPanel.SetActive(false);
+        }
 
         EscapeMenuPanel.SetActive(true);
-        HUDPanel.SetActive(false);
-        OnTogglePause?.Invoke(true);
-        InputManager.ToggleActionMap(InputManager.inputActions.UI);
+        InputManager.ToggleActionMap(InputManager.inputActions.EscapeMenu);
     }
 
     void CloseEscapeMenu(InputAction.CallbackContext context)
     {
-        Debug.Log("Close Escape Menu");
+        if (InputManager.invMenuOpen)
+        {
+            // open inv menu, stay paused
+            inventoryMenuUI.ToggleInventoryPanels(true);
+            InputManager.ToggleActionMap(InputManager.inputActions.UI);
+        }
+        else
+        {
+            HUDPanel.SetActive(true);
+            OnTogglePause?.Invoke(false);
+            InputManager.ToggleActionMap(InputManager.inputActions.Player);
+        }
         
         EscapeMenuPanel.SetActive(false);
-        HUDPanel.SetActive(true);
-        OnTogglePause?.Invoke(false);
-        InputManager.ToggleActionMap(InputManager.inputActions.Player);
-    }
-
-    void ChangeActionMap(InputActionMap actionMap)
-    {
-        actionMap.Enable();
-    
-        Debug.Log("Escape Menu UI using " + actionMap.name);
     }
 
     /*    public void ToggleOptionsMenu()

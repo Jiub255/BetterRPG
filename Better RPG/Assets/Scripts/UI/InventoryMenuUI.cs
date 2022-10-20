@@ -16,7 +16,6 @@ public class InventoryMenuUI : MonoBehaviour
     // new input system stuff
     InputAction openInventory;
     InputAction closeInventory;
-    InputAction closeAllMenus;
 
     private void OnEnable()
     {
@@ -27,13 +26,6 @@ public class InventoryMenuUI : MonoBehaviour
         closeInventory = InputManager.inputActions.UI.CloseInventory;
         closeInventory.Enable();
         closeInventory.performed += CloseInventoryMenu;
-        
-        closeAllMenus = InputManager.inputActions.UI.CloseAllMenus;
-        closeAllMenus.Enable();
-        closeAllMenus.performed += CloseInventoryMenu;
-
-
-      //  InputManager.actionMapChange += ChangeActionMap;
     }
 
     private void OnDisable()
@@ -43,10 +35,6 @@ public class InventoryMenuUI : MonoBehaviour
 
         closeInventory.Disable();
         closeInventory.performed -= CloseInventoryMenu;
-
-        closeAllMenus.Disable();
-        closeAllMenus.performed -= CloseInventoryMenu;
-        // InputManager.actionMapChange -= ChangeActionMap;
     }
 
     // both open and close inv getting called when i press I (openInventory) in player action map
@@ -55,32 +43,29 @@ public class InventoryMenuUI : MonoBehaviour
     {
         Debug.Log("Open Inv Menu");
 
-        inventoryUIPanel.SetActive(true);
-        equipmentUIPanel.SetActive(true);
-        statsUIPanel.SetActive(true);
-        magicUIPanel.SetActive(true);
+        ToggleInventoryPanels(true);
         HUDPanel.SetActive(false);
         OnTogglePause?.Invoke(true);
         InputManager.ToggleActionMap(InputManager.inputActions.UI);
+        InputManager.invMenuOpen = true;
     }
 
     void CloseInventoryMenu(InputAction.CallbackContext context)
     {
         Debug.Log("Close Inv Menu");
 
-        inventoryUIPanel.SetActive(false);
-        equipmentUIPanel.SetActive(false);
-        statsUIPanel.SetActive(false);
-        magicUIPanel.SetActive(false);
+        ToggleInventoryPanels(false);
         HUDPanel.SetActive(true);
         OnTogglePause?.Invoke(false);
         InputManager.ToggleActionMap(InputManager.inputActions.Player);
+        InputManager.invMenuOpen = false;
     }
 
-    void ChangeActionMap(InputActionMap actionMap)
+    public void ToggleInventoryPanels(bool active)
     {
-        actionMap.Enable();
-    
-        Debug.Log("Inv Menu UI using " + actionMap.name);
+        inventoryUIPanel.SetActive(active);
+        equipmentUIPanel.SetActive(active);
+        statsUIPanel.SetActive(active);
+        magicUIPanel.SetActive(active);
     }
 }

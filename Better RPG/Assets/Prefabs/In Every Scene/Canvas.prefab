@@ -14927,6 +14927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EscapeMenuPanel: {fileID: 8042634751751299290}
   HUDPanel: {fileID: 5983409223141761095}
+  inventoryMenuUI: {fileID: 0}
 --- !u!114 &181174946984386108
 MonoBehaviour:
   m_ObjectHideFlags: 0

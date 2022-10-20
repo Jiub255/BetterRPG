@@ -29,16 +29,12 @@ public class PlayerMelee : MonoBehaviour
         swing = InputManager.inputActions.Player.Swing;
         swing.Enable();
         swing.performed += Swing;
-
-       // InputManager.actionMapChange += ChangeActionMap;
     }
 
     private void OnDisable()
     {
         swing.Disable();
         swing.performed -= Swing;
-   
-       // InputManager.actionMapChange -= ChangeActionMap;
     }
 
     private void Start()
@@ -92,12 +88,5 @@ public class PlayerMelee : MonoBehaviour
             DisableSwing();
         else
             EnableSwing();
-    }
-
-    void ChangeActionMap(InputActionMap actionMap)
-    {
-        actionMap.Enable();
- 
-        Debug.Log("Player Melee using " + actionMap.name);
     }
 }
