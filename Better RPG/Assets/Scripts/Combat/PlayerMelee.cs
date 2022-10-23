@@ -6,18 +6,22 @@ public class PlayerMelee : MonoBehaviour
     Animator animator;
 
     //keep longer than max length of all attack animations
-    public float attackTimerLength = 0.4f;
-    float attackTimer;
+    //maybe keep this in stats? private but calculated based off speed stat?
+    [SerializeField] 
+    private float attackTimerLength = 0.4f;
+    private float attackTimer;
     public bool canAttack { get; private set; } = true;
 
     // sound effect
-    public GameEventAudioClip onPlayClip;
-    public AudioClip swingClip;
+    [SerializeField]
+    private GameEventAudioClip onPlayClip;
+    [SerializeField]
+    private AudioClip swingClip;
 
     // new input system stuff
-    InputAction swing;
+    private InputAction swing;
 
-    bool swingActive = true;
+    private bool swingActive = true;
 
     private void Awake()
     {
@@ -57,7 +61,7 @@ public class PlayerMelee : MonoBehaviour
         }
     }
 
-    void Swing(InputAction.CallbackContext context)
+    private void Swing(InputAction.CallbackContext context)
     {
         animator.SetTrigger("AttackTrigger");
 

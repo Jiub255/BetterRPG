@@ -9,6 +9,8 @@ TagManager:
   - Damageable
   - Fireball
   - Wind
+  - Alive
+  - Dead
   layers:
   - Default
   - TransparentFX

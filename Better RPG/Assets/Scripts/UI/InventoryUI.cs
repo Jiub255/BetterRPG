@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Transform itemsParent;
+    [SerializeField]
+    private Transform itemsParent;
 
-    InventorySlot[] slots;
+    private InventorySlot[] slots;
 
-    public InventorySO inventorySO;
+    [SerializeField]
+    private InventorySO inventorySO;
 
-    void Start()
+    private void Start()
     {
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
 

@@ -7,7 +7,7 @@ public class EnemyMoveChaseWander : EnemyMovementTrigger
         base.PlayerNearAction();
 
         Vector2 movementVector = Vector2.MoveTowards(transform.position, target.position,
-            moveSpeed * Time.deltaTime);
+            moveSpeed * Time.fixedDeltaTime);
         rb.MovePosition(movementVector);
     }
 

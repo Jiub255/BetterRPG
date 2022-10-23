@@ -47,9 +47,9 @@ public class PlayerProjectile : MonoBehaviour
 
         if (!collision.isTrigger)
         {
-            if (collision.GetComponent<EnemyHealthManager>() != null)
+            if (collision.GetComponentInParent<EnemyHealthManager>() != null)
             {
-                collision.GetComponent<EnemyHealthManager>().TakeDamage(damage);
+                collision.GetComponentInParent<EnemyHealthManager>().TakeDamage(damage);
 
                 // knockback & temporary invulnerability
                 Vector2 direction = collision.transform.position - transform.position;

@@ -5,6 +5,10 @@ public class AAAAAAAAAA
     TODO
 -------------
    
+    Fine tune Loot Menu 
+        make it not show up when that enemy's droploot is empty
+        change UI a bit, clean it up, text sizes etc
+        make UI fit with invUI
     
     UI
         Either keep HUD up or make it so you can see current hp/mp and stuff while in inv menu

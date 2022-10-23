@@ -34,7 +34,10 @@ public class SceneTransition : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            StartCoroutine(ChangeScene(collision));
+            if (!collision.isTrigger)
+            {
+                StartCoroutine(ChangeScene(collision));
+            }
         }
     }
 

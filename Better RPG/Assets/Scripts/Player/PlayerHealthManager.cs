@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class PlayerHealthManager : MonoBehaviour , IDamageable<int>
+public class PlayerHealthManager : MonoBehaviour , IDamageable<int>, IHealable<int>
 {
     public HealthSO health;
 

@@ -1,20 +1,31 @@
 using UnityEngine;
  
-[RequireComponent(typeof(Enemy))]
+//[RequireComponent(typeof(Enemy))]
 public class EnemyDamage : MonoBehaviour
 {
-    Enemy enemy;
+    //private Enemy enemy;
 
-    float attackTimer;
-    bool canAttack;
+    [SerializeField]
+    private float attackTimerLength = 0.3f;
+    private float attackTimer;
+    private bool canAttack;
+
+    [SerializeField]
+    public float knockbackForce = 10f;
+    [SerializeField]
+    public float knockbackDuration = 1f;
+    [SerializeField]
+    public int attack = 1;
 
     // sound effect signal
-    public GameEventAudioClip onPlayClip;
+    [SerializeField] 
+    private GameEventAudioClip onPlayClip;
+    public AudioClip hitPlayerClip;
 
     private void Start()
     {
-        enemy = GetComponent<Enemy>();
-        attackTimer = enemy.attackTimerLength;
+       // enemy = GetComponent<Enemy>();
+        attackTimer = attackTimerLength;
     }
 
     private void Update()
@@ -24,7 +35,7 @@ public class EnemyDamage : MonoBehaviour
             attackTimer -= Time.deltaTime;
             if (attackTimer <= 0)
             {
-                attackTimer = enemy.attackTimerLength;
+                attackTimer = attackTimerLength;
                 canAttack = true;
             }
         }
@@ -34,18 +45,18 @@ public class EnemyDamage : MonoBehaviour
     {
         if (canAttack) // && not stunned
         {
-            if (collision.gameObject.CompareTag("Player"))
+            if (collision.gameObject.GetComponent<PlayerHealthManager>())
             {
-                collision.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(enemy.attack);
+                collision.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(attack);
 
                 // knockback & temporary invulnerability
                 Vector3 direction = collision.transform.position - transform.position;
                 direction.Normalize();
 
                 collision.gameObject.GetComponent<KnockbackPlayer>().GetKnockedBack
-                    (enemy.knockbackForce * direction, enemy.knockbackDuration);
+                    (knockbackForce * direction, knockbackDuration);
 
-                onPlayClip.Raise(enemy.hitPlayerClip);
+                onPlayClip.Raise(hitPlayerClip);
 
                 canAttack = false;
             }

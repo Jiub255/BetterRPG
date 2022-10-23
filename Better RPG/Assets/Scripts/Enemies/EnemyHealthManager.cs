@@ -1,34 +1,31 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Enemy))]
-[RequireComponent(typeof(DropLoot))]
-public class EnemyHealthManager : MonoBehaviour , IDamageable<int>
+public class EnemyHealthManager : MonoBehaviour , IDamageable<int>, IHealable<int>
 {
-    Enemy enemy;
+    [SerializeField]
+    private int maxHealth = 1;
+    [SerializeField]
+    private int currentHealth = 1;
+    [SerializeField]
+    private int defense = 1;
+    [SerializeField]
+    private int experience = 1;
 
     public GameEventInt onExperienceGained;
 
     public GameObject deathAnimation;
 
-    DropLoot dropLoot;
-
     public bool invulnerable = false;
-
-    private void Start()
-    {
-        enemy = GetComponent<Enemy>();
-        dropLoot = GetComponent<DropLoot>();
-    }
 
     public void TakeDamage(int amount)
     {
         if (!invulnerable)
         {
-            enemy.currentHealth -= amountAfterDefense(amount);
+            currentHealth -= amountAfterDefense(amount);
 
-            if (enemy.currentHealth <= 0)
+            if (currentHealth <= 0)
             {
-                enemy.currentHealth = 0;
+                currentHealth = 0;
                 Die();
             }
         }
@@ -36,7 +33,7 @@ public class EnemyHealthManager : MonoBehaviour , IDamageable<int>
 
     int amountAfterDefense(int amount)
     {
-        amount -= enemy.defense;
+        amount -= defense;
         if (amount <= 0)
             return 0;
         return amount;
@@ -44,28 +41,34 @@ public class EnemyHealthManager : MonoBehaviour , IDamageable<int>
 
     public void Heal(int amount)
     {
-        enemy.currentHealth += amount;
+        currentHealth += amount;
 
-        if (enemy.currentHealth > enemy.maxHealth)
-            enemy.currentHealth = enemy.maxHealth;
+        if (currentHealth > maxHealth)
+            currentHealth = maxHealth;
     }
 
     public void MaxHeal()
     {
-        enemy.currentHealth = enemy.maxHealth;
+        currentHealth = maxHealth;
     }
 
     public void Die()
     {
         Debug.Log(transform.name + " died");
 
-        onExperienceGained.Raise(enemy.experience);
-
-        dropLoot.DropItems();
+        onExperienceGained.Raise(experience);
 
         // should i destroy/deactivate this when its done playing?
         GameObject deathExplosionInstance = Instantiate(deathAnimation, transform.position, Quaternion.identity);
 
-        Destroy(gameObject);
+        // deactivate alive, activate dead
+        transform.GetChild(1).gameObject.SetActive(true);
+/*        foreach (Collider2D collider2D in transform.GetChild(0).GetComponents<Collider2D>())
+        {
+            collider2D.enabled = false;
+        }*/
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetComponent<EnemyMoveChaseWander>().enabled = false;
+        transform.GetComponent<Rigidbody2D>().isKinematic = true;
     }
 }

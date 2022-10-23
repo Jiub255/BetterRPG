@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Enemy))]
+//[RequireComponent(typeof(Rigidbody2D))]
+//[RequireComponent(typeof(Enemy))]
 [RequireComponent(typeof(CircleCollider2D))]
 public class EnemyMovementTrigger : MonoBehaviour
 {
@@ -11,8 +11,7 @@ public class EnemyMovementTrigger : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D rb;
 
-    [HideInInspector]
-    public float moveSpeed;
+    public float moveSpeed = 1;
 
     public bool canMove = true;
 
@@ -20,8 +19,8 @@ public class EnemyMovementTrigger : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        moveSpeed = GetComponent<Enemy>().moveSpeed;
+        rb = GetComponent/*InParent*/<Rigidbody2D>();
+       // moveSpeed = GetComponent<Enemy>().moveSpeed;
     }
 
     private void FixedUpdate()
@@ -44,6 +43,8 @@ public class EnemyMovementTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("Player Near");
+
             target = collision.transform;
             playerNear = true;
         }
@@ -53,6 +54,7 @@ public class EnemyMovementTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("Player Not Near");
             playerNear = false;
         }
     }

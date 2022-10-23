@@ -21,21 +21,24 @@ public class DamageMeleeWeapon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.isTrigger)
+        if (!collision.isTrigger/* && collision.isActiveAndEnabled && collision.CompareTag("Alive")*/)
         {
-            if (collision.GetComponent<EnemyHealthManager>() != null)
+            if (collision.GetComponentInParent<IDamageable<int>>() != null)
             {
-                collision.GetComponent<EnemyHealthManager>().TakeDamage(statManager.attack.GetValue());
-
-                // knockback & temporary invulnerability
-                Vector2 direction = collision.transform.position - transform.position;
-                direction.Normalize();
-
-                collision.gameObject.GetComponent<KnockbackEnemy>().GetKnockedBack
-                    (statManager.knockbackForce.GetValue() * direction,
-                     statManager.knockbackDuration.GetValue());
+                collision.GetComponentInParent<IDamageable<int>>().TakeDamage(statManager.attack.GetValue());
 
                 onPlayClip.Raise(hitClip);
+
+                if (collision.GetComponent<KnockbackEnemy>() != null)
+                {
+                    // knockback & temporary invulnerability
+                    Vector2 direction = collision.transform.position - transform.position;
+                    direction.Normalize();
+
+                    collision.gameObject.GetComponent<KnockbackEnemy>().GetKnockedBack
+                        (statManager.knockbackForce.GetValue() * direction,
+                         statManager.knockbackDuration.GetValue());
+                }
             }
         }
     }
