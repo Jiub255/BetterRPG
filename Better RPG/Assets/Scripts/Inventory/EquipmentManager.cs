@@ -24,7 +24,7 @@ public class EquipmentManager : MonoBehaviour
 
             // Change weapon sprite on player
             if (equipmentItem.equipmentTypeSO == weaponEquipmentType)
-                spriteRenderer.sprite = equipmentItem.icon;
+                spriteRenderer.sprite = equipmentItem.itemIconSprite;
         }
     }
 
@@ -55,7 +55,7 @@ public class EquipmentManager : MonoBehaviour
 
         // Change weapon sprite on player
         if (newItem.equipmentTypeSO == weaponEquipmentType)
-            spriteRenderer.sprite = newItem.icon;
+            spriteRenderer.sprite = newItem.itemIconSprite;
     }
 
     // have unequip button in EquipUI call this function

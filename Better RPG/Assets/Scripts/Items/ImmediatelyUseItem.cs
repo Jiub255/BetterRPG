@@ -16,7 +16,7 @@ public class ImmediatelyUseItem : Interactable
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = item.icon;
+        spriteRenderer.sprite = item.itemIconSprite;
     }
 
     public override void Interact(Collider2D collision)

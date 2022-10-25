@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsToDrop: []
+  enemyPersistenceSO: {fileID: 11400000, guid: f4b135d4b2c88814daa4d2c5b0a9ddbb, type: 2}
 --- !u!1 &7185492544200695335
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +207,8 @@ MonoBehaviour:
   onExperienceGained: {fileID: 11400000, guid: 24868b85df0ed9a489b7e37664059030, type: 2}
   deathAnimation: {fileID: 985873132031105105, guid: 500476ad10fdd2f4a9ef1b3b91b21e24, type: 3}
   invulnerable: 0
+  enemyPersistenceSO: {fileID: 11400000, guid: f4b135d4b2c88814daa4d2c5b0a9ddbb, type: 2}
+  dropLoot: {fileID: 7797208505990909151}
 --- !u!114 &273098774888260073
 MonoBehaviour:
   m_ObjectHideFlags: 0

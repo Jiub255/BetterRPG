@@ -17,7 +17,7 @@ public class EquipmentSlot : MonoBehaviour
     {
         equipmentItem = newItem;
 
-        icon.sprite = equipmentItem.icon;
+        icon.sprite = equipmentItem.itemIconSprite;
         icon.enabled = true;
         unequipButton.interactable = true;
     }

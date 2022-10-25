@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6516d458b421881498ab82b259a23ad8, type: 3}
-  m_Name: Test Armor
+  m_Name: New Equipment Item 9
   m_EditorClassIdentifier: 
-  itemName: Test Armor
-  itemDescription: setase
-  itemIconSprite: {fileID: 21300000, guid: 9cd9ea83f1bd2974abdcfe512643204a, type: 3}
+  itemName: New Item
+  itemDescription: Item Description
+  itemIconSprite: {fileID: 21300000, guid: 599cffc51f3279249b3751e6d06c5c3a, type: 3}
   onRemoveItem: {fileID: 11400000, guid: 5357ab732c6b26345902af32da31a0ae, type: 2}
-  amount: 5
+  amount: 1
   OnUseEquipmentItem: {fileID: 11400000, guid: 3f5b9b1fbf086b54ba86d116a481cfe4, type: 2}
-  equipmentTypeSO: {fileID: 11400000, guid: 4ea73af134cb9f442941a67809009899, type: 2}
-  defenseModifier: 5
-  attackModifier: 2
+  equipmentTypeSO: {fileID: 11400000, guid: 4aa1b93396c50f34480623b3fefd9003, type: 2}
+  defenseModifier: 0
+  attackModifier: 0
   knockbackForceModifier: 0
   knockbackDurationModifier: 0

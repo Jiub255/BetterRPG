@@ -95,7 +95,8 @@ public class PlayerLootManager : MonoBehaviour
     {
         if (currentDropLoot.itemsToDrop.Contains(item))
         {
-            currentDropLoot.itemsToDrop.Remove(item);
+            currentDropLoot.RemoveItemFromDropLootAndEnemyPersistenceSO(item);
+            //currentDropLoot.itemsToDrop.Remove(item);
 
             // if currentDropLoot is now empty, remove from UI
             if (currentDropLoot.itemsToDrop.Count == 0)

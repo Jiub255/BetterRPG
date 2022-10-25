@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Sword
   itemDescription: sdfsef
-  icon: {fileID: 21300000, guid: 015301b892ccbca43aef170a1d9ef6d3, type: 3}
+  itemIconSprite: {fileID: 21300000, guid: 015301b892ccbca43aef170a1d9ef6d3, type: 3}
   onRemoveItem: {fileID: 11400000, guid: 5357ab732c6b26345902af32da31a0ae, type: 2}
+  amount: 1
   OnUseEquipmentItem: {fileID: 11400000, guid: 3f5b9b1fbf086b54ba86d116a481cfe4, type: 2}
   equipmentTypeSO: {fileID: 11400000, guid: c9b69109724988848a8a124492a6b0e2, type: 2}
   defenseModifier: 0

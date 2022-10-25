@@ -14,7 +14,7 @@ public class LootSlot : MonoBehaviour
     {
         item = newItem;
 
-        icon.sprite = item.icon;
+        icon.sprite = item.itemIconSprite;
         icon.enabled = true;
         takeItemButton.interactable = true;
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class InventorySlot : MonoBehaviour
     public Image icon;
     public Button useButton;
     public Button removeButton;
+    public TextMeshProUGUI amountText;
 
     Item item;
 
@@ -17,10 +19,19 @@ public class InventorySlot : MonoBehaviour
     {
         item = newItem;
 
-        icon.sprite = item.icon;
+        icon.sprite = item.itemIconSprite;
         icon.enabled = true;
         useButton.interactable = true;
         removeButton.interactable = true;
+
+        if (newItem.amount == 1)
+        {
+            amountText.text = "";
+        }
+        else
+        {
+            amountText.text = newItem.amount.ToString();
+        }
     }
 
     public void ClearSlot()
@@ -31,6 +42,7 @@ public class InventorySlot : MonoBehaviour
         icon.enabled = false;
         useButton.interactable = false;
         removeButton.interactable = false;
+        amountText.text = "";
     }
 
     public void OnRemoveButton()

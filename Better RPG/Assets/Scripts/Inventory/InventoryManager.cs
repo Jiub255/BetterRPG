@@ -6,33 +6,32 @@ public class InventoryManager : MonoBehaviour
 
     public GameEvent onItemChanged;
 
-    // not sure if i want a limit, keep it for now
-   // public int space = 20;
-
     public GameObject itemPickup;
 
     public void Add(Item item)
     {
-        /*        if (inventorySO.inventoryList.Count >= space)
-                {
-                    Debug.Log("Not enough room");
-                    Debug.Log("Add method returned false");
-                    //return false;
-                }*/
-       // Debug.Log(item.name + " added");
-
-        inventorySO.inventoryList.Add(item);
+        if (inventorySO.inventoryList.Contains(item))
+        {
+            item.amount += 1;
+        }
+        else
+        {
+            inventorySO.inventoryList.Add(item);
+            item.amount = 1;
+        }
 
         // inv UI manager needs to hear this
         onItemChanged.Raise();
-
-/*        Debug.Log("Add method returned true");
-        //return true;*/
     }
 
     public void Remove(Item item)
     {
-        inventorySO.inventoryList.Remove(item);
+        item.amount -= 1;
+            
+        if (item.amount <= 0)
+        {
+            inventorySO.inventoryList.Remove(item);
+        }
 
         // inv UI manager needs to hear this
         onItemChanged.Raise();
@@ -47,7 +46,7 @@ public class InventoryManager : MonoBehaviour
     {
         Vector3 playerPosition = new Vector3(transform.position.x, transform.position.y - 1, 0);
         GameObject droppedItem = Instantiate(itemPickup, playerPosition, Quaternion.identity);
-        droppedItem.GetComponent<SpriteRenderer>().sprite = item.icon;
+        droppedItem.GetComponent<SpriteRenderer>().sprite = item.itemIconSprite;
         droppedItem.GetComponent<ItemPickup>().item = item;
         Remove(item);
     }

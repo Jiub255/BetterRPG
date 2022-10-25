@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Magic Potion 5
   itemDescription: Restores 5 magic
-  icon: {fileID: 21300000, guid: d861f6acc7709b94398dd5619090a113, type: 3}
+  itemIconSprite: {fileID: 21300000, guid: d861f6acc7709b94398dd5619090a113, type: 3}
   onRemoveItem: {fileID: 11400000, guid: 5357ab732c6b26345902af32da31a0ae, type: 2}
+  amount: 2
   isReusable: 0
   itemEffect:
     m_PersistentCalls:

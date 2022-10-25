@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Test Helm
   itemDescription: Test helm description
-  icon: {fileID: 21300000, guid: a497e2ed50cfee54c813344e9c7ef5f6, type: 3}
+  itemIconSprite: {fileID: 21300000, guid: a497e2ed50cfee54c813344e9c7ef5f6, type: 3}
   onRemoveItem: {fileID: 11400000, guid: 5357ab732c6b26345902af32da31a0ae, type: 2}
+  amount: 3
+  OnUseEquipmentItem: {fileID: 11400000, guid: 3f5b9b1fbf086b54ba86d116a481cfe4, type: 2}
   equipmentTypeSO: {fileID: 11400000, guid: 597ea6095b314cf4886e7de0cd97c892, type: 2}
   defenseModifier: 1
   attackModifier: 0
-  OnUseEquipmentItem: {fileID: 11400000, guid: 3f5b9b1fbf086b54ba86d116a481cfe4, type: 2}
+  knockbackForceModifier: 0
+  knockbackDurationModifier: 0
