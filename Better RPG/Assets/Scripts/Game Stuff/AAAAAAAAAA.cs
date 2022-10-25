@@ -4,15 +4,16 @@ public class AAAAAAAAAA
 
     TODO
 -------------
+
+    Make invUI have infinite space
+        use scroll bar
    
     Fine tune Loot Menu 
-        make it not show up when that enemy's droploot is empty
         change UI a bit, clean it up, text sizes etc
         make UI fit with invUI
     
     UI
         Either keep HUD up or make it so you can see current hp/mp and stuff while in inv menu
-        Add magic to statsUI, at least for now
         Design better looking UI, make HP/MP bars work/look fitting both in game and in inv menu
         Change all text components to TextMeshPro, change code accordingly
             Figure out blurry TMP issue
@@ -45,9 +46,6 @@ public class AAAAAAAAAA
                 disable movement/combat while knockingback player
         Finish Exp/level up system
         Fix death load screen, works as is, but could be better
-
-    Make invUI have infinite space
-        use scroll bar
 
     Save system
 

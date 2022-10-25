@@ -63,12 +63,9 @@ public class EnemyHealthManager : MonoBehaviour , IDamageable<int>, IHealable<in
 
         // deactivate alive, activate dead
         transform.GetChild(1).gameObject.SetActive(true);
-/*        foreach (Collider2D collider2D in transform.GetChild(0).GetComponents<Collider2D>())
-        {
-            collider2D.enabled = false;
-        }*/
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetComponent<EnemyMoveChaseWander>().enabled = false;
         transform.GetComponent<Rigidbody2D>().isKinematic = true;
+        Destroy(transform.GetComponent<EnemyHealthManager>());
     }
 }

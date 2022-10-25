@@ -10,6 +10,12 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private InventorySO inventorySO;
 
+    // infinite inv stuff
+
+    // inv slot prefab
+    [SerializeField]
+    private GameObject inventorySlot;
+
     private void Start()
     {
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
@@ -31,4 +37,19 @@ public class InventoryUI : MonoBehaviour
             }
         }
     }
+
+    // could this be done with object pooling instead of instantiate/destroy?
+/*    public void UpdateUI2()
+    {
+        foreach (Transform child in itemsParent)
+        {
+            Destroy(child);
+        }
+
+        for (int i = 0; i < inventorySO.inventoryList.Count; i++)
+        {
+            GameObject slot = Instantiate(inventorySlot, itemsParent);
+            slot.GetComponent<InventorySlot>().AddItem(inventorySO.inventoryList[i]);
+        }
+    }*/
 }

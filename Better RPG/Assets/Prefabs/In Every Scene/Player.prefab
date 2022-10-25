@@ -50,6 +50,7 @@ MonoBehaviour:
   onDropLootChanged: {fileID: 11400000, guid: e62e7638e00590c4aa20071d16643c17, type: 2}
   onOpenLootMenu: {fileID: 11400000, guid: 8fac1d40c03a3cb448d301de85eaf02c, type: 2}
   onCloseLootMenu: {fileID: 11400000, guid: fff553c1fba0f0b4382386ace8bce989, type: 2}
+  dontAttack: {fileID: 11400000, guid: 49f85aef6d19e294b90fc7d53ef72dcf, type: 2}
 --- !u!58 &1966964520598966707
 CircleCollider2D:
   m_ObjectHideFlags: 0

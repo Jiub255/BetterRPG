@@ -11,7 +11,7 @@ public class KnockbackEnemy : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        enemyHealthManager = GetComponentInParent<EnemyHealthManager>();
+        enemyHealthManager = GetComponent<EnemyHealthManager>();
         enemyMovementTrigger = GetComponent<EnemyMovementTrigger>();
     }
 

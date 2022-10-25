@@ -15,6 +15,17 @@ public class EquipmentManager : MonoBehaviour
     private void Start()
     {
         spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+
+        foreach (EquipmentItem equipmentItem in equipmentSO.currentEquipment)
+        {
+            // StatManager will listen for this, to add modifiers from new item
+            // is this necessary? or will it double add modifiers?
+            onEquip.Raise(equipmentItem);
+
+            // Change weapon sprite on player
+            if (equipmentItem.equipmentTypeSO == weaponEquipmentType)
+                spriteRenderer.sprite = equipmentItem.icon;
+        }
     }
 
     public void Equip(EquipmentItem newItem)

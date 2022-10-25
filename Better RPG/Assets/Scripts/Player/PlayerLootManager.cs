@@ -17,11 +17,18 @@ public class PlayerLootManager : MonoBehaviour
     [SerializeField]
     private GameEvent onCloseLootMenu;
 
+    [SerializeField] 
+    public GameEvent dontAttack;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<DropLoot>() && collision.isActiveAndEnabled && collision.CompareTag("Dead"))
         {
-            dropLoots.Add(collision.GetComponent<DropLoot>());
+            // don't add empty dropLoots to list, don't want to display them
+            if (collision.GetComponent<DropLoot>().itemsToDrop.Count > 0)
+            {
+                dropLoots.Add(collision.GetComponent<DropLoot>());
+            }
 
             if (dropLoots.Count == 1)
             {
@@ -89,6 +96,31 @@ public class PlayerLootManager : MonoBehaviour
         if (currentDropLoot.itemsToDrop.Contains(item))
         {
             currentDropLoot.itemsToDrop.Remove(item);
+
+            // if currentDropLoot is now empty, remove from UI
+            if (currentDropLoot.itemsToDrop.Count == 0)
+            {
+                dropLoots.Remove(currentDropLoot);
+
+                // if there's another nonempty dropLoot, display that in UI
+                if (dropLoots.Count > 0)
+                {
+                    // do i need dontAttack signal here?
+
+                    currentDropLootIndex = 0;
+                    currentDropLoot = dropLoots[currentDropLootIndex];
+                }
+                else // if there are no nonempty dropLoots, close LootMenuUI
+                {
+                    // send dontAttack signal since the menu closes without you being able to move mouse off of button
+                    // or just move mouse through code? no that's dumb
+                    dontAttack.Raise();
+
+                    currentDropLootIndex = 0;
+                    currentDropLoot = null;
+                    onCloseLootMenu.Raise();
+                }
+            }
         }
 
         // update UI

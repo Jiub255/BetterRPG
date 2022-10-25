@@ -36,11 +36,17 @@ public class CastMagic : MonoBehaviour
         castSpell = playerControls.Player.Cast;
         castSpell.Enable();
         castSpell.performed += CastSpell;
+
+        InventoryMenuUI.OnTogglePause += TogglePlayerControls;
+        EscapeMenuUI.OnTogglePause += TogglePlayerControls;
     }
 
     private void OnDisable()
     {
         castSpell.Disable();
+
+        InventoryMenuUI.OnTogglePause -= TogglePlayerControls;
+        EscapeMenuUI.OnTogglePause -= TogglePlayerControls;
     }
 
     #endregion
@@ -60,6 +66,7 @@ public class CastMagic : MonoBehaviour
         if (!canCastSpell)
         {
             magicTimer -= Time.deltaTime;
+
             if (magicTimer <= 0)
             {
                 magicTimer = magicTimerLength;
@@ -103,6 +110,8 @@ public class CastMagic : MonoBehaviour
         Debug.Log("Current Spell: " + spell.name);
     }
 
+
+
     public void TogglePlayerControls(bool gameIsPaused)
     {
         if (gameIsPaused)
@@ -113,13 +122,5 @@ public class CastMagic : MonoBehaviour
         {
             castSpell.Enable();
         }
-    }
-
-    public void ToggleCastSpell()
-    {
-        if (castSpell.enabled)
-            castSpell.Disable();
-        else
-            castSpell.Enable();
     }
 }

@@ -39,6 +39,7 @@ public class LootMenuUI : MonoBehaviour
     // listens for onChangeDropLoot from PlayerLootMenu
     public void UpdateUI(DropLoot dropLoot)
     {
+        // is this necessary? just want to not display empty dropLoots
         if (dropLoot == null)
         {
             ChangeLootEnemyText("None");

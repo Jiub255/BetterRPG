@@ -33,24 +33,4 @@ public class PauseManager : MonoBehaviour
             Debug.Log("Unpaused");
         }
     }
-
-/*    public void TogglePause2()
-    {
-        gameIsPaused = !gameIsPaused;
-
-        if (gameIsPaused)
-        {
-            Time.timeScale = 0f;
-            AudioListener.pause = true;
-
-            Debug.Log("Paused");
-        }
-        else
-        {
-            Time.timeScale = 1f;
-            AudioListener.pause = false;
-
-            Debug.Log("Unpaused");
-        }
-    }*/
 }

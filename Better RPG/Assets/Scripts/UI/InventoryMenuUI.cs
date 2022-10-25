@@ -37,8 +37,6 @@ public class InventoryMenuUI : MonoBehaviour
         closeInventory.performed -= CloseInventoryMenu;
     }
 
-    // both open and close inv getting called when i press I (openInventory) in player action map
-
     void OpenInventoryMenu(InputAction.CallbackContext context)
     {
         Debug.Log("Open Inv Menu");

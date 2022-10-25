@@ -5555,6 +5555,14 @@ PrefabInstance:
       propertyPath: itemsToDrop.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 528ce8262f1ecfe4ba2c053ead6dd1c0, type: 2}
+    - target: {fileID: 7747562180471207561, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
+      propertyPath: maxHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747562180471207561, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
+      propertyPath: currentHealth
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7797208505990909151, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
       propertyPath: itemsToDrop.Array.size
       value: 1
@@ -18774,6 +18782,14 @@ PrefabInstance:
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7185492544200695340, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
+    - target: {fileID: 7747562180471207561, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7747562180471207561, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
+      propertyPath: currentHealth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7797208505990909151, guid: 00ef547a9f337484f94275b140ccc8c7, type: 3}
       propertyPath: itemsToDrop.Array.size
       value: 7
