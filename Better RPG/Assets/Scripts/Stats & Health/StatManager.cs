@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class StatManager : MonoBehaviour
@@ -13,17 +14,36 @@ public class StatManager : MonoBehaviour
 
     public EquipmentSO equipmentSO;
 
+    public int skillPoints = 0;
+
+    public static event Action<bool> onSpentLastSkillPoint;
+
     private void Awake()
     {
         CalculateMods(); 
     }
 
-    void ChangeStat(StatSO stat, int amount)
+    private void OnEnable()
     {
-        stat.ChangeBaseValue(amount);
+        StatsUI.onRaiseStat += RaiseStat;
     }
 
-    void CalculateMods()
+    private void OnDisable()
+    {
+        StatsUI.onRaiseStat -= RaiseStat;
+    }
+
+    public void RaiseStat(StatSO stat)
+    {
+        stat.ChangeBaseValue(1);
+        skillPoints--;
+        if (skillPoints == 0)
+        {
+            onSpentLastSkillPoint?.Invoke(false);
+        }
+    }
+
+    public void CalculateMods()
     {
         attack.ClearModifiers();
         defense.ClearModifiers();

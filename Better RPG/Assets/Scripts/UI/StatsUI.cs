@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,9 +22,45 @@ public class StatsUI : MonoBehaviour
     public HealthSO magicSO;
     public Text magicText;
 
+    private StatManager statManager;
+
+    [SerializeField]
+    private GameObject[] levelUpButtons;
+
+    public static event Action<StatSO> onRaiseStat;
+
     void Start()
     {
         UpdateStats();
+    }
+
+    private void OnEnable()
+    {
+        StatManager.onSpentLastSkillPoint += ToggleLevelUpButtons;
+    }
+
+    private void OnDisable()
+    {
+        StatManager.onSpentLastSkillPoint -= ToggleLevelUpButtons;
+    }
+
+    public void GetPlayerReference(Transform transform)
+    {
+        statManager = transform.GetComponent<StatManager>();
+    }
+
+    public void RaiseStat(StatSO stat)
+    {
+        onRaiseStat?.Invoke(stat);
+        statManager.CalculateMods();
+    }
+
+    public void ToggleLevelUpButtons(bool enable)
+    {
+        foreach (GameObject button in levelUpButtons)
+        {
+            button.SetActive(enable);
+        }
     }
 
     public void UpdateStats()

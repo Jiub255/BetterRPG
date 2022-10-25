@@ -4,23 +4,38 @@ using UnityEngine;
 public class ExperienceManager : MonoBehaviour
 {
     public IntSO Experience;
-
-    //stat based exp
-    public StatSO attack;
-    public StatSO defense;
-    //public List<StatSO> stats;
-
-    [SerializeField] private List<int> expLevels;
-    //public int Level { get; private set; } = 1;
     public IntSO Level;
     // do I even want there to be a max level?
-    [SerializeField] private int maxLevel = 25;
-    [SerializeField] private int expToFirstLevelUp = 3;
-    [SerializeField] private float nextLvlMultiplier = 1.3f;
+    [SerializeField] 
+    private int maxLevel = 25;
+
+    [SerializeField] 
+    private List<int> expLevels;
+    //public int Level { get; private set; } = 1;
+    [SerializeField] 
+    private int expToFirstLevelUp = 3;
+    [SerializeField] 
+    private float nextLvlMultiplier = 1.3f;
+
+    [SerializeField]
+    private GameEvent onStatsChanged;
+
+    [SerializeField]
+    private GameEvent onLevelUp;
+
+    private int skillPoints = 0;
+
+    private StatManager statManager;
+
+    //stat based exp
+/*    public StatSO attack;
+    public StatSO defense;*/
+    //public List<StatSO> stats;
 
     private void Start()
     {
         InitializeExp();
+        statManager = GetComponent<StatManager>();
     }
 
     void InitializeExp()
@@ -32,6 +47,24 @@ public class ExperienceManager : MonoBehaviour
             expToNextLvlUp = Mathf.RoundToInt(expToNextLvlUp * nextLvlMultiplier);
             expLevels.Add(expToNextLvlUp);
         }
+
+        for (int i = 0;i < expLevels.Count; i++)
+        {
+            bool notMaxLevel = false;
+
+            if (Experience.value < expLevels[i])
+            {
+                Level.value = i + 1;
+                notMaxLevel = true;
+                break;
+            }
+            if (!notMaxLevel)
+            {
+                Level.value = maxLevel;
+            }
+        }
+
+        onStatsChanged.Raise();
     }
 
     public void GainExperience(int amount)
@@ -44,6 +77,8 @@ public class ExperienceManager : MonoBehaviour
             {
                 LevelUp();
             }
+
+            onStatsChanged.Raise();
         }
     }
 
@@ -60,5 +95,7 @@ public class ExperienceManager : MonoBehaviour
             // say exp: max? or something
         }
         // maybe give some stat points?
+        statManager.skillPoints++;
+        onLevelUp.Raise();
     }
 }

@@ -31,6 +31,7 @@ public class StatSO : ScriptableObject
     public void ChangeBaseValue(int amount)
     {
         baseValue += amount;
+        moddedValue = GetValue();
     }
 
     public void AddModifier(int modifier)
@@ -49,11 +50,14 @@ public class StatSO : ScriptableObject
         {
             modifiers.Remove(modifier);
         }
+
         moddedValue = GetValue();
     }
 
     public void ClearModifiers()
     {
         modifiers.Clear();
+
+        moddedValue = GetValue();
     }
 }
