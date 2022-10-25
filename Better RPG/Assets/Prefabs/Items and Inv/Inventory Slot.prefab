@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 6161683584401528831}
   m_Layer: 5
   m_Name: Inventory Slot
-  m_TagString: Untagged
+  m_TagString: Inventory Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,6 +185,7 @@ MonoBehaviour:
   icon: {fileID: 6409379531160319365}
   useButton: {fileID: 6409379531633482822}
   removeButton: {fileID: 6409379530964617796}
+  onDropItem: {fileID: 11400000, guid: f58fe7779772bea449298ae7481a23d3, type: 2}
 --- !u!1 &6409379531160319367
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +384,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6161683584401528831}
         m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
-        m_MethodName: UseItem
+        m_MethodName: OnUseButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

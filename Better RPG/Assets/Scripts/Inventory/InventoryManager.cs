@@ -7,26 +7,27 @@ public class InventoryManager : MonoBehaviour
     public GameEvent onItemChanged;
 
     // not sure if i want a limit, keep it for now
-    public int space = 20;
+   // public int space = 20;
 
     public GameObject itemPickup;
 
     public void Add(Item item)
     {
-        if (inventorySO.inventoryList.Count >= space)
-        {
-            Debug.Log("Not enough room");
-            Debug.Log("Add method returned false");
-            //return false;
-        }
+        /*        if (inventorySO.inventoryList.Count >= space)
+                {
+                    Debug.Log("Not enough room");
+                    Debug.Log("Add method returned false");
+                    //return false;
+                }*/
+       // Debug.Log(item.name + " added");
 
         inventorySO.inventoryList.Add(item);
 
         // inv UI manager needs to hear this
         onItemChanged.Raise();
 
-        Debug.Log("Add method returned true");
-        //return true;
+/*        Debug.Log("Add method returned true");
+        //return true;*/
     }
 
     public void Remove(Item item)

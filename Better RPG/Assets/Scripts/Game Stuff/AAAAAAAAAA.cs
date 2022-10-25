@@ -5,8 +5,15 @@ public class AAAAAAAAAA
     TODO
 -------------
 
-    Make invUI have infinite space
-        use scroll bar
+    Fix Inv/invUI issues. infinite inv working pretty good, but sometimes remove button
+        removes wrong item
+    Make items drop not touching each other or player. 
+        maybe have drop method check for player/itempickups and then drop like one unit away
+        could have it happen in a circular pattern around player so they don't drop too far away
+        also check for any other colliders, want item to drop in a place that the player can reach
+    Make items stackable if they're the same item
+    Have sort function
+        sort by name, type, other ways
    
     Fine tune Loot Menu 
         change UI a bit, clean it up, text sizes etc
@@ -20,7 +27,7 @@ public class AAAAAAAAAA
 
     Fix Scene Transition
 
-    Move object pool, put it on an "in every scene" prefab
+    Move object pool, put it on an "in every scene" prefab?
     
     Magic 
         Move spells to separate object? an "in every scene" prefab?

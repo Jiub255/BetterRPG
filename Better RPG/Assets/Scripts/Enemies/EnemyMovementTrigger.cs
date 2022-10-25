@@ -43,8 +43,7 @@ public class EnemyMovementTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Player Near");
-
+           // Debug.Log("Player Near");
             target = collision.transform;
             playerNear = true;
         }
@@ -54,7 +53,7 @@ public class EnemyMovementTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Player Not Near");
+           // Debug.Log("Player Not Near");
             playerNear = false;
         }
     }

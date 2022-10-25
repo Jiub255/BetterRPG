@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1700413025178653934}
   takeItemButton: {fileID: 1700413026218129672}
-  onClickTakeItemButton: {fileID: 11400000, guid: ccc06bbf83dcae14f8ccbf421a93d86c, type: 2}
+  onClickTakeItemButton: {fileID: 11400000, guid: e693aa6432185a04c811640f64331ca2, type: 2}
 --- !u!1 &1700413026218129670
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +139,6 @@ GameObject:
   - component: {fileID: 1700413026218129674}
   - component: {fileID: 1700413026218129673}
   - component: {fileID: 1700413026218129672}
-  - component: {fileID: 768734541109442060}
   - component: {fileID: 1640086923858063515}
   m_Layer: 5
   m_Name: Take Item Button
@@ -262,19 +261,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &768734541109442060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700413026218129670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4845d5cbd4534bd48b1bf0931826b7df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dontAttack: {fileID: 11400000, guid: 49f85aef6d19e294b90fc7d53ef72dcf, type: 2}
 --- !u!61 &1640086923858063515
 BoxCollider2D:
   m_ObjectHideFlags: 0

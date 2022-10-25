@@ -35,7 +35,6 @@ public class ObjectPool : MonoBehaviour
         {
             if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag)
             {
-                Debug.Log(pooledObjects[i].tag);
                 return pooledObjects[i];
             }
         }

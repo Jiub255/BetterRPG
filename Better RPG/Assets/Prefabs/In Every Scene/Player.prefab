@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 1347675580356472069}
   - component: {fileID: -7903140233344272677}
   - component: {fileID: 5579630649817513474}
+  - component: {fileID: 223565915856046842}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -508,18 +509,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1335848795827038270}
-        m_TargetAssemblyTypeName: PlayerLootManager, Assembly-CSharp
-        m_MethodName: TakeItem
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2155961087374534378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,6 +693,9 @@ MonoBehaviour:
   - objectToPool: {fileID: 8359501981254682935, guid: 421ff5bb0e169b04ebef060bde7e4304, type: 3}
     amountToPool: 3
     shouldExpand: 1
+  - objectToPool: {fileID: 6409379531065465126, guid: 0424dd3b931438d48ae29ce37ee5bb07, type: 3}
+    amountToPool: 20
+    shouldExpand: 1
 --- !u!114 &5638727969727987059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,7 +783,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventorySO: {fileID: 11400000, guid: 16c8a778a690e624e94a02c7f504289b, type: 2}
   onItemChanged: {fileID: 11400000, guid: 8987954ea7ede92469fa5a00bde0898a, type: 2}
-  space: 20
   itemPickup: {fileID: 6361592024591748988, guid: 3ff8ec13477c67848a2723d134e93e92, type: 3}
 --- !u!114 &5332837048349261374
 MonoBehaviour:
@@ -868,6 +859,46 @@ MonoBehaviour:
   speed: 5
   atkSpdMultiplier: 0.2
   canMove: 1
+--- !u!114 &223565915856046842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730089303733002807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff78ec67ef1354249955dc476058aa83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: e693aa6432185a04c811640f64331ca2, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1335848795827038270}
+        m_TargetAssemblyTypeName: PlayerLootManager, Assembly-CSharp
+        m_MethodName: TakeItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2365181350524745077}
+        m_TargetAssemblyTypeName: InventoryManager, Assembly-CSharp
+        m_MethodName: Add
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4805492291370193639
 GameObject:
   m_ObjectHideFlags: 0

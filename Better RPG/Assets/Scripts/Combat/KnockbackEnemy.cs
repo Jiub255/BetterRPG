@@ -17,7 +17,7 @@ public class KnockbackEnemy : MonoBehaviour
 
     public void GetKnockedBack(Vector3 knockbackVector, float stunDuration)
     {
-        Debug.Log("Knockback Vector: " + knockbackVector + ", Stun Duration: " + stunDuration);
+        //Debug.Log("Knockback Vector: " + knockbackVector + ", Stun Duration: " + stunDuration);
 
         StartCoroutine(StunDurationCoroutine(knockbackVector, stunDuration));
     }

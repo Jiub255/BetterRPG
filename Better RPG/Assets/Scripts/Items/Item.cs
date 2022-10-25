@@ -10,8 +10,8 @@ public class Item : ScriptableObject
     public Sprite icon = null;
 
     public GameEventItem onRemoveItem;
-    public GameEventItem onTryToLootItem;
-    public GameEventItem onLootItem;
+   // public GameEventItem onTryToLootItem;
+   // public GameEventItem onLootItem;
 
     public virtual void Use()
     {
@@ -24,7 +24,7 @@ public class Item : ScriptableObject
         // InvManager listens for this, removes from InvSO
         onRemoveItem.Raise(this);
     }
-
+/*
     public void TryToLootItem()
     {
         // InvManager listens, signals back if there's room
@@ -37,5 +37,5 @@ public class Item : ScriptableObject
         // InvManager listens, adds to inv
 
         // remove from LootMenuUI, maybe list too?
-    }
+    }*/
 }

@@ -13,6 +13,11 @@ public class InventoryMenuUI : MonoBehaviour
     //for pausing gameplay
     public static event Action<bool> OnTogglePause;
 
+    // need this to have grid layout work on newly activated inv slots
+    // kind of hacky but it works
+    [SerializeField]
+    private GameEvent onItemChanged;
+
     // new input system stuff
     InputAction openInventory;
     InputAction closeInventory;
@@ -39,18 +44,20 @@ public class InventoryMenuUI : MonoBehaviour
 
     void OpenInventoryMenu(InputAction.CallbackContext context)
     {
-        Debug.Log("Open Inv Menu");
+        //Debug.Log("Open Inv Menu");
 
         ToggleInventoryPanels(true);
         HUDPanel.SetActive(false);
         OnTogglePause?.Invoke(true);
         InputManager.ToggleActionMap(InputManager.inputActions.UI);
         InputManager.invMenuOpen = true;
+
+        onItemChanged.Raise();
     }
 
     void CloseInventoryMenu(InputAction.CallbackContext context)
     {
-        Debug.Log("Close Inv Menu");
+       // Debug.Log("Close Inv Menu");
 
         ToggleInventoryPanels(false);
         HUDPanel.SetActive(true);

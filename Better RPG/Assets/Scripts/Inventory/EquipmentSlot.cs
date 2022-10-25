@@ -33,7 +33,7 @@ public class EquipmentSlot : MonoBehaviour
 
     public void RemoveEquipment()
     {
-        // who hears this signal?
+        // who hears this signal? Equipment Manager?
         onClickRemoveButton.Raise(equipmentItem);
     }
 }

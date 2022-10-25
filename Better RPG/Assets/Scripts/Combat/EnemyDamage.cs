@@ -8,12 +8,12 @@ public class EnemyDamage : MonoBehaviour
     [SerializeField]
     private float attackTimerLength = 0.3f;
     private float attackTimer;
-    private bool canAttack;
+    private bool canAttack = true;
 
     [SerializeField]
-    public float knockbackForce = 10f;
+    public float knockbackForce = 2f;
     [SerializeField]
-    public float knockbackDuration = 1f;
+    public float knockbackDuration = 0.4f;
     [SerializeField]
     public int attack = 1;
 
@@ -47,6 +47,8 @@ public class EnemyDamage : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<PlayerHealthManager>())
             {
+                Debug.Log("Collided with player");
+
                 collision.gameObject.GetComponent<PlayerHealthManager>().TakeDamage(attack);
 
                 // knockback & temporary invulnerability

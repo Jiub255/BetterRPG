@@ -20,7 +20,7 @@ public class EquipmentManager : MonoBehaviour
         {
             // StatManager will listen for this, to add modifiers from new item
             // is this necessary? or will it double add modifiers?
-            onEquip.Raise(equipmentItem);
+            //onEquip.Raise(equipmentItem);
 
             // Change weapon sprite on player
             if (equipmentItem.equipmentTypeSO == weaponEquipmentType)

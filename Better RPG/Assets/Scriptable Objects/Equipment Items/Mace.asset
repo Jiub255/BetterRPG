@@ -20,5 +20,5 @@ MonoBehaviour:
   equipmentTypeSO: {fileID: 11400000, guid: c9b69109724988848a8a124492a6b0e2, type: 2}
   defenseModifier: 0
   attackModifier: 3
-  knockbackForceModifier: 7
-  knockbackDurationModifier: 4
+  knockbackForceModifier: 0
+  knockbackDurationModifier: 0

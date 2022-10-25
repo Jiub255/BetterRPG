@@ -11,6 +11,7 @@ TagManager:
   - Wind
   - Alive
   - Dead
+  - Inventory Slot
   layers:
   - Default
   - TransparentFX

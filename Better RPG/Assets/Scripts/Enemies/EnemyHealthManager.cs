@@ -67,5 +67,6 @@ public class EnemyHealthManager : MonoBehaviour , IDamageable<int>, IHealable<in
         transform.GetComponent<EnemyMoveChaseWander>().enabled = false;
         transform.GetComponent<Rigidbody2D>().isKinematic = true;
         Destroy(transform.GetComponent<EnemyHealthManager>());
+        transform.GetComponent<Collider2D>().enabled = false;
     }
 }

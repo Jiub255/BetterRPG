@@ -100,6 +100,8 @@ public class PlayerLootManager : MonoBehaviour
             // if currentDropLoot is now empty, remove from UI
             if (currentDropLoot.itemsToDrop.Count == 0)
             {
+                currentDropLoot.transform.parent.gameObject.SetActive(false);
+                
                 dropLoots.Remove(currentDropLoot);
 
                 // if there's another nonempty dropLoot, display that in UI

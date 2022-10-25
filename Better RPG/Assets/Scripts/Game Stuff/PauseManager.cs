@@ -23,14 +23,14 @@ public class PauseManager : MonoBehaviour
             Time.timeScale = 0f;
             AudioListener.pause = true;
 
-            Debug.Log("Paused");
+         //   Debug.Log("Paused");
         }
         else
         {
             Time.timeScale = 1f;
             AudioListener.pause = false;
 
-            Debug.Log("Unpaused");
+          //  Debug.Log("Unpaused");
         }
     }
 }
