@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84eae556ac93ab44db374266eeffbd6d, type: 3}
   m_Name: Defense SO
   m_EditorClassIdentifier: 
-  baseValue: 0
+  baseValue: 1
+  modifiers: 
   statName: Defense
-  moddedValue: 0
+  moddedValue: 1

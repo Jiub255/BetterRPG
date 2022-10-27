@@ -15,6 +15,10 @@ public class Item : ScriptableObject
     // stackable stuff
     public int amount = 1;
 
+    // Maybe have a shopAmount here? No then you'd need one for each shop.
+    // Think I need to store amount in InventoryManager.
+    // Could have it's own list there, and build it from SO list, but also keep track of amounts?
+
     public virtual void Use()
     {
         // use the item

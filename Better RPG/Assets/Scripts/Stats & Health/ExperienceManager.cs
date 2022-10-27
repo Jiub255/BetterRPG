@@ -23,8 +23,6 @@ public class ExperienceManager : MonoBehaviour
     [SerializeField]
     private GameEvent onLevelUp;
 
-    private int skillPoints = 0;
-
     private StatManager statManager;
 
     //stat based exp

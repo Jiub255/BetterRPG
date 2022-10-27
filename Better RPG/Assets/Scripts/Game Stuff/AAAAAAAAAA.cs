@@ -5,13 +5,16 @@ public class AAAAAAAAAA
     TODO
 -------------
 
-    Fix Inv/invUI issues. infinite inv working pretty good, but sometimes remove button
-        removes wrong item
+    Redo Inventory system using List<ItemAmount> 
+        makes shop system usable, having amount tied to item was dumb.
+
+    Make merchant system
+
+    Fix Inv/invUI issues
     Make items drop not touching each other or player. 
         maybe have drop method check for player/itempickups and then drop like one unit away
         could have it happen in a circular pattern around player so they don't drop too far away
         also check for any other colliders, want item to drop in a place that the player can reach
-    Make items stackable if they're the same item
     Have sort function
         sort by name, type, other ways
    
@@ -24,6 +27,11 @@ public class AAAAAAAAAA
         Design better looking UI, make HP/MP bars work/look fitting both in game and in inv menu
         Change all text components to TextMeshPro, change code accordingly
             Figure out blurry TMP issue
+
+    For each exterior scene, have one interior scene with all the house/shop/whatever interiors
+        just have them far enough apart that you can't see the others
+        less scene transition mess
+        could have separate interior scenes for special places that need whatever extra stuff in the scene
 
     Fix Scene Transition
 

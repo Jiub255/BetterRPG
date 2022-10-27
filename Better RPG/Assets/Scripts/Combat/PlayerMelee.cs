@@ -5,8 +5,9 @@ public class PlayerMelee : MonoBehaviour
 {
     Animator animator;
 
-    //keep longer than max length of all attack animations
-    //maybe keep this in stats? private but calculated based off speed stat?
+    // keep longer than max length of all attack animations
+    // just store statSO speed here instead of attacktimerlength, and calculate timer 
+    // length based off of the speed statSO
     [SerializeField] 
     private float attackTimerLength = 0.4f;
     private float attackTimer;

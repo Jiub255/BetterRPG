@@ -12,7 +12,7 @@ public class DialogueController : MonoBehaviour
 
     [SerializeField] TextAssetSO dialogueValue;
 
-    [SerializeField] Story myStory;
+    public Story myStory;
 
     [SerializeField] GameObject dialogueContent;
     [SerializeField] GameObject responseContent;
@@ -101,7 +101,7 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    void ChooseChoice(int choice)
+    public virtual void ChooseChoice(int choice)
     {
         myStory.ChooseChoiceIndex(choice);
 
