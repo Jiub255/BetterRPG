@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerHealthManager : MonoBehaviour , IDamageable<int>, IHealable<int>
@@ -155,6 +154,8 @@ public class PlayerHealthManager : MonoBehaviour , IDamageable<int>, IHealable<i
         StartCoroutine(ReloadScene());
     }
 
+    // Have a separate scene manager for this? singleton?
+    // Or use SceneTransition script?
     IEnumerator ReloadScene()
     {
         // get player position

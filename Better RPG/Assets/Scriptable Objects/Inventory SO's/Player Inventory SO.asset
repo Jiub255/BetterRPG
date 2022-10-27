@@ -12,12 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c165d685ee3c4d44b8fbdb6ecb60fb6a, type: 3}
   m_Name: Player Inventory SO
   m_EditorClassIdentifier: 
-  inventoryList:
-  - {fileID: 11400000, guid: 44507043ffcc56d429ebac42e9d65155, type: 2}
-  - {fileID: 11400000, guid: 44507043ffcc56d429ebac42e9d65155, type: 2}
-  - {fileID: 11400000, guid: 52fa92c80d003b642af06ebb5b75f792, type: 2}
-  - {fileID: 11400000, guid: 52fa92c80d003b642af06ebb5b75f792, type: 2}
-  - {fileID: 11400000, guid: 52fa92c80d003b642af06ebb5b75f792, type: 2}
-  - {fileID: 11400000, guid: d220e9f4d89ec86408323cbb73826d6d, type: 2}
-  - {fileID: 11400000, guid: 0d31beb3e50007d499ba181ad2ca0223, type: 2}
-  - {fileID: 11400000, guid: 083c49a4836b48e498c9ea4cfc1a13b2, type: 2}
+  inventoryWithAmountsList:
+  - item: {fileID: 11400000, guid: 52fa92c80d003b642af06ebb5b75f792, type: 2}
+    amount: 2
+  - item: {fileID: 11400000, guid: 0d31beb3e50007d499ba181ad2ca0223, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: fdf8082cde9bae84a91af007ed7257c8, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 0e445070df65c08459fae583ed731151, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: f2a30963bb1611945b29a3782a38a746, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 692110b01113c8246a57a1d402e66e99, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: f157ec3c07927f14c8f389cfc224c828, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: e136e44d878a5454091a42776b39f5d4, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 0c3fd96adba84d8489376d332518b6f5, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: d220e9f4d89ec86408323cbb73826d6d, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 52fa92c80d003b642af06ebb5b75f792, type: 2}
+    amount: 1

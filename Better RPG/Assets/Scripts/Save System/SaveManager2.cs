@@ -3,9 +3,9 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-public class SaveManager : MonoBehaviour
+public class SaveManager2 : MonoBehaviour
 {
-    public static SaveManager saveManager;
+    public static SaveManager2 saveManager;
 
     public float health;
     public float experience;

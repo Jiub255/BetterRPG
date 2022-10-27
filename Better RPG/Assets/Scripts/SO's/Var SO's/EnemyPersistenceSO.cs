@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 [CreateAssetMenu(fileName = "New EnemyPersistenceSO", menuName = "Vars/EnemyPersistenceSO")]
 public class EnemyPersistenceSO : ScriptableObject
 {

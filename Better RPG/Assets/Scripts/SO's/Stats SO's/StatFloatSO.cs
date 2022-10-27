@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 [CreateAssetMenu(fileName = "New Stat Float SO", menuName = "Stats/Stat Float")]
 public class StatFloatSO : ScriptableObject
 {
@@ -10,7 +11,6 @@ public class StatFloatSO : ScriptableObject
     // just to see in the inspector, var has no real use
     [SerializeField] string statName;
     [SerializeField] float moddedValue;
-
 
     // stat based experience. not sure about this yet
     /*public int experience;

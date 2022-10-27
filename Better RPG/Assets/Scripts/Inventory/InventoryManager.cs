@@ -8,17 +8,7 @@ public abstract class InventoryManager : MonoBehaviour
 
     public void Add(Item item, InventorySO inventory)
     {
-        foreach (ItemAmount itemAmount in inventory.inventoryWithAmountsList)
-        {
-            if (itemAmount.item == item)
-            {
-                itemAmount.amount += 1;
-                return;
-            }
-        }
-
-        // Adds blank ItemAmount to invSO list, sets item to item, sets amount to 1.
-        inventory.AddItemAmountToList(item);
+        inventory.AddItem(item);
 
         // InventoryUI managers need to hear this so they'll update based on their SO's.
         onItemChanged.Raise();
@@ -26,19 +16,7 @@ public abstract class InventoryManager : MonoBehaviour
 
     public void Remove(Item item, InventorySO inventory)
     {
-        foreach (ItemAmount itemAmount in inventory.inventoryWithAmountsList)
-        {
-            if (itemAmount.item == item)
-            {
-                itemAmount.amount -= 1;
-
-                if (itemAmount.amount <= 0)
-                {
-                    inventory.inventoryWithAmountsList.Remove(itemAmount);
-                    break;
-                }
-            }
-        }
+        inventory.RemoveItem(item);
 
         // InventoryUI managers need to hear this so they'll update based on their SO's.
         onItemChanged.Raise();

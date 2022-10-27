@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Rename LootTrigger after redoing loot system.
 public class PlayerLootManager : MonoBehaviour
 {
     public List<DropLoot> dropLoots = new List<DropLoot>();
@@ -100,11 +101,12 @@ public class PlayerLootManager : MonoBehaviour
 
             // if currentDropLoot is now empty, remove from UI
             if (currentDropLoot.itemsToDrop.Count == 0)
-            {
+            {                
+                // Is this line necessary? Or does deactivating parent somehow remove it?
+              //  dropLoots.Remove(currentDropLoot);
+
                 currentDropLoot.transform.parent.gameObject.SetActive(false);
                 
-                dropLoots.Remove(currentDropLoot);
-
                 // if there's another nonempty dropLoot, display that in UI
                 if (dropLoots.Count > 0)
                 {

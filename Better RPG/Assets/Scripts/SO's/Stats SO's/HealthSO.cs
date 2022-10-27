@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 [CreateAssetMenu(fileName = "New Health SO", menuName = "Stats/Health SO")]
 public class HealthSO : ScriptableObject
 {
