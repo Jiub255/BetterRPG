@@ -5,8 +5,11 @@ public class AAAAAAAAAA
     TODO
 -------------
 
-    Redo Inventory system using List<ItemAmount> 
-        makes shop system usable, having amount tied to item was dumb.
+    Fix loot system
+        LootUI disables after emptying a dropLoot even if there are other in range
+            Make it switch to next available one instead
+        Redo Loot system to use new inventoryManager system, with its list of ItemAmounts
+            Can have LootInventoryManager inherit from InventoryManager and work from there
 
     Make merchant system
 

@@ -11,32 +11,32 @@ public class InventorySlot : MonoBehaviour
     public Button removeButton;
     public TextMeshProUGUI amountText;
 
-    Item item;
+    ItemAmount itemAmount;
 
     public GameEventItem onDropItem;
 
-    public void AddItem(Item newItem)
+    public void AddItem(ItemAmount newItemAmount)
     {
-        item = newItem;
+        itemAmount = newItemAmount;
 
-        icon.sprite = item.itemIconSprite;
+        icon.sprite = itemAmount.item.itemIconSprite;
         icon.enabled = true;
         useButton.interactable = true;
         removeButton.interactable = true;
 
-        if (newItem.amount == 1)
+        if (newItemAmount.amount == 1)
         {
             amountText.text = "";
         }
         else
         {
-            amountText.text = newItem.amount.ToString();
+            amountText.text = newItemAmount.amount.ToString();
         }
     }
 
     public void ClearSlot()
     {
-        item = null;
+        itemAmount = null;
 
         icon.sprite = null;
         icon.enabled = false;
@@ -47,14 +47,14 @@ public class InventorySlot : MonoBehaviour
 
     public void OnRemoveButton()
     {
-        onDropItem.Raise(item);
+        onDropItem.Raise(itemAmount.item);
     }
 
     public void OnUseButton()
     {
-        if (item != null)
+        if (itemAmount != null)
         {
-            item.Use();
+            itemAmount.item.Use();
         }
     }
 }

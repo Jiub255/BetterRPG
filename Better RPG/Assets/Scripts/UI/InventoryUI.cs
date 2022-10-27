@@ -33,7 +33,7 @@ public class InventoryUI : MonoBehaviour
             child.gameObject.SetActive(false);
         }
 
-        for (int i = 0; i < inventorySO.inventoryList.Count; i++)
+        for (int i = 0; i < inventorySO.inventoryWithAmountsList.Count; i++)
         {
             GameObject slot = objectPool.GetPooledObject("Inventory Slot");
             if (slot != null)
@@ -42,7 +42,7 @@ public class InventoryUI : MonoBehaviour
                 slot.transform.SetParent(inventoryContent.transform, false);
             }
 
-            slot.GetComponent<InventorySlot>().AddItem(inventorySO.inventoryList[i]);
+            slot.GetComponent<InventorySlot>().AddItem(inventorySO.inventoryWithAmountsList[i]);
         }
     }
 }

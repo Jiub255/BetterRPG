@@ -1,53 +1,51 @@
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public abstract class InventoryManager : MonoBehaviour
 {
-    public InventorySO inventorySO;
+    public InventorySO playerInventorySO;
 
     public GameEvent onItemChanged;
 
-    public GameObject itemPickup;
-
-    public void Add(Item item)
+    public void Add(Item item, InventorySO inventory)
     {
-        if (inventorySO.inventoryList.Contains(item))
+        foreach (ItemAmount itemAmount in inventory.inventoryWithAmountsList)
         {
-            item.amount += 1;
-        }
-        else
-        {
-            inventorySO.inventoryList.Add(item);
-            item.amount = 1;
+            if (itemAmount.item == item)
+            {
+                itemAmount.amount += 1;
+                return;
+            }
         }
 
-        // inv UI manager needs to hear this
+        // Adds blank ItemAmount to invSO list, sets item to item, sets amount to 1.
+        inventory.AddItemAmountToList(item);
+
+        // InventoryUI managers need to hear this so they'll update based on their SO's.
         onItemChanged.Raise();
     }
 
-    public void Remove(Item item)
+    public void Remove(Item item, InventorySO inventory)
     {
-        item.amount -= 1;
-            
-        if (item.amount <= 0)
+        foreach (ItemAmount itemAmount in inventory.inventoryWithAmountsList)
         {
-            inventorySO.inventoryList.Remove(item);
+            if (itemAmount.item == item)
+            {
+                itemAmount.amount -= 1;
+
+                if (itemAmount.amount <= 0)
+                {
+                    inventory.inventoryWithAmountsList.Remove(itemAmount);
+                    break;
+                }
+            }
         }
 
-        // inv UI manager needs to hear this
+        // InventoryUI managers need to hear this so they'll update based on their SO's.
         onItemChanged.Raise();
     }
 
-    public void ClearInventory()
+    public void ClearInventory(InventorySO inventory)
     {
-        inventorySO.inventoryList.Clear();
-    }
-
-    public void DropItem(Item item)
-    {
-        Vector3 playerPosition = new Vector3(transform.position.x, transform.position.y - 1, 0);
-        GameObject droppedItem = Instantiate(itemPickup, playerPosition, Quaternion.identity);
-        droppedItem.GetComponent<SpriteRenderer>().sprite = item.itemIconSprite;
-        droppedItem.GetComponent<ItemPickup>().item = item;
-        Remove(item);
+        inventory.inventoryWithAmountsList.Clear();
     }
 }

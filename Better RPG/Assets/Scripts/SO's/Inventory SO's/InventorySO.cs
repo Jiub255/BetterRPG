@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New InventorySO", menuName = "Inventory/InventorySO")]
 public class InventorySO : ScriptableObject
 {
-    public List<Item> inventoryList = new List<Item>();
+    //public List<Item> inventoryList = new List<Item>();
 
     // Maybe do a dictionary instead? With <Item, int> where int is amount.
     //public Dictionary<Item, int> inventoryWithAmounts = new Dictionary<Item, int>();
@@ -15,6 +15,16 @@ public class InventorySO : ScriptableObject
 
     public void ClearInventory()
     {
-        inventoryList.Clear();
+        inventoryWithAmountsList.Clear();
+    }
+
+    public void AddItemAmountToList(Item item)
+    {
+        ItemAmount blank = new ItemAmount();
+
+        blank.item = item;
+        blank.amount = 1;
+
+        inventoryWithAmountsList.Add(blank);
     }
 }
