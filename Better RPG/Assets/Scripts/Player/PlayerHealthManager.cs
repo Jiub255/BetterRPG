@@ -2,7 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerHealthManager : MonoBehaviour , IDamageable<int>, IHealable<int>
+public class PlayerHealthManager : MonoBehaviour ,
+    IDamageable<int>, IHealable<int>, IDataPersistence
 {
     public HealthSO health;
 
@@ -186,5 +187,15 @@ public class PlayerHealthManager : MonoBehaviour , IDamageable<int>, IHealable<i
 
         // Unload previous scene
         SceneManager.UnloadSceneAsync(currentScene);
+    }
+
+    public void LoadData(GameData data)
+    {
+        health.currentValue = data.currentHealth;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.currentHealth = health.currentValue;
     }
 }

@@ -12,4 +12,13 @@ public class SaveManager : MonoBehaviour
     // Keep it constantly updated? Or just fill it right before save?
     // Then should I just keep the data in SaveManager? Leaning towards no.
 
+    SaveData saveData = new SaveData();
+
+    public void SaveToFile(SaveData data)
+    {
+        saveData.GetValues(data);
+
+        // Serialize data
+
+    }
 }

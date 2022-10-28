@@ -4,7 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 // Should this be static? Would it need a constructor? Not sure about this stuff.
-public /*static */class SaveData // NOT MONOBEHAVIOUR? 
+public class SaveData // NOT MONOBEHAVIOUR? 
 {
 
     // Want to collect all data that I want to save here before actually saving it. 
@@ -19,24 +19,24 @@ public /*static */class SaveData // NOT MONOBEHAVIOUR?
 
     // METHODS. IS STATIC NEEDED?
 
+    public SaveData()
+    {
+
+    }
+
     // GET VALUES METHOD
-    public static void GetValues(SaveData saveData)
+    public void GetValues(SaveData saveData)
     {
         // copy values from gameobjects/SOs/whatever to the DATA variables here.
 
         // Use interface(s) (ISaveable?) to find all saveable data?
     }
 
-    public static void GiveValues(SaveData saveData)
+    public void GiveValues(SaveData saveData)
     {
         // copy values from the DATA variables here to the various gameobjects/SOs/whatever.
     }
 
     // PUT IN SAVEMANAGER?
 
-    public static void SaveToFile(SaveData saveData)
-    {
-        GetValues(saveData);
-        // SAVE
-    }
 }
