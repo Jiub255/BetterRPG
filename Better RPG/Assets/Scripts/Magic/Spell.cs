@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,6 +16,13 @@ public class Spell : MonoBehaviour
 
     private void OnEnable()
     {
-        onSpellInstantiated.Raise(this.transform);
+        StartCoroutine(delayedSpellInstantiatedSignal());
+    }
+
+    IEnumerator delayedSpellInstantiatedSignal()
+    {
+        yield return new WaitForEndOfFrame()/*WaitForSeconds(0.1f)*/;
+
+        onSpellInstantiated.Raise(transform);
     }
 }

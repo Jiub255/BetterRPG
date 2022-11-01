@@ -8,7 +8,7 @@ public class GameEventItem : ScriptableObject
     private List<GameEventListenerItem> listeners =
         new List<GameEventListenerItem>();
 
-    public void Raise(Item Item)
+    public void Raise(ItemSO Item)
     {
         for (int i = listeners.Count - 1; i >= 0; i--)
         {

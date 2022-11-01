@@ -152,7 +152,6 @@ GameObject:
   - component: {fileID: 2780401409862514379}
   - component: {fileID: 6960522182346250333}
   - component: {fileID: 727681567251734516}
-  - component: {fileID: 3544248295094023495}
   - component: {fileID: 5638727969727987059}
   - component: {fileID: 5598120536260541508}
   - component: {fileID: 2555027159453141700}
@@ -674,29 +673,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3544248295094023495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730089303733002807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cfe29526eb7aab4a83ac07adb7543c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooledObjects: []
-  itemsToPool:
-  - objectToPool: {fileID: 543767941430921109, guid: b6f64ff958c825b46a25b14e3d4f1dac, type: 3}
-    amountToPool: 3
-    shouldExpand: 1
-  - objectToPool: {fileID: 8359501981254682935, guid: 421ff5bb0e169b04ebef060bde7e4304, type: 3}
-    amountToPool: 3
-    shouldExpand: 1
-  - objectToPool: {fileID: 6409379531065465126, guid: 0424dd3b931438d48ae29ce37ee5bb07, type: 3}
-    amountToPool: 20
-    shouldExpand: 1
 --- !u!114 &5638727969727987059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,6 +692,7 @@ MonoBehaviour:
   onHealthChanged: {fileID: 11400000, guid: 78a0332011e29724f94e747e0d9436df, type: 2}
   timerLength: 0.03
   delay: 0.5
+  onNewSceneLoaded: {fileID: 11400000, guid: c482a24ee626aec43b2ffc3bbfa991cb, type: 2}
 --- !u!114 &5598120536260541508
 MonoBehaviour:
   m_ObjectHideFlags: 0

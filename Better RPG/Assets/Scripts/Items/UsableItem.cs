@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "New Usable Item", menuName = "Inventory/Usable Item")]
-public class UsableItem : Item
+public class UsableItem : ItemSO
 {
     public bool isReusable = false;
 

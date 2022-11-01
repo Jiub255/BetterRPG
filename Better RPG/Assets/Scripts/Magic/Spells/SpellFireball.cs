@@ -6,7 +6,7 @@ public class SpellFireball : MonoBehaviour
 
     Animator playerAnimator;
 
-    ObjectPool objectPool;
+   // ObjectPool objectPool;
 
     [SerializeField] GameObject fireballPrefab;
 
@@ -14,14 +14,14 @@ public class SpellFireball : MonoBehaviour
     {
         player = playerTransform;
         playerAnimator = playerTransform.gameObject.GetComponent<Animator>();
-        objectPool = playerTransform.gameObject.GetComponent<ObjectPool>();
+       // objectPool = playerTransform.gameObject.GetComponent<ObjectPool>();
     }
 
     public void CreateFireball()
     {
         if (playerAnimator != null) 
         {
-            GameObject fireball = objectPool.GetPooledObject("Fireball");
+            GameObject fireball = MasterSingleton.Instance.ObjectPool.GetPooledObject("Fireball");
             if (fireball != null)
             {
                 fireball.transform.position = player.position;

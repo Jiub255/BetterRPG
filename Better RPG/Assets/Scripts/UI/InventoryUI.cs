@@ -12,7 +12,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private Transform inventoryContent;
 
-    private ObjectPool objectPool;
+    //private ObjectPool objectPool;
 
     private void Start()
     {
@@ -20,10 +20,10 @@ public class InventoryUI : MonoBehaviour
         UpdateUI();
     }
 
-    public void GetPlayerReference(Transform playerTransform)
+/*    public void GetPlayerReference(Transform playerTransform)
     {
         objectPool = playerTransform.GetComponent<ObjectPool>();
-    }
+    }*/
 
     public void UpdateUI()
     {
@@ -35,7 +35,7 @@ public class InventoryUI : MonoBehaviour
 
         for (int i = 0; i < inventorySO.inventoryWithAmountsList.Count; i++)
         {
-            GameObject slot = objectPool.GetPooledObject("Inventory Slot");
+            GameObject slot = MasterSingleton.Instance.ObjectPool.GetPooledObject("Inventory Slot");
             if (slot != null)
             {
                 slot.SetActive(true);

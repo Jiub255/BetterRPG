@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class CastMagic : MonoBehaviour
 {
+    // Store in an SO for persistence between scenes?
     public Spell currentSpell { get; private set; }
 
     Transform spells;
@@ -107,10 +108,8 @@ public class CastMagic : MonoBehaviour
     {
         currentSpell = spell;
 
-        Debug.Log("Current Spell: " + spell.name);
+        Debug.Log("Current Spell Changed");
     }
-
-
 
     public void TogglePlayerControls(bool gameIsPaused)
     {

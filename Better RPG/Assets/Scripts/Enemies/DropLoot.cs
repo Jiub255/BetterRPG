@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DropLoot : MonoBehaviour
 {
-    public List<Item> itemsToDrop = new List<Item>();
+    public List<ItemSO> itemsToDrop = new List<ItemSO>();
 
     // enemy persistence data
     private ulong enemyGlobalTargetObjectID;
@@ -33,7 +33,7 @@ public class DropLoot : MonoBehaviour
 
                     itemsToDrop.Clear();
 
-                    foreach (Item item in enemyPersistenceSO.enemyPersistenceDatas[i].dropLoot)
+                    foreach (ItemSO item in enemyPersistenceSO.enemyPersistenceDatas[i].dropLoot)
                     {
                         itemsToDrop.Add(item);
                     }
@@ -53,7 +53,7 @@ public class DropLoot : MonoBehaviour
             {
                 enemyPersistenceSO.enemyPersistenceDatas[i].dropLoot.Clear();
 
-                foreach (Item item in itemsToDrop)
+                foreach (ItemSO item in itemsToDrop)
                 {
                     enemyPersistenceSO.enemyPersistenceDatas[i].dropLoot.Add(item);
                 }
@@ -75,7 +75,7 @@ public class DropLoot : MonoBehaviour
         }
     }*/
 
-    public void RemoveItemFromDropLootAndEnemyPersistenceSO(Item item)
+    public void RemoveItemFromDropLootAndEnemyPersistenceSO(ItemSO item)
     {
         itemsToDrop.Remove(item);
 

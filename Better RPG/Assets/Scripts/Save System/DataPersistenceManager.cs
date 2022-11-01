@@ -1,5 +1,4 @@
-using System;
-using System.Collections;
+// using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -25,20 +24,37 @@ public class DataPersistenceManager : MonoBehaviour
         }
 
         instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         dataPersistenceObjects = FindAllDataPersistenceObjects();
-        LoadGame();
+        //StartCoroutine(DelayedLoad());
     }
+
+/*    IEnumerator DelayedLoad()
+    {
+        yield return new WaitForEndOfFrame();
+
+        LoadGame();
+    }*/
 
     public void NewGame()
     {
         gameData = new GameData();
+
+        // Push the loaded data to all other scripts that need it.
+        foreach (IDataPersistence dataPersistenceObject in dataPersistenceObjects)
+        {
+            dataPersistenceObject.LoadData(gameData);
+        }
     }
 
+    // Wait for onPlayerInstantiated here?
+    // Or just delay a frame? maybe like 0.1 sec?
     public void LoadGame()
     {
         // Load any saved data from a file using the data handler.
@@ -48,7 +64,7 @@ public class DataPersistenceManager : MonoBehaviour
         if (gameData == null)
         {
             Debug.Log("No data was found. Initializing data to defaults.");
-            NewGame();
+            gameData = new GameData();
         }
 
         // Push the loaded data to all other scripts that need it.

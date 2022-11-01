@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Equipment Item", menuName = "Inventory/Equipment Item")]
-public class EquipmentItem : Item
+public class EquipmentItem : ItemSO
 {
     public GameEventEquipmentItem OnUseEquipmentItem;
 

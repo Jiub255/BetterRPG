@@ -1,6 +1,6 @@
 [System.Serializable]
 public class ItemAmount
 {
-    public Item item;
+    public ItemSO item;
     public int amount;
 }

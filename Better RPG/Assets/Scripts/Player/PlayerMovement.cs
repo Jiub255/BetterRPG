@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,6 +26,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
+        StartCoroutine(OnEnableCo());
+    }
+
+    // I hate that this works
+    IEnumerator OnEnableCo()
+    {
+        yield return new WaitForEndOfFrame();
+
+        //EVERYTHING BELOW WAS IN AWAKE
+/*        Debug.Log(InputManager.invMenuOpen.ToString());
+
+        // no reference to inputActions?
+        Debug.Log(InputManager.inputActions.ToString());
+        Debug.Log(InputManager.inputActions.Player.ToString());
+        Debug.Log(InputManager.inputActions.Player.Move.ToString());*/
+
         move = InputManager.inputActions.Player.Move;
         move.Enable();
 
@@ -80,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            if (playerMelee.canAttack)
+            if (playerMelee.swingActive)
             {
                 rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
             }

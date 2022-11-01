@@ -2,7 +2,7 @@ using UnityEngine;
 
 // have usable item and equipment item subclasses
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
-public class Item : ScriptableObject
+public class ItemSO : ScriptableObject
 {
     public string itemName = "New Item";
     [TextArea(3, 20)]

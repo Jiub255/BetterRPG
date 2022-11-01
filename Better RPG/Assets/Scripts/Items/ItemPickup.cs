@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class ItemPickup : Interactable
 {
-    public Item item;
+    public ItemSO item;
 
     public GameEventItem OnPickUp;
 

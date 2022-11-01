@@ -18,6 +18,9 @@ public class PlayerHealthManager : MonoBehaviour ,
     // statUI listens for this
     public GameEvent onHealthChanged;
 
+    // Whoever needs player reference listens
+    public GameEventTransform onNewSceneLoaded;
+
     #region debug button stuff
 
     public static bool buttonPressed = false;
@@ -29,6 +32,11 @@ public class PlayerHealthManager : MonoBehaviour ,
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+
+        // Is this needed? Or will SceneLoaded method take care of it?
+        onNewSceneLoaded.Raise(transform);
+
         timer = delay;
     }
 
@@ -78,7 +86,22 @@ public class PlayerHealthManager : MonoBehaviour ,
         }
     }
 
-#endregion
+    #endregion
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += SceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= SceneLoaded;
+    }
+
+    private void SceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        onNewSceneLoaded.Raise(transform);
+    }
 
     private void Start()
     {
@@ -192,10 +215,14 @@ public class PlayerHealthManager : MonoBehaviour ,
     public void LoadData(GameData data)
     {
         health.currentValue = data.currentHealth;
+        onHealthChanged.Raise();
+
+        Debug.Log("Loaded currentHealth");
     }
 
     public void SaveData(ref GameData data)
     {
         data.currentHealth = health.currentValue;
+        Debug.Log("Saved currentHealth");
     }
 }

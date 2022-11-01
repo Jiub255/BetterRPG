@@ -1,9 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMelee : MonoBehaviour
 {
-    Animator animator;
+    private Animator animator;
 
     // keep longer than max length of all attack animations
     // just store statSO speed here instead of attacktimerlength, and calculate timer 
@@ -11,7 +12,7 @@ public class PlayerMelee : MonoBehaviour
     [SerializeField] 
     private float attackTimerLength = 0.4f;
     private float attackTimer;
-    public bool canAttack { get; private set; } = true;
+    public bool swingActive { get; private set; } = true;
 
     // sound effect
     [SerializeField]
@@ -22,8 +23,6 @@ public class PlayerMelee : MonoBehaviour
     // new input system stuff
     private InputAction swing;
 
-    private bool swingActive = true;
-
     private void Awake()
     {
         attackTimer = attackTimerLength;
@@ -31,6 +30,14 @@ public class PlayerMelee : MonoBehaviour
 
     private void OnEnable()
     {
+        StartCoroutine(OnEnableCo());
+    }
+
+    // I hate that this works
+    IEnumerator OnEnableCo()
+    {
+        yield return new WaitForEndOfFrame();
+
         swing = InputManager.inputActions.Player.Swing;
         swing.Enable();
         swing.performed += Swing;
@@ -50,13 +57,12 @@ public class PlayerMelee : MonoBehaviour
     // might not need this? animator taking care of it? by using trigger instead of bool for IsAttacking?
     private void Update()
     {
-        if (!canAttack)
+        if (!swingActive)
         {
             attackTimer -= Time.deltaTime;
             if (attackTimer <= 0)
             {
                 attackTimer = attackTimerLength;
-                canAttack = true;
                 EnableSwing();
             }
         }
@@ -68,7 +74,6 @@ public class PlayerMelee : MonoBehaviour
 
         onPlayClip.Raise(swingClip);
 
-        canAttack = false;
         attackTimer = attackTimerLength;
         DisableSwing();
     }

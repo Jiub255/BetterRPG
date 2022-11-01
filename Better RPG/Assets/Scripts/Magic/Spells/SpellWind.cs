@@ -6,7 +6,7 @@ public class SpellWind : MonoBehaviour
 
     Animator playerAnimator;
 
-    ObjectPool objectPool;
+    // ObjectPool objectPool;
 
     [SerializeField] GameObject windPrefab;
 
@@ -14,14 +14,14 @@ public class SpellWind : MonoBehaviour
     {
         player = playerTransform;
         playerAnimator = playerTransform.gameObject.GetComponent<Animator>();
-        objectPool = playerTransform.gameObject.GetComponent<ObjectPool>();
+       // objectPool = playerTransform.gameObject.GetComponent<ObjectPool>();
     }
 
     public void Blow()
     {
         if (playerAnimator != null)
         {
-            GameObject wind = objectPool.GetPooledObject("Wind");
+            GameObject wind = MasterSingleton.Instance.ObjectPool.GetPooledObject("Wind");
             if (wind != null)
             {
                 wind.SetActive(true);

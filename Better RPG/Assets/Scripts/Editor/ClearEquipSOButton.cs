@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(EquipmentSO))]
-public class customButton : Editor
+public class ClearEquipSOButton : Editor
 {
     public override void OnInspectorGUI()
     {

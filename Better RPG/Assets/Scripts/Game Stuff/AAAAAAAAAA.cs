@@ -4,14 +4,39 @@ public class AAAAAAAAAA
     TO DO
 -------------
 
-    Maybe get rid of AlwaysOpenScene and just use singletons for different game managers.
-        Or have a master singleton again.
+    TRYING THIS OUT. DONT DO OTHER STUFF UNTIL YOU KNOW IF YOU WANT IT THIS WAY
+    Get rid of AlwaysOpenScene and just use singletons for different game managers.
         DON'T MAKE PLAYER A SINGLETON!
+    Fix all references to player using onPlayerInstantiated.
+        Use onSceneLoaded instead?
+    Make a SceneTransitionManager singleton?
+        Have:
+        ChangeScene(string sceneName, Vector2 startingPosition)
+        {
+            StartCoroutine(ChangeSceneCO(sceneName, startingPosition);
+        }
 
+        Then sceneTransition and playerHealthManager.Die() can both call on it.
+        And start/load game from main menu can call on it.
+        
     Save system
-        Get on this soon, to make sure current systems are all saveable.
-        Use interface(s) to find all saveable data in the game?
-            Will it work with SO's? Can I use their respective managers instead?
+        Using "How to make a Save & Load System in Unity | 2022" (Trever Mock)
+            youtube video as a base for the save system.
+        Add more stuff to the system now that it works.
+            All player stats
+            Enemy persistence data
+            Objects picked up data (Need to make this SO)
+            Plenty more
+        Use interface(s) to find all saveable data in the game.
+            Put IDataPersistence on all scripts you want to save data from.
+                Might need more complicated save/load methods for more complex data.
+                Use SerializableDictionary instead of Dictionary.
+            Put IDataPersistence on all UIManagers to initalize UI after load.
+                Don't need anything in Save, just updateUI in Load.
+        Might not need setup scene, maybe main menu scene can do the same.
+            Then just start a new game or load into whichever scene you're saved in.
+            Player can get initialized in main menu? But scene initialized after scene load?
+            Or just initialize everything after scene is loaded, then unload main menu.
 
     Loot System
         Redo Loot system to use new inventoryManager system, with its list of ItemAmounts.
@@ -54,11 +79,10 @@ public class AAAAAAAAAA
         Fix Scene Transition.
 
     Game Management
-        Move object pool, put it on an "in every scene" prefab?
-    
+        
     Magic 
         Move spells to separate object? an "in every scene" prefab?
-        Get currentSpell to persist between scenes.
+        Get currentSpell to persist between scenes. Use SO?
         Finish Wind Spell.
         Make more spells.
 
@@ -90,4 +114,5 @@ public class AAAAAAAAAA
 
 
 -------------
-*/}
+*/
+}

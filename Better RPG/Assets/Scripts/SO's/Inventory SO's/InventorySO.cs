@@ -7,7 +7,7 @@ public class InventorySO : ScriptableObject
 {
     public List<ItemAmount> inventoryWithAmountsList = new List<ItemAmount>();
 
-    public void AddItem(Item item)
+    public void AddItem(ItemSO item)
     {
         for (int i = 0; i < inventoryWithAmountsList.Count; i++)
         {
@@ -20,7 +20,7 @@ public class InventorySO : ScriptableObject
         AddNewItemToList(item);
     }
 
-    public void AddNewItemToList(Item item)
+    public void AddNewItemToList(ItemSO item)
     {
         ItemAmount blank = new ItemAmount();
 
@@ -30,7 +30,7 @@ public class InventorySO : ScriptableObject
         inventoryWithAmountsList.Add(blank);
     }
 
-    public void RemoveItem(Item item)
+    public void RemoveItem(ItemSO item)
     {
         for (int i = 0; i < inventoryWithAmountsList.Count; i++)
         {

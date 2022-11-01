@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6941295156892145231}
   - component: {fileID: 6941295156892145230}
   - component: {fileID: 6941295156892145216}
+  - component: {fileID: 8436628657733244196}
   m_Layer: 0
   m_Name: Scene Transition
   m_TagString: Untagged
@@ -72,7 +73,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneToLoad: House
   startingPosition: {x: 0.5, y: -2}
-  onSceneChanged: {fileID: 11400000, guid: e215378234accd840b6143e66ed65364, type: 2}
+  onNewSceneLoaded: {fileID: 0}
   fadeOutCanvas: {fileID: 98678776645648967, guid: 22e0434baf3598e468db396af09c89cb, type: 3}
   fadeInCanvas: {fileID: 3077266875108510297, guid: 12e3a5982393ba247a5a7db04da4e0c1, type: 3}
   fadeTime: 0.5
+--- !u!114 &8436628657733244196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6941295156892145217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64932ed59f5aec24d8700fde6fd22f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: c482a24ee626aec43b2ffc3bbfa991cb, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6941295156892145216}
+        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
+        m_MethodName: GetPlayerReference
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -92,7 +92,7 @@ public class PlayerLootManager : MonoBehaviour
     }
 
     // listens for OnClickTakeItemButton from LootSlot
-    public void TakeItem(Item item)
+    public void TakeItem(ItemSO item)
     {
         if (currentDropLoot.itemsToDrop.Contains(item))
         {

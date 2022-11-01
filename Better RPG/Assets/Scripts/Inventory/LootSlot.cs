@@ -6,11 +6,11 @@ public class LootSlot : MonoBehaviour
     public Image icon;
     public Button takeItemButton;
 
-    Item item;
+    ItemSO item;
 
     public GameEventItem onClickTakeItemButton;
 
-    public void AddItem(Item newItem)
+    public void AddItem(ItemSO newItem)
     {
         item = newItem;
 

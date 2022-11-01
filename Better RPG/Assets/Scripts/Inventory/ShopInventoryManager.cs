@@ -10,7 +10,7 @@ public class ShopInventoryManager : InventoryManager
     [SerializeField]
     private InventorySO shopInventorySO;
 
-    public void Buy(Item item)
+    public void Buy(ItemSO item)
     {
         // Add one to playerInventory's item.
         Add(item, playerInventorySO);
@@ -19,7 +19,7 @@ public class ShopInventoryManager : InventoryManager
         Remove(item, shopInventorySO);
     }
 
-    public void Sell(Item item)
+    public void Sell(ItemSO item)
     {
         // Take one from playerInventory's item.
         Remove(item, playerInventorySO);

@@ -6,7 +6,7 @@ public abstract class InventoryManager : MonoBehaviour
 
     public GameEvent onItemChanged;
 
-    public void Add(Item item, InventorySO inventory)
+    public void Add(ItemSO item, InventorySO inventory)
     {
         inventory.AddItem(item);
 
@@ -14,7 +14,7 @@ public abstract class InventoryManager : MonoBehaviour
         onItemChanged.Raise();
     }
 
-    public void Remove(Item item, InventorySO inventory)
+    public void Remove(ItemSO item, InventorySO inventory)
     {
         inventory.RemoveItem(item);
 

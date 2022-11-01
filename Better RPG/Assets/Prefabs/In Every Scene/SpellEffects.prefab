@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4765859853918746600}
-  - component: {fileID: 8740440326538457120}
   - component: {fileID: 1341432182097782040}
   m_Layer: 0
   m_Name: SpellEffects
@@ -28,23 +27,13 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 86651101619872006}
+  - {fileID: 9159287813393549301}
+  - {fileID: 4715175415979101968}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8740440326538457120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959399756894181727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08e31f84059f6654184cfa449f85c92b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireballPrefab: {fileID: 543767941430921109, guid: b6f64ff958c825b46a25b14e3d4f1dac, type: 3}
 --- !u!114 &1341432182097782040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +50,7 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8740440326538457120}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SpellFireball, Assembly-CSharp
         m_MethodName: GetPlayerReference
         m_Mode: 0
@@ -73,3 +62,243 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &3206220115251294394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9159287813393549301}
+  - component: {fileID: 6522998676455863670}
+  m_Layer: 3
+  m_Name: Heal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9159287813393549301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3206220115251294394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4765859853918746600}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6522998676455863670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3206220115251294394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28a1c904b3452846887ae1f1d9922ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellEffect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerHealthManager, Assembly-CSharp
+        m_MethodName: Heal
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  spellCost: 1
+  magicClip: {fileID: 8300000, guid: 5620bff0de4714d4a885bb6c3a1e0bb9, type: 3}
+  onSpellInstantiated: {fileID: 11400000, guid: fcb04f77c70ff624683022a0d591b5d0, type: 2}
+--- !u!1 &3997270592930326630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 86651101619872006}
+  - component: {fileID: 4410857219279320477}
+  - component: {fileID: 8175702973513161584}
+  m_Layer: 3
+  m_Name: Fireball
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &86651101619872006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997270592930326630}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4765859853918746600}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4410857219279320477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997270592930326630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28a1c904b3452846887ae1f1d9922ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellEffect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8175702973513161584}
+        m_TargetAssemblyTypeName: SpellFireball, Assembly-CSharp
+        m_MethodName: CreateFireball
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  spellCost: 1
+  magicClip: {fileID: 8300000, guid: 5620bff0de4714d4a885bb6c3a1e0bb9, type: 3}
+  onSpellInstantiated: {fileID: 11400000, guid: 07926f8e20190984f82c5caee51c68c1, type: 2}
+--- !u!114 &8175702973513161584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997270592930326630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e31f84059f6654184cfa449f85c92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireballPrefab: {fileID: 543767941430921109, guid: b6f64ff958c825b46a25b14e3d4f1dac, type: 3}
+--- !u!1001 &1939434811428469147
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4765859853918746600}
+    m_Modifications:
+    - target: {fileID: 1804815858787921492, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: spellCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804815858787921492, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: onSpellInstantiated
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c21a79791b72c243a35b6ccaffcb98b, type: 2}
+    - target: {fileID: 1804815858787921492, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: spellEffect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8746698561332637577}
+    - target: {fileID: 1804815858787921492, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: spellEffect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Blow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804815858787921492, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: spellEffect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SpellWind, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804815858787921492, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: spellEffect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8976475532777194966, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+      propertyPath: m_Name
+      value: Wind
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+--- !u!1 &7383820224288783437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8976475532777194966, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+  m_PrefabInstance: {fileID: 1939434811428469147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4715175415979101968 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6594935204202067595, guid: 6ac8bd2655cd9ca47a41e9ebf5da4e28, type: 3}
+  m_PrefabInstance: {fileID: 1939434811428469147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8746698561332637577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7383820224288783437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1dcf75619bfd6844a40f926bb437574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windPrefab: {fileID: 8359501981254682935, guid: 421ff5bb0e169b04ebef060bde7e4304, type: 3}
