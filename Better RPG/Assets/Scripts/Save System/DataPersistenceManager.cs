@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class DataPersistenceManager : MonoBehaviour
     private List<IDataPersistence> dataPersistenceObjects;
 
     private FileDataHandler dataHandler;
+
+    private string selectedProfileID = "";
 
     public static DataPersistenceManager instance { get; private set; }
 
@@ -27,12 +30,16 @@ public class DataPersistenceManager : MonoBehaviour
         instance = this;
 
         DontDestroyOnLoad(gameObject);
+        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        dataPersistenceObjects = FindAllDataPersistenceObjects();
+
+        selectedProfileID = dataHandler.GetMostRecentlyUpdatedProfileID();
     }
 
     private void Start()
     {
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        dataPersistenceObjects = FindAllDataPersistenceObjects();
+        //dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        //dataPersistenceObjects = FindAllDataPersistenceObjects();
 
         Debug.Log(dataPersistenceObjects.Count.ToString());
     }
@@ -51,7 +58,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void LoadGame()
     {
         // Load any saved data from a file using the data handler.
-        gameData = dataHandler.Load();
+        gameData = dataHandler.Load(selectedProfileID);
 
         // If no data can be loaded, warn player.
         if (gameData == null)
@@ -84,15 +91,31 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObject.SaveData(ref gameData);
         }
 
+        // Timestamp the data so we know when it was last saved
+        gameData.lastUpdated = System.DateTime.Now.ToBinary();
+
         Debug.Log("Saved current health = " + gameData.currentHealth);
 
         // Save that data to a file using the data handler.
-        dataHandler.Save(gameData);
+        dataHandler.Save(gameData, selectedProfileID);
     }
 
     private void OnApplicationQuit()
     {
         SaveGame();
+    }
+
+    public void OnSceneUnloaded(Scene scene)
+    {
+        SaveGame();
+    }
+
+    public void ChangeSelectedProfileID(string newProfileID)
+    {
+        // Update the profile to use for saving and loading
+        selectedProfileID = newProfileID;
+        // Load the game, which will use that profile, updating our game data accordingly
+        LoadGame();
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
@@ -105,10 +128,15 @@ public class DataPersistenceManager : MonoBehaviour
 
     public bool HasGameData()
     {
-        gameData = dataHandler.Load();
+        gameData = dataHandler.Load(selectedProfileID);
 
         Debug.Log("Save data exists: " + (gameData != null).ToString());
 
         return (gameData != null);
+    }
+
+    public Dictionary<string, GameData> GetAllProfilesGameData()
+    {
+        return dataHandler.LoadAllProfiles();
     }
 }

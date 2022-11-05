@@ -86,6 +86,9 @@ public class SceneTransitionManager : MonoBehaviour
 
         yield return new WaitForSeconds(fadeTime);
 
+        // Set HUD to active
+        MasterSingleton.Instance.Canvas.transform.GetChild(5).gameObject.SetActive(true);
+
         Destroy(fadeInCanvasInstance);
         Debug.Log("Destroyed Fade In Canvas");
 
