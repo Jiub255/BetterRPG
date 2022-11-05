@@ -1,4 +1,3 @@
-// using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -21,6 +20,8 @@ public class DataPersistenceManager : MonoBehaviour
         if (instance != null)
         {
             Debug.LogError("Found more than one DataPersistenceManager in the scene.");
+            Destroy(gameObject);
+            return;
         }
 
         instance = this;
@@ -32,15 +33,9 @@ public class DataPersistenceManager : MonoBehaviour
     {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         dataPersistenceObjects = FindAllDataPersistenceObjects();
-        //StartCoroutine(DelayedLoad());
+
+        Debug.Log(dataPersistenceObjects.Count.ToString());
     }
-
-/*    IEnumerator DelayedLoad()
-    {
-        yield return new WaitForEndOfFrame();
-
-        LoadGame();
-    }*/
 
     public void NewGame()
     {
@@ -53,18 +48,16 @@ public class DataPersistenceManager : MonoBehaviour
         }
     }
 
-    // Wait for onPlayerInstantiated here?
-    // Or just delay a frame? maybe like 0.1 sec?
     public void LoadGame()
     {
         // Load any saved data from a file using the data handler.
         gameData = dataHandler.Load();
 
-        // If no data can be loaded, initialize to a new game.
+        // If no data can be loaded, warn player.
         if (gameData == null)
         {
-            Debug.Log("No data was found. Initializing data to defaults.");
-            gameData = new GameData();
+            Debug.Log("No data was found. Start a new game.");
+            return;
         }
 
         // Push the loaded data to all other scripts that need it.
@@ -78,6 +71,13 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void SaveGame()
     {
+        // If no data can be saved, warn player.
+        if (gameData == null)
+        {
+            Debug.Log("No data was found. Start a new game.");
+            return;
+        }
+
         // Pass the data to other scripts so they can update it.
         foreach (IDataPersistence dataPersistenceObject in dataPersistenceObjects)
         {
@@ -101,5 +101,14 @@ public class DataPersistenceManager : MonoBehaviour
             FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
 
         return new List<IDataPersistence>(dataPersistenceObjects);
+    }
+
+    public bool HasGameData()
+    {
+        gameData = dataHandler.Load();
+
+        Debug.Log("Save data exists: " + (gameData != null).ToString());
+
+        return (gameData != null);
     }
 }

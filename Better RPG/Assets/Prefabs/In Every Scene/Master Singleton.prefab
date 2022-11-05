@@ -164,6 +164,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6573426281940057446}
     m_Modifications:
+    - target: {fileID: 5983409223141761095, guid: 5f91253f9f8b85547adb918181097866, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8042634751891204170, guid: 5f91253f9f8b85547adb918181097866, type: 3}
       propertyPath: m_Name
       value: Canvas

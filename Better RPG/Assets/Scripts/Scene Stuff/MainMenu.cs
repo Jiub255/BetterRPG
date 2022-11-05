@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -10,6 +7,17 @@ public class MainMenu : MonoBehaviour
     private Button newGameButton;
     [SerializeField]
     private Button loadGameButton;
+
+    private void Start()
+    {
+        // Works sometimes, sometimes not. How?
+        if (!DataPersistenceManager.instance.HasGameData())
+        {
+            Debug.Log("No Saved Game Data");
+
+            loadGameButton.interactable = false;
+        }    
+    }
 
     public void OnNewGameClicked()
     {

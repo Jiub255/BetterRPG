@@ -17,11 +17,13 @@ public class MasterSingleton : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
+            Debug.LogError("Found more than one MasterSingleton in the scene.");
             Destroy(this.gameObject);
             return;
         }
 
         Instance = this;
+
         AudioManager = GetComponentInChildren<AudioManager>();
         Canvas = GetComponentInChildren<Canvas>().gameObject;
         EquipmentManager = GetComponentInChildren<EquipmentManager>();
