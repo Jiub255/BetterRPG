@@ -96,6 +96,7 @@ public class MainMenu : Menu
     {
         newGameButton.interactable = false;
         continueButton.interactable = false;
+        loadGameButton.interactable = false;
     }
 
     public void ActivateMenu()

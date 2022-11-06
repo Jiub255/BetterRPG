@@ -47,6 +47,7 @@ public class SaveSlotsMenu : Menu
                 // Function to execute if we select "yes"
                 () =>
                 {
+                    Debug.Log("yes new clear clicked");
                     DataPersistenceManager.instance.ChangeSelectedProfileID(
                         saveSlot.GetProfileID());
                     DataPersistenceManager.instance.NewGame();
@@ -55,6 +56,7 @@ public class SaveSlotsMenu : Menu
                 // Function to execute if we select "cancel"
                 () =>
                 {
+                    Debug.Log("cancel new clear clicked");
                     ActivateMenu(isLoadingGame);
                 }
             );
@@ -100,18 +102,18 @@ public class SaveSlotsMenu : Menu
             // Function to execute if we select "yes"
             () =>
             {
+                Debug.Log("yes clear clicked");
                 DataPersistenceManager.instance.DeleteProfileData(saveSlot.GetProfileID());
                 ActivateMenu(isLoadingGame);
             },
             // Function to execute if we select "cancel"
             () =>
             {
+                // Clearing save data even when clicking cancel
+                Debug.Log("cancel clear clicked");
                 ActivateMenu(isLoadingGame);
             }
         );
-
-        DataPersistenceManager.instance.DeleteProfileData(saveSlot.GetProfileID());
-        ActivateMenu(isLoadingGame);
     }
 
     public void OnBackClicked()

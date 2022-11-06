@@ -20,6 +20,16 @@ public class AAAAAAAAAA
         And start/load game from main menu can call on it.
         
     Save system
+        FIX:
+            Make enemy persistence SO into a singleton monobehaviour
+                Easier to access for saving/loading
+                Otherwise would do it on multiple instances from enemyhealthmanager or similar
+            Able to move and see player over main menu
+                Disable player in main menu and set action map to UI
+            Make main menu work with UI action map
+            Do something about selected buttons, maybe get rid of it? Just use mouse?
+                Or make it look better at least and have mouse change currently selected button
+                    while hovering over.
         Using "How to make a Save & Load System in Unity | 2022" (Trever Mock)
             youtube video as a base for the save system.
         Add more stuff to the system now that it works.
@@ -79,6 +89,11 @@ public class AAAAAAAAAA
         Fix Scene Transition.
 
     Game Management
+
+    Dialogue
+        FIX:
+            Player slows down a little when entering interactable zone around NPCs
+                Probably getting set to attacking so the movement slows, why?
         
     Magic 
         Move spells to separate object? an "in every scene" prefab?

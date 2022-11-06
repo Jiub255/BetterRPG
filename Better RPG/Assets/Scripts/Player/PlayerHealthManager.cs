@@ -178,8 +178,7 @@ public class PlayerHealthManager : MonoBehaviour ,
         StartCoroutine(ReloadScene());
     }
 
-    // Have a separate scene manager for this? singleton?
-    // Or use SceneTransition script?
+    // Use SceneTransitionManager script instead?
     IEnumerator ReloadScene()
     {
         // get player position
