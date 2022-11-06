@@ -2,11 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using System;
+using System.Collections;
 
 public class DataPersistenceManager : MonoBehaviour
 {
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
+
+    [Header("Auto Saving Configuration")]
+    [SerializeField]
+    private float autoSaveTimeSeconds = 60f;
 
     private GameData gameData;
 
@@ -15,6 +21,8 @@ public class DataPersistenceManager : MonoBehaviour
     private FileDataHandler dataHandler;
 
     private string selectedProfileID = "";
+
+    private Coroutine autoSaveCoroutine;
 
     public static DataPersistenceManager instance { get; private set; }
 
@@ -31,17 +39,50 @@ public class DataPersistenceManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        dataPersistenceObjects = FindAllDataPersistenceObjects();
 
-        selectedProfileID = dataHandler.GetMostRecentlyUpdatedProfileID();
+        InitializeSelectedProfileID();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        //dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        //dataPersistenceObjects = FindAllDataPersistenceObjects();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        dataPersistenceObjects = FindAllDataPersistenceObjects();
         Debug.Log(dataPersistenceObjects.Count.ToString());
+
+        // Start up the autosave coroutine
+        if (autoSaveCoroutine != null)
+        {
+            StopCoroutine(autoSaveCoroutine);
+        }
+        autoSaveCoroutine = StartCoroutine(AutoSave());
+
+        // Don't think I want to do persistence between scenes this way
+        // Using SO's instead
+        // LoadGame();
+    }
+
+    public void DeleteProfileData(string profileID)
+    {
+        // Delete the data for this profile ID
+        dataHandler.Delete(profileID);
+        // Initialize the selected profile ID
+        InitializeSelectedProfileID();
+        // Reload the game so that our data matches the newly selected profile ID
+        LoadGame();
+    }
+
+    private void InitializeSelectedProfileID()
+    {
+        selectedProfileID = dataHandler.GetMostRecentlyUpdatedProfileID();
     }
 
     public void NewGame()
@@ -88,7 +129,7 @@ public class DataPersistenceManager : MonoBehaviour
         // Pass the data to other scripts so they can update it.
         foreach (IDataPersistence dataPersistenceObject in dataPersistenceObjects)
         {
-            dataPersistenceObject.SaveData(ref gameData);
+            dataPersistenceObject.SaveData(gameData);
         }
 
         // Timestamp the data so we know when it was last saved
@@ -105,11 +146,6 @@ public class DataPersistenceManager : MonoBehaviour
         SaveGame();
     }
 
-    public void OnSceneUnloaded(Scene scene)
-    {
-        SaveGame();
-    }
-
     public void ChangeSelectedProfileID(string newProfileID)
     {
         // Update the profile to use for saving and loading
@@ -120,8 +156,9 @@ public class DataPersistenceManager : MonoBehaviour
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
+        // FindObjectsOfType takes in an optional boolean to include inactive gameobjects
         IEnumerable<IDataPersistence> dataPersistenceObjects = 
-            FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
+            FindObjectsOfType<MonoBehaviour>(true).OfType<IDataPersistence>();
 
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
@@ -138,5 +175,15 @@ public class DataPersistenceManager : MonoBehaviour
     public Dictionary<string, GameData> GetAllProfilesGameData()
     {
         return dataHandler.LoadAllProfiles();
+    }
+
+    private IEnumerator AutoSave()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(autoSaveTimeSeconds);
+            SaveGame();
+            Debug.Log("Auto Saved Game");
+        }
     }
 }

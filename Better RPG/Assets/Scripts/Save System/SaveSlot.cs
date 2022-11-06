@@ -20,6 +20,12 @@ public class SaveSlot : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI currentHealthText;
 
+    [Header("Clear Data Button")]
+    [SerializeField]
+    private Button clearButton;
+
+    public bool hasData { get; private set; } = false;
+
     private Button saveSlotButton;
 
     private void Awake()
@@ -32,14 +38,18 @@ public class SaveSlot : MonoBehaviour
         // There's no data for this profileID
         if (data == null)
         {
+            hasData = false;
             noDataContent.SetActive(true);
             hasDataContent.SetActive(false);
+            clearButton.gameObject.SetActive(false);
         }
         // There is data for this profileID
         else
         {
+            hasData = true;
             noDataContent.SetActive(false);
             hasDataContent.SetActive(true);
+            clearButton.gameObject.SetActive(true);
 
             percentageCompleteText.text = data.GetPercentageComplete().ToString() + "% Complete";
             currentHealthText.text = "Current Health: " + data.currentHealth.ToString();
@@ -54,5 +64,6 @@ public class SaveSlot : MonoBehaviour
     public void SetInteractable(bool interactable)
     {
         saveSlotButton.interactable = interactable;
+        clearButton.interactable = interactable;
     }
 }

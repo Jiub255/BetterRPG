@@ -14,6 +14,10 @@ public class SaveSlotsMenu : Menu
     [SerializeField]
     private Button backButton;
 
+    [Header("Confirmation Popup")]
+    [SerializeField]
+    private ConfirmationPopupMenu confirmationPopupMenu;
+
     private SaveSlot[] saveSlots;
 
     private bool isLoadingGame = false;
@@ -28,21 +32,86 @@ public class SaveSlotsMenu : Menu
         // Disable all buttons
         DisableMenuButtons();
 
-        // Update the selected profile ID to be used for data persistence
+        // Case: loading game
+        if (isLoadingGame)
+        {
+            DataPersistenceManager.instance.ChangeSelectedProfileID(saveSlot.GetProfileID());
+            SaveGameAndLoadScene();
+        }
+        // Case: new game, but the save slot has data
+        else if (saveSlot.hasData)
+        {
+            confirmationPopupMenu.ActivateMenu(
+                "Starting a New Game with this slot will override the currently saved data. " +
+                "Are you sure?",
+                // Function to execute if we select "yes"
+                () =>
+                {
+                    DataPersistenceManager.instance.ChangeSelectedProfileID(
+                        saveSlot.GetProfileID());
+                    DataPersistenceManager.instance.NewGame();
+                    SaveGameAndLoadScene();
+                },
+                // Function to execute if we select "cancel"
+                () =>
+                {
+                    ActivateMenu(isLoadingGame);
+                }
+            );
+        }
+        // Case: new game, and the save slot has no data
+        else
+        {
+            DataPersistenceManager.instance.ChangeSelectedProfileID(saveSlot.GetProfileID());
+            DataPersistenceManager.instance.NewGame();
+            SaveGameAndLoadScene();
+        }
+
+/*        // Update the selected profile ID to be used for data persistence
         DataPersistenceManager.instance.ChangeSelectedProfileID(saveSlot.GetProfileID());
 
         if (!isLoadingGame)
         {
             // Create a new game, which will initialize our data to a clean slate
             DataPersistenceManager.instance.NewGame();
-        }
+        }*/
 
-        // Load the scene, which will in turn save the game because of 
-        // OnSceneUnloaded() in the DataPersistenceManager
+
+    }
+
+    private void SaveGameAndLoadScene()
+    {
+        // Don't think I want to do persistence between scenes this way
+        // Using SO's instead
+        // Save the game anytime before loading a new scene
+        //DataPersistenceManager.instance.SaveGame();
+
+        // Load the scene
         // Could load whichever scene the last save was in, instead of always FirstScene
         MasterSingleton.Instance.SceneTransitionManager.ChangeScene("FirstScene", Vector2.zero);
-        //SceneManager.LoadSceneAsync("FirstScene");
+    }
 
+    public void OnClearClicked(SaveSlot saveSlot)
+    {
+        DisableMenuButtons();
+
+        confirmationPopupMenu.ActivateMenu(
+            "Are you sure you want to delete this saved data?",
+            // Function to execute if we select "yes"
+            () =>
+            {
+                DataPersistenceManager.instance.DeleteProfileData(saveSlot.GetProfileID());
+                ActivateMenu(isLoadingGame);
+            },
+            // Function to execute if we select "cancel"
+            () =>
+            {
+                ActivateMenu(isLoadingGame);
+            }
+        );
+
+        DataPersistenceManager.instance.DeleteProfileData(saveSlot.GetProfileID());
+        ActivateMenu(isLoadingGame);
     }
 
     public void OnBackClicked()
@@ -62,6 +131,9 @@ public class SaveSlotsMenu : Menu
         // Load all of the profiles that exist
         Dictionary<string, GameData> profilesGameData = 
             DataPersistenceManager.instance.GetAllProfilesGameData();
+
+        // Ensure that the back button is enabled when we activate the menu
+        backButton.interactable = true;
 
         // Loop through each save slot and set the content appropriately
         GameObject firstSelected = backButton.gameObject;
@@ -85,7 +157,8 @@ public class SaveSlotsMenu : Menu
         }
 
         // Set the first selected button
-        StartCoroutine(SetFirstSelected(firstSelected));
+        Button firstSelectedButton = firstSelected.GetComponent<Button>();
+        SetFirstSelected(firstSelectedButton);
     }
 
     public void DeactivateMenu()

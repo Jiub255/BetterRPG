@@ -17,14 +17,18 @@ public class MainMenu : Menu
 
     private void Start()
     {
-        // Works sometimes, sometimes not. How?
+        DisableButtonsDependingOnData();
+    }
+
+    private void DisableButtonsDependingOnData()
+    {
         if (!DataPersistenceManager.instance.HasGameData())
         {
             Debug.Log("No Saved Game Data");
 
             continueButton.interactable = false;
             loadGameButton.interactable = false;
-        }    
+        }
     }
 
     public void OnNewGameClicked()
@@ -71,6 +75,11 @@ public class MainMenu : Menu
     {
         DisableAllButtons();
 
+        // Don't think I want to do persistence between scenes this way
+        // Using SO's instead
+        // Save the game anytime before loading a new scene
+        //DataPersistenceManager.instance.SaveGame();
+
         // Initialize Player/SO's
         // Do I need to initialize the scene after it's loaded too?
         // Can't do it from here since ChangeScene unloads this scene which destroys this script
@@ -92,6 +101,7 @@ public class MainMenu : Menu
     public void ActivateMenu()
     {
         gameObject.SetActive(true);
+        DisableButtonsDependingOnData();
     }
 
     public void DeactivateMenu()

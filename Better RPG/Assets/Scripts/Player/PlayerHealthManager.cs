@@ -220,7 +220,7 @@ public class PlayerHealthManager : MonoBehaviour ,
         Debug.Log("Loaded currentHealth");
     }
 
-    public void SaveData(ref GameData data)
+    public void SaveData(GameData data)
     {
         data.currentHealth = health.currentValue;
         Debug.Log("Saved currentHealth");
