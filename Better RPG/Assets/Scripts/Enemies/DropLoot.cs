@@ -6,37 +6,33 @@ public class DropLoot : MonoBehaviour
 {
     public List<ItemSO> itemsToDrop = new List<ItemSO>();
 
-    // enemy persistence data
-    private ulong enemyGlobalTargetObjectID;
+    private EnemyPersistenceData enemyPersistenceData;
 
-    [SerializeField]
-    private EnemyPersistenceSO enemyPersistenceSO;
+    private ulong enemyGlobalTargetObjectID;
 
     public bool dead = false;
 
-    private void Awake()
+    // want this called after EnemyHealthManager awake,
+    // so it can make a new EnemyPersistenceData if there is none yet,
+    // then this check shouldn't be null ever
+    private void Start()
     {
-        Debug.Log("DropLoot awake");
-
         enemyGlobalTargetObjectID = GlobalObjectId.GetGlobalObjectIdSlow(
-            this.gameObject.transform.parent.gameObject).targetObjectId;
+            gameObject.transform.parent.gameObject).targetObjectId;
 
-        for (int i = 0; i < enemyPersistenceSO.enemyPersistenceDatas.Count; i++)
+        enemyPersistenceData = MasterSingleton.Instance.EnemyPersistenceManager.
+            GetDataFromID(enemyGlobalTargetObjectID);
+
+        // if enemy is dead, update itemsToDrop with whatever is stored in enemyPersistenceData
+        if (enemyPersistenceData != null)
         {
-            if (enemyPersistenceSO.enemyPersistenceDatas[i].globalTargetObjectID ==
-                enemyGlobalTargetObjectID)
+            if (enemyPersistenceData.dead)
             {
-                // don't want to call this if enemy just died
-                if (enemyPersistenceSO.enemyPersistenceDatas[i].dead)
+                itemsToDrop.Clear();
+
+                foreach (ItemSO item in enemyPersistenceData.dropLoot)
                 {
-                    Debug.Log("dead");
-
-                    itemsToDrop.Clear();
-
-                    foreach (ItemSO item in enemyPersistenceSO.enemyPersistenceDatas[i].dropLoot)
-                    {
-                        itemsToDrop.Add(item);
-                    }
+                    itemsToDrop.Add(item);
                 }
             }
         }
@@ -46,46 +42,24 @@ public class DropLoot : MonoBehaviour
     {
         Debug.Log("SetUpEnemyPersistenceDropLoot called");
 
-        for (int i = 0; i < enemyPersistenceSO.enemyPersistenceDatas.Count; i++)
+        if (enemyPersistenceData != null)
         {
-            if (enemyPersistenceSO.enemyPersistenceDatas[i].globalTargetObjectID ==
-            enemyGlobalTargetObjectID)
-            {
-                enemyPersistenceSO.enemyPersistenceDatas[i].dropLoot.Clear();
+            enemyPersistenceData.dropLoot.Clear();
 
-                foreach (ItemSO item in itemsToDrop)
-                {
-                    enemyPersistenceSO.enemyPersistenceDatas[i].dropLoot.Add(item);
-                }
+            foreach (ItemSO item in itemsToDrop)
+            {
+                enemyPersistenceData.dropLoot.Add(item);
             }
         }
     }
-
-/*    public void AddItemToEnemyPersistenceSO(Item item)
-    {
-        //itemsToDrop.Add(item);
-
-        for (int i = 0; i < enemyPersistenceSO.enemyPersistenceDatas.Count; i++)
-        {
-            if (enemyPersistenceSO.enemyPersistenceDatas[i].globalTargetObjectID ==
-                enemyGlobalTargetObjectID)
-            {
-                enemyPersistenceSO.enemyPersistenceDatas[i].dropLoot.Add(item);
-            }
-        }
-    }*/
 
     public void RemoveItemFromDropLootAndEnemyPersistenceSO(ItemSO item)
     {
         itemsToDrop.Remove(item);
 
-        for (int i = 0; i < enemyPersistenceSO.enemyPersistenceDatas.Count; i++)
+        if (enemyPersistenceData != null)
         {
-            if (enemyPersistenceSO.enemyPersistenceDatas[i].globalTargetObjectID ==
-                enemyGlobalTargetObjectID)
-            {
-                enemyPersistenceSO.enemyPersistenceDatas[i].dropLoot.Remove(item);
-            }
+            enemyPersistenceData.dropLoot.Remove(item);
         }
     }
 }

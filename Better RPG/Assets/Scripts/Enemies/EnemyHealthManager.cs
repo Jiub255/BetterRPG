@@ -19,50 +19,55 @@ public class EnemyHealthManager : MonoBehaviour , IDamageable<int>, IHealable<in
 
     public bool invulnerable = false;
 
-    // enemy health persistence
-    [SerializeField]
-    private EnemyPersistenceSO enemyPersistenceSO;
-
     [SerializeField]
     private DropLoot dropLoot;
 
     private ulong id;
 
+    private EnemyPersistenceData enemyPersistenceData;
+
     private void Awake()
     {
-        id = GlobalObjectId.GetGlobalObjectIdSlow(this.gameObject).targetObjectId;
+        id = GlobalObjectId.GetGlobalObjectIdSlow(gameObject).targetObjectId;
 
-        bool onList = false;
+        enemyPersistenceData = MasterSingleton.Instance.EnemyPersistenceManager.GetDataFromID(id);
 
-        for (int i = 0; i < enemyPersistenceSO.enemyPersistenceDatas.Count; i++)
+        if (enemyPersistenceData != null)
         {
-            // if the ID is on the list, set health to the int value stored on the SO
-            if (enemyPersistenceSO.enemyPersistenceDatas[i].globalTargetObjectID == id)
+            Debug.Log("enemyPersistenceData NOT null");
+
+            // Initialize enemy data to manager data
+            currentHealth = enemyPersistenceData.currentHealth;
+            if (currentHealth <= 0)
             {
-                onList = true;
-                currentHealth = enemyPersistenceSO.enemyPersistenceDatas[i].currentHealth;
-                if (currentHealth <= 0)
+                if (enemyPersistenceData.dropLoot.Count == 0)
                 {
-                    if (enemyPersistenceSO.enemyPersistenceDatas[i].dropLoot.Count == 0)
-                    {
-                        gameObject.SetActive(false);
-                    }
-                    else
-                    {
-                        DeactivateAliveActivateDead();
-                    }
+                    gameObject.SetActive(false);
+                }
+                else
+                {
+                    DeactivateAliveActivateDead();
                 }
             }
         }
-
-        if (onList == false)
+        else
         {
+            Debug.Log("enemyPersistenceData null");
+
+            // initialize manager data to enemy data
             EnemyPersistenceData blank = new EnemyPersistenceData();
 
             blank.globalTargetObjectID = id;
             blank.currentHealth = currentHealth;
 
-            enemyPersistenceSO.enemyPersistenceDatas.Add(blank);
+            foreach (ItemSO item in dropLoot.itemsToDrop)
+            {
+                blank.dropLoot.Add(item);
+            }
+
+            enemyPersistenceData = blank;
+
+            MasterSingleton.Instance.EnemyPersistenceManager.enemyPersistenceDatas.Add(blank);
         }
     }
 
@@ -71,27 +76,20 @@ public class EnemyHealthManager : MonoBehaviour , IDamageable<int>, IHealable<in
         if (!invulnerable)
         {
             currentHealth -= amountAfterDefense(amount);
-            UpdateULongIntList(currentHealth);
+            UpdatePersistenceDataHealth(currentHealth);
 
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                UpdateULongIntList(currentHealth);
+                UpdatePersistenceDataHealth(currentHealth);
                 Die();
             }
         }
     }
 
-    private void UpdateULongIntList(int newCurrentHealth)
+    private void UpdatePersistenceDataHealth(int newCurrentHealth)
     {
-        for (int i = 0; i < enemyPersistenceSO.enemyPersistenceDatas.Count; i++)
-        {
-            // if the ID is on the list, set health to the int value stored on the SO
-            if (enemyPersistenceSO.enemyPersistenceDatas[i].globalTargetObjectID == id)
-            {
-                enemyPersistenceSO.enemyPersistenceDatas[i].currentHealth = newCurrentHealth;
-            }
-        }
+        enemyPersistenceData.currentHealth = newCurrentHealth;
     }
 
     int amountAfterDefense(int amount)
@@ -105,19 +103,19 @@ public class EnemyHealthManager : MonoBehaviour , IDamageable<int>, IHealable<in
     public void Heal(int amount)
     {
         currentHealth += amount;
-        UpdateULongIntList(currentHealth);
+        UpdatePersistenceDataHealth(currentHealth);
 
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
-            UpdateULongIntList(currentHealth);
+            UpdatePersistenceDataHealth(currentHealth);
         }
     }
 
     public void MaxHeal()
     {
         currentHealth = maxHealth;
-        UpdateULongIntList(currentHealth);
+        UpdatePersistenceDataHealth(currentHealth);
     }
 
     public void Die()
@@ -152,14 +150,8 @@ public class EnemyHealthManager : MonoBehaviour , IDamageable<int>, IHealable<in
     {
         yield return new WaitForEndOfFrame();
 
-        for (int i = 0; i < enemyPersistenceSO.enemyPersistenceDatas.Count; i++)
-        {
-            // if the ID is on the list
-            if (enemyPersistenceSO.enemyPersistenceDatas[i].globalTargetObjectID == id)
-            {
-                enemyPersistenceSO.enemyPersistenceDatas[i].dead = true;
-            }
-        }
+        enemyPersistenceData.dead = true;
+
         Destroy(transform.GetComponent<EnemyHealthManager>());
     }
 }

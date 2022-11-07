@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 [System.Serializable]
 public class GameData
 {
@@ -5,12 +7,16 @@ public class GameData
     public long lastUpdated;
 
     // Getting from playerHealthSO.
-    public int currentHealth; 
+    public int currentHealth;
+
+    // From EnemyPersistenceManager
+    public List<EnemyPersistenceData> enemyPersistenceDatas;
 
     // Put new game initialization values in here
     public GameData()
     {
         this.currentHealth = 1;
+        enemyPersistenceDatas = new List<EnemyPersistenceData>();
     }
 
     public int GetPercentageComplete()
