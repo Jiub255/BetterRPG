@@ -64,7 +64,7 @@ public class EscapeMenuUI : MonoBehaviour
         }
 
         EscapeMenuPanel.SetActive(true);
-        InputManager.ToggleActionMap(InputManager.inputActions.EscapeMenu);
+        InputManager.ChangeActionMap(InputManager.inputActions.EscapeMenu);
     }
 
     public void CloseEscapeMenu(InputAction.CallbackContext context)
@@ -78,13 +78,13 @@ public class EscapeMenuUI : MonoBehaviour
         {
             // open inv menu, stay paused
             inventoryMenuUI.ToggleInventoryPanels(true);
-            InputManager.ToggleActionMap(InputManager.inputActions.UI);
+            InputManager.ChangeActionMap(InputManager.inputActions.UI);
         }
         else
         {
             HUDPanel.SetActive(true);
             OnTogglePause?.Invoke(false);
-            InputManager.ToggleActionMap(InputManager.inputActions.Player);
+            InputManager.ChangeActionMap(InputManager.inputActions.Player);
         }
         
         EscapeMenuPanel.SetActive(false);

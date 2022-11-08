@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EquipmentManager : MonoBehaviour
+public class EquipmentManager : MonoBehaviour, IDataPersistence
 {
     public EquipmentSO equipmentSO;
 
@@ -18,10 +18,6 @@ public class EquipmentManager : MonoBehaviour
 
         foreach (EquipmentItem equipmentItem in equipmentSO.currentEquipment)
         {
-            // StatManager will listen for this, to add modifiers from new item
-            // is this necessary? or will it double add modifiers?
-            //onEquip.Raise(equipmentItem);
-
             // Change weapon sprite on player
             if (equipmentItem.equipmentTypeSO == weaponEquipmentType)
                 spriteRenderer.sprite = equipmentItem.itemIconSprite;
@@ -54,8 +50,7 @@ public class EquipmentManager : MonoBehaviour
         onEquip.Raise(newItem);
 
         // Change weapon sprite on player
-        if (newItem.equipmentTypeSO == weaponEquipmentType)
-            spriteRenderer.sprite = newItem.itemIconSprite;
+        ChangeWeaponSprite(newItem);
     }
 
     // have unequip button in EquipUI call this function
@@ -72,12 +67,48 @@ public class EquipmentManager : MonoBehaviour
         onUnequip.Raise(itemToUnequip);
 
         // Change weapon sprite on player
-        if (itemToUnequip.equipmentTypeSO == weaponEquipmentType)
+        ChangeWeaponSprite(null);
+    }
+
+    public void ChangeWeaponSprite(EquipmentItem equipmentItem)
+    {
+        if (equipmentItem == null)
+        {
             spriteRenderer.sprite = null;
+            return;
+        }
+
+        if (equipmentItem.equipmentTypeSO == weaponEquipmentType)
+        {
+            spriteRenderer.sprite = equipmentItem.itemIconSprite;
+        }
     }
 
     public void ClearEquipment()
     {
         equipmentSO.currentEquipment.Clear();
+    }
+
+    public void LoadData(GameData data)
+    {
+        equipmentSO.currentEquipment.Clear();
+
+        foreach (EquipmentItem equipmentItem in data.currentEquipment)
+        {
+            equipmentSO.currentEquipment.Add(equipmentItem);
+            ChangeWeaponSprite(equipmentItem);
+        }
+
+        onEquipChanged.Raise();
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.currentEquipment.Clear();
+
+        foreach (EquipmentItem equipmentItem in equipmentSO.currentEquipment)
+        {
+            data.currentEquipment.Add(equipmentItem);
+        }
     }
 }

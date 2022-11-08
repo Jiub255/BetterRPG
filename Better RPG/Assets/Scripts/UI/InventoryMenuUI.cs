@@ -49,7 +49,7 @@ public class InventoryMenuUI : MonoBehaviour
         ToggleInventoryPanels(true);
         HUDPanel.SetActive(false);
         OnTogglePause?.Invoke(true);
-        InputManager.ToggleActionMap(InputManager.inputActions.UI);
+        InputManager.ChangeActionMap(InputManager.inputActions.UI);
         InputManager.invMenuOpen = true;
 
         onItemChanged.Raise();
@@ -62,7 +62,7 @@ public class InventoryMenuUI : MonoBehaviour
         ToggleInventoryPanels(false);
         HUDPanel.SetActive(true);
         OnTogglePause?.Invoke(false);
-        InputManager.ToggleActionMap(InputManager.inputActions.Player);
+        InputManager.ChangeActionMap(InputManager.inputActions.Player);
         InputManager.invMenuOpen = false;
     }
 

@@ -52,7 +52,7 @@ public class StatsUI : MonoBehaviour
     public void RaiseStat(StatSO stat)
     {
         onRaiseStat?.Invoke(stat);
-        statManager.CalculateMods();
+        statManager.CalculateStatModifiers();
     }
 
     public void ToggleLevelUpButtons(bool enable)

@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SaveSlotsMenu : Menu
@@ -22,6 +20,8 @@ public class SaveSlotsMenu : Menu
 
     private bool isLoadingGame = false;
 
+    private string currentSceneName = "FirstScene";
+
     private void Awake()
     {
         saveSlots = GetComponentsInChildren<SaveSlot>();
@@ -35,8 +35,10 @@ public class SaveSlotsMenu : Menu
         // Case: loading game
         if (isLoadingGame)
         {
-            DataPersistenceManager.instance.ChangeSelectedProfileID(saveSlot.GetProfileID());
-            SaveGameAndLoadScene();
+            currentSceneName = DataPersistenceManager.instance.ChangeSelectedProfileID(
+                saveSlot.GetProfileID()).currentSceneName;
+
+            SaveGameAndLoadScene(currentSceneName);
         }
         // Case: new game, but the save slot has data
         else if (saveSlot.hasData)
@@ -47,16 +49,16 @@ public class SaveSlotsMenu : Menu
                 // Function to execute if we select "yes"
                 () =>
                 {
-                    Debug.Log("yes new clear clicked");
                     DataPersistenceManager.instance.ChangeSelectedProfileID(
                         saveSlot.GetProfileID());
-                    DataPersistenceManager.instance.NewGame();
-                    SaveGameAndLoadScene();
+
+                    currentSceneName = DataPersistenceManager.instance.NewGame().currentSceneName;
+
+                    SaveGameAndLoadScene(currentSceneName);
                 },
                 // Function to execute if we select "cancel"
                 () =>
                 {
-                    Debug.Log("cancel new clear clicked");
                     ActivateMenu(isLoadingGame);
                 }
             );
@@ -65,32 +67,24 @@ public class SaveSlotsMenu : Menu
         else
         {
             DataPersistenceManager.instance.ChangeSelectedProfileID(saveSlot.GetProfileID());
-            DataPersistenceManager.instance.NewGame();
-            SaveGameAndLoadScene();
+
+            currentSceneName = DataPersistenceManager.instance.NewGame().currentSceneName;
+
+            SaveGameAndLoadScene(currentSceneName);
         }
-
-/*        // Update the selected profile ID to be used for data persistence
-        DataPersistenceManager.instance.ChangeSelectedProfileID(saveSlot.GetProfileID());
-
-        if (!isLoadingGame)
-        {
-            // Create a new game, which will initialize our data to a clean slate
-            DataPersistenceManager.instance.NewGame();
-        }*/
-
-
     }
 
-    private void SaveGameAndLoadScene()
+    private void SaveGameAndLoadScene(string sceneName)
     {
         // Don't think I want to do persistence between scenes this way
-        // Using SO's instead
+        // Using SO's and singleton Managers instead
+
         // Save the game anytime before loading a new scene
         //DataPersistenceManager.instance.SaveGame();
 
         // Load the scene
-        // Could load whichever scene the last save was in, instead of always FirstScene
-        MasterSingleton.Instance.SceneTransitionManager.ChangeScene("FirstScene", Vector2.zero);
+        MasterSingleton.Instance.SceneTransitionManager.ChangeScene(
+            sceneName, Vector2.zero, true);
     }
 
     public void OnClearClicked(SaveSlot saveSlot)
@@ -102,15 +96,12 @@ public class SaveSlotsMenu : Menu
             // Function to execute if we select "yes"
             () =>
             {
-                Debug.Log("yes clear clicked");
                 DataPersistenceManager.instance.DeleteProfileData(saveSlot.GetProfileID());
                 ActivateMenu(isLoadingGame);
             },
             // Function to execute if we select "cancel"
             () =>
             {
-                // Clearing save data even when clicking cancel
-                Debug.Log("cancel clear clicked");
                 ActivateMenu(isLoadingGame);
             }
         );

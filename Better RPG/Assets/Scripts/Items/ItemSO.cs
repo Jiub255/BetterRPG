@@ -23,4 +23,6 @@ public class ItemSO : ScriptableObject
         // InvManager listens for this, removes from InvSO
         onRemoveItem.Raise(this);
     }
+
+    // Have Buy/Sell methods in here?
 }

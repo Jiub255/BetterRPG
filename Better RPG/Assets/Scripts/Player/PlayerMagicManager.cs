@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMagicManager : MonoBehaviour
+public class PlayerMagicManager : MonoBehaviour, IDataPersistence
 {
     public HealthSO magic;
 
@@ -103,5 +103,17 @@ public class PlayerMagicManager : MonoBehaviour
             onMagicChanged.Raise();
             return true;
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        magic.maxValue = data.maxMagic;
+        magic.currentValue = data.currentMagic;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.maxMagic = magic.maxValue;
+        data.currentMagic = magic.currentValue;
     }
 }

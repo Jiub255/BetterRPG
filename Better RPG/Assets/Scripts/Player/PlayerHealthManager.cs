@@ -213,15 +213,16 @@ public class PlayerHealthManager : MonoBehaviour ,
 
     public void LoadData(GameData data)
     {
+        health.maxValue = data.maxHealth;
         health.currentValue = data.currentHealth;
-        onHealthChanged.Raise();
 
-        Debug.Log("Loaded currentHealth");
+        // Updates UI
+        onHealthChanged.Raise();
     }
 
     public void SaveData(GameData data)
     {
+        data.maxHealth = health.maxValue;
         data.currentHealth = health.currentValue;
-        Debug.Log("Saved currentHealth");
     }
 }

@@ -20,7 +20,7 @@ public class DropLoot : MonoBehaviour
         enemyGlobalTargetObjectID = GlobalObjectId.GetGlobalObjectIdSlow(
             gameObject.transform.parent.gameObject).targetObjectId;
 
-        enemyPersistenceData = MasterSingleton.Instance.EnemyPersistenceManager.
+        enemyPersistenceData = MasterSingleton.Instance.WorldPersistenceManager.
             GetDataFromID(enemyGlobalTargetObjectID);
 
         // if enemy is dead, update itemsToDrop with whatever is stored in enemyPersistenceData

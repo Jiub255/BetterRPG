@@ -4,9 +4,31 @@ public class AAAAAAAAAA
     TO DO
 -------------
 
-    TRYING THIS OUT. DONT DO OTHER STUFF UNTIL YOU KNOW IF YOU WANT IT THIS WAY
-    Get rid of AlwaysOpenScene and just use singletons for different game managers.
-        DON'T MAKE PLAYER A SINGLETON!
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                                PUT
+                                ON
+                                NO
+                                HAY
+                                TOS
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    DO FIRST
+        Finish shop menu stuff
+            Might have to make new ShopInventorySlot classes/prefabs? 
+                So that they can call Buy or Sell from ShopInventoryManager
+            Have confirmation popup for buying/selling?
+            Have amount popup for stacks of items
+            Get shopUI to setup initially
+                How to get shopInventorySO reference?
+            Fix problems with inv not showing in shopUI
+            Fix controls not getting reenabled correctly
+
+        Set up new input system and action maps
+        Have a dialogue action map that you switch to instead of disabling swing and stuff
+        Make sure only using one action map at a time
+
+
+
     Fix all references to player using onPlayerInstantiated.
         Use onSceneLoaded instead?
     Make a SceneTransitionManager singleton?
@@ -15,27 +37,35 @@ public class AAAAAAAAAA
         {
             StartCoroutine(ChangeSceneCO(sceneName, startingPosition);
         }
-
         Then sceneTransition and playerHealthManager.Die() can both call on it.
         And start/load game from main menu can call on it.
         
     Save system
         FIX:
-            Make enemy persistence SO into a singleton monobehaviour
-                Easier to access for saving/loading
-                Otherwise would do it on multiple instances from enemyhealthmanager or similar
             Able to move and see player over main menu
                 Disable player in main menu and set action map to UI
+                Current "fix" is disabling player and melee spriterenderers,
+                    then enabling them on scene change
             Make main menu work with UI action map
             Do something about selected buttons, maybe get rid of it? Just use mouse?
                 Or make it look better at least and have mouse change currently selected button
                     while hovering over.
         Using "How to make a Save & Load System in Unity | 2022" (Trever Mock)
             youtube video as a base for the save system.
+        Save options and key rebindings in PlayerPrefs?
+            Or save them each separately in each save slot
+            Will playerprefs make options changes universal across all saves?
+        Add separate autosave slot for each normal save slot
+            Same with a quicksave slot
         Add more stuff to the system now that it works.
-            All player stats
-            Enemy persistence data
-            Objects picked up data (Need to make this SO)
+            Player facing direction
+            Current Spell
+            Spell "Inventory" (Once it's set up)
+            Objects picked up data (Need to make this Manager)
+            Objects broken/ environment changed stuff (Need this manager still too)
+            Dialogue stuff (NPCs talked to, choices made, whatever makes sense)
+            Merchant inventories
+            Quest stuff once it's added to the game
             Plenty more
         Use interface(s) to find all saveable data in the game.
             Put IDataPersistence on all scripts you want to save data from.
@@ -89,11 +119,31 @@ public class AAAAAAAAAA
         Fix Scene Transition.
 
     Game Management
+        Key rebinding and options menu
+            Use "How to use NEW Input System Package! (Unity Tutorial - Keyboard, Mouse, Touch, Gamepad)"
+                video on youtube
+        Achievements?
+        Make a gameplay stats menu
+            Keep track of fucking everything
+                Number of each enemy killed, total kills
+                Gameplay time
+                Money collected/spent
+                    Substats of how much spent on equipment, items, magic stuff, etc...
+                Number of each object broken
+                Weird shit
+                    Number of times you've pet a cat or dog
+        Make a game timer, just to have
+            pause timer when in main menu/options?
+            Have a separate timer including all in game time? never pauses
+        Would it be possible to have a singleton "signal manager"? Like you could call
+            any kind of signal to any other script through it?
+            Not sure, maybe not. 
+            Would the singleton have to keep references to all other scripts to do so?
+            And what about multiple instances of a single script?
+            Seems difficult if not impossible.
 
     Dialogue
-        FIX:
-            Player slows down a little when entering interactable zone around NPCs
-                Probably getting set to attacking so the movement slows, why?
+        Set up merchant system
         
     Magic 
         Move spells to separate object? an "in every scene" prefab?

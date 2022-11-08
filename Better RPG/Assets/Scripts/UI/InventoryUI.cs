@@ -5,25 +5,14 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     private InventorySO inventorySO;
 
-    // inv slot prefab
-    [SerializeField]
-    private GameObject inventorySlot;
-
     [SerializeField]
     private Transform inventoryContent;
-
-    //private ObjectPool objectPool;
 
     private void Start()
     {
         UpdateUI();
         UpdateUI();
     }
-
-/*    public void GetPlayerReference(Transform playerTransform)
-    {
-        objectPool = playerTransform.GetComponent<ObjectPool>();
-    }*/
 
     public void UpdateUI()
     {

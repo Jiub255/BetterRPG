@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Stat SO", menuName = "Stats/Stat")]
 public class StatSO : ScriptableObject
 {
-    [SerializeField] int baseValue;
+    public int baseValue = 1;
     [SerializeField] List<int> modifiers = new List<int>();
 
     // just to see in the inspector, var has no real use

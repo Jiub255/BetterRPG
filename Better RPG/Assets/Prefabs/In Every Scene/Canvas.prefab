@@ -10332,12 +10332,6 @@ GameObject:
   - component: {fileID: 8042634751891204185}
   - component: {fileID: 8042634751891204190}
   - component: {fileID: 8042634751891204191}
-  - component: {fileID: 8042634751891204180}
-  - component: {fileID: 8042634751891204181}
-  - component: {fileID: 681176351477093847}
-  - component: {fileID: 4949600694394398611}
-  - component: {fileID: 3496163424899022970}
-  - component: {fileID: 8836010630245303473}
   - component: {fileID: 2377162805611589305}
   - component: {fileID: 7423456236588530361}
   - component: {fileID: 4110209733843626983}
@@ -10346,19 +10340,26 @@ GameObject:
   - component: {fileID: 8042634751891204189}
   - component: {fileID: 181174946984386108}
   - component: {fileID: 8042634751891204178}
+  - component: {fileID: 8042634751891204180}
   - component: {fileID: 8042634751891204179}
+  - component: {fileID: 8042634751891204181}
   - component: {fileID: 8042634751891204176}
+  - component: {fileID: 681176351477093847}
+  - component: {fileID: 4949600694394398611}
+  - component: {fileID: 2555628157412987677}
   - component: {fileID: 2018780774937273307}
   - component: {fileID: 2793994381684804551}
+  - component: {fileID: 3496163424899022970}
   - component: {fileID: 686786883141433735}
+  - component: {fileID: 8836010630245303473}
+  - component: {fileID: 5051414857092738125}
+  - component: {fileID: 4563672463661470186}
   - component: {fileID: 7265062551969165721}
   - component: {fileID: 1919299126820520052}
   - component: {fileID: 7966133966134274534}
   - component: {fileID: 7710110068922178737}
   - component: {fileID: 714327848050775505}
-  - component: {fileID: 2555628157412987677}
-  - component: {fileID: 4563672463661470186}
-  - component: {fileID: 5051414857092738125}
+  - component: {fileID: 3498187001173025312}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -10456,198 +10457,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8042634751891204180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8042634751891204170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 8987954ea7ede92469fa5a00bde0898a, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8042634751891204178}
-        m_TargetAssemblyTypeName: InventoryUI2, Assembly-CSharp
-        m_MethodName: UpdateUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &8042634751891204181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8042634751891204170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: d4d60f03ac5dd5a4e819a7fe66e1e43b, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8042634751891204179}
-        m_TargetAssemblyTypeName: EquipmentUI, Assembly-CSharp
-        m_MethodName: UpdateUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &681176351477093847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8042634751891204170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 20a0d3ff2e3bcc048ba604905f7d231e, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8042634751891204176}
-        m_TargetAssemblyTypeName: StatsUI, Assembly-CSharp
-        m_MethodName: UpdateStats
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &4949600694394398611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8042634751891204170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 78a0332011e29724f94e747e0d9436df, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8042634751891204176}
-        m_TargetAssemblyTypeName: StatsUI, Assembly-CSharp
-        m_MethodName: UpdateStats
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2793994381684804551}
-        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
-        m_MethodName: UpdateHUD
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &3496163424899022970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8042634751891204170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: aacf59d962765b047b53552576bea16c, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2793994381684804551}
-        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
-        m_MethodName: ToggleHUD
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &8836010630245303473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8042634751891204170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: d0d50adb9de23f146962d2cc62046550, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 686786883141433735}
-        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
-        m_MethodName: EnableCanvas
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2793994381684804551}
-        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
-        m_MethodName: ToggleHUD
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2377162805611589305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10866,8 +10675,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySO: {fileID: 11400000, guid: 16c8a778a690e624e94a02c7f504289b, type: 2}
-  inventorySlot: {fileID: 6409379531065465126, guid: 0424dd3b931438d48ae29ce37ee5bb07, type: 3}
   inventoryContent: {fileID: 2470041355655445240}
+--- !u!114 &8042634751891204180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042634751891204170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 8987954ea7ede92469fa5a00bde0898a, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8042634751891204178}
+        m_TargetAssemblyTypeName: InventoryUI2, Assembly-CSharp
+        m_MethodName: UpdateUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8042634751891204179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10882,6 +10718,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentParent: {fileID: 8042634750238819646}
   equipmentSO: {fileID: 11400000, guid: 609589a58ad0f6d4183850e793b94ba0, type: 2}
+--- !u!114 &8042634751891204181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042634751891204170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: d4d60f03ac5dd5a4e819a7fe66e1e43b, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8042634751891204179}
+        m_TargetAssemblyTypeName: EquipmentUI, Assembly-CSharp
+        m_MethodName: UpdateUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8042634751891204176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10909,6 +10773,102 @@ MonoBehaviour:
   levelUpButtons:
   - {fileID: 9019434133970306425}
   - {fileID: 9217276647044054854}
+--- !u!114 &681176351477093847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042634751891204170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 20a0d3ff2e3bcc048ba604905f7d231e, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8042634751891204176}
+        m_TargetAssemblyTypeName: StatsUI, Assembly-CSharp
+        m_MethodName: UpdateStats
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4949600694394398611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042634751891204170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 78a0332011e29724f94e747e0d9436df, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8042634751891204176}
+        m_TargetAssemblyTypeName: StatsUI, Assembly-CSharp
+        m_MethodName: UpdateStats
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2793994381684804551}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: UpdateHUD
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2555628157412987677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042634751891204170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 7c0a4cdf2402d504f83ea324d9069949, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8042634751891204176}
+        m_TargetAssemblyTypeName: StatsUI, Assembly-CSharp
+        m_MethodName: ToggleLevelUpButtons
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &2018780774937273307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10940,6 +10900,34 @@ MonoBehaviour:
   playerMagicSO: {fileID: 11400000, guid: 6d79a91baeedc054891c8e70877d59ab, type: 2}
   magicBarImage: {fileID: 1018130577092767246}
   magicBarText: {fileID: 3428717207213001973}
+--- !u!114 &3496163424899022970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042634751891204170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: aacf59d962765b047b53552576bea16c, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2793994381684804551}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: ToggleHUD
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &686786883141433735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10960,6 +10948,106 @@ MonoBehaviour:
   responseContent: {fileID: 6001799223034003564}
   dialogueScroll: {fileID: 148204873039910715}
   onDialogueOver: {fileID: 11400000, guid: aacf59d962765b047b53552576bea16c, type: 2}
+--- !u!114 &8836010630245303473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042634751891204170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: d0d50adb9de23f146962d2cc62046550, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 686786883141433735}
+        m_TargetAssemblyTypeName: DialogueController, Assembly-CSharp
+        m_MethodName: EnableCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2793994381684804551}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: ToggleHUD
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5051414857092738125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042634751891204170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38fd830724b975648b370e741108e71f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 7513398809991933398}
+  dialoguePrefab: {fileID: 839199546410974291, guid: 8b8d4eb9e2c1f1543881b3bce46ea733, type: 3}
+  responsePrefab: {fileID: 887916717032660122, guid: 859f5a48893de8e4aa46766f594d1b59, type: 3}
+  dialogueValue: {fileID: 11400000, guid: c083e5b769569654a98e5a43e16336ea, type: 2}
+  dialogueContent: {fileID: 8065695902620505408}
+  responseContent: {fileID: 6001799223034003564}
+  dialogueScroll: {fileID: 148204873039910715}
+  onDialogueOver: {fileID: 11400000, guid: aacf59d962765b047b53552576bea16c, type: 2}
+--- !u!114 &4563672463661470186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042634751891204170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: ce8d4717dc8200149838a2567a30617e, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5051414857092738125}
+        m_TargetAssemblyTypeName: DialogueControllerServices, Assembly-CSharp
+        m_MethodName: EnableCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2793994381684804551}
+        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
+        m_MethodName: ToggleHUD
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7265062551969165721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11075,7 +11163,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2555628157412987677
+--- !u!114 &3498187001173025312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11084,85 +11172,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8042634751891204170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 09bf7088bab87c2469ee344ca1ee6beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 7c0a4cdf2402d504f83ea324d9069949, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8042634751891204176}
-        m_TargetAssemblyTypeName: StatsUI, Assembly-CSharp
-        m_MethodName: ToggleLevelUpButtons
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
---- !u!114 &4563672463661470186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8042634751891204170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd5263adb667cb4b81fcfc3c1dbb0c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: ce8d4717dc8200149838a2567a30617e, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5051414857092738125}
-        m_TargetAssemblyTypeName: DialogueControllerServices, Assembly-CSharp
-        m_MethodName: EnableCanvas
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2793994381684804551}
-        m_TargetAssemblyTypeName: HUDManager, Assembly-CSharp
-        m_MethodName: ToggleHUD
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5051414857092738125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8042634751891204170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38fd830724b975648b370e741108e71f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialoguePanel: {fileID: 7513398809991933398}
-  dialoguePrefab: {fileID: 839199546410974291, guid: 8b8d4eb9e2c1f1543881b3bce46ea733, type: 3}
-  responsePrefab: {fileID: 887916717032660122, guid: 859f5a48893de8e4aa46766f594d1b59, type: 3}
-  dialogueValue: {fileID: 11400000, guid: c083e5b769569654a98e5a43e16336ea, type: 2}
-  dialogueContent: {fileID: 8065695902620505408}
-  responseContent: {fileID: 6001799223034003564}
-  dialogueScroll: {fileID: 148204873039910715}
-  onDialogueOver: {fileID: 11400000, guid: aacf59d962765b047b53552576bea16c, type: 2}
+  shopPanel: {fileID: 8046825772612822719}
 --- !u!1 &8042634751904153123
 GameObject:
   m_ObjectHideFlags: 0

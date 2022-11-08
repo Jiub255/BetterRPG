@@ -10,7 +10,7 @@ public class MasterSingleton : MonoBehaviour
     public SceneMusic SceneMusic { get; private set; }
     public ObjectPool ObjectPool { get; private set; }
     public SceneTransitionManager SceneTransitionManager { get; private set; }
-    public EnemyPersistenceManager EnemyPersistenceManager { get; private set; }
+    public WorldPersistenceManager WorldPersistenceManager { get; private set; }
 
     public GameObject Canvas { get; private set; }
 
@@ -32,7 +32,7 @@ public class MasterSingleton : MonoBehaviour
         SceneMusic = GetComponentInChildren<SceneMusic>();
         ObjectPool = GetComponentInChildren<ObjectPool>();
         SceneTransitionManager = GetComponentInChildren<SceneTransitionManager>();
-        EnemyPersistenceManager = GetComponentInChildren<EnemyPersistenceManager>();
+        WorldPersistenceManager = GetComponentInChildren<WorldPersistenceManager>();
 
         DontDestroyOnLoad(gameObject);
     }

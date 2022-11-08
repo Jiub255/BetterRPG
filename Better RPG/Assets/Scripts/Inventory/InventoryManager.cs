@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class InventoryManager : MonoBehaviour
+public abstract class InventoryManager : MonoBehaviour, IDataPersistence
 {
     public InventorySO playerInventorySO;
 
@@ -25,5 +25,28 @@ public abstract class InventoryManager : MonoBehaviour
     public void ClearInventory(InventorySO inventory)
     {
         inventory.inventoryWithAmountsList.Clear();
+    }
+
+    public void LoadData(GameData data)
+    {
+        playerInventorySO.inventoryWithAmountsList.Clear();
+
+        foreach (ItemAmount itemAmount in data.inventoryList)
+        {
+            playerInventorySO.inventoryWithAmountsList.Add(itemAmount);
+        }
+
+        // Update invUI?
+        onItemChanged.Raise();
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.inventoryList.Clear();
+
+        foreach (ItemAmount itemAmount in playerInventorySO.inventoryWithAmountsList)
+        {
+            data.inventoryList.Add(itemAmount);
+        }
     }
 }

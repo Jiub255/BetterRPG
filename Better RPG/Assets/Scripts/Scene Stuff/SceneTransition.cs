@@ -16,7 +16,7 @@ public class SceneTransition : MonoBehaviour
             {
                 //StartCoroutine(ChangeSceneCO(/*collision, */sceneToLoad));
                 MasterSingleton.Instance.SceneTransitionManager.ChangeScene(
-                    sceneToLoad, startingPosition);
+                    sceneToLoad, startingPosition, false);
             }
         }
     }

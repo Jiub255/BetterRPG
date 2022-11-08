@@ -13,6 +13,10 @@ public class PlayerMelee : MonoBehaviour
     private float attackTimerLength = 0.4f;
     private float attackTimer;
     public bool swingActive { get; private set; } = true;
+    // Using separate bool here because swingActive affects movement speed,
+    // and it was slowing the player for a second whenever getting near signs/NPCs.
+    // Can probably think of a better fix, this'll do for now.
+    public bool swingEnabled { get; private set; } = true;
 
     // sound effect
     [SerializeField]
@@ -63,6 +67,7 @@ public class PlayerMelee : MonoBehaviour
             if (attackTimer <= 0)
             {
                 attackTimer = attackTimerLength;
+                swingActive = true;
                 EnableSwing();
             }
         }
@@ -75,26 +80,27 @@ public class PlayerMelee : MonoBehaviour
         onPlayClip.Raise(swingClip);
 
         attackTimer = attackTimerLength;
+        swingActive = false;
         DisableSwing();
     }
 
     public void EnableSwing()
     {
+        swingEnabled = true;
         swing.performed += Swing;
-        swingActive = true;
     }
 
     public void DisableSwing()
     {
+        swingEnabled = false;
         swing.performed -= Swing;
-        swingActive = false;
     }
 
     // listens for dontAttack signal
     // called when near signs, maybe other things
     public void ToggleSwing()
     {
-        if (swingActive)
+        if (swingEnabled)
             DisableSwing();
         else
             EnableSwing();

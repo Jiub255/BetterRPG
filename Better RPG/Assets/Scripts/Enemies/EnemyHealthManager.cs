@@ -30,7 +30,7 @@ public class EnemyHealthManager : MonoBehaviour , IDamageable<int>, IHealable<in
     {
         id = GlobalObjectId.GetGlobalObjectIdSlow(gameObject).targetObjectId;
 
-        enemyPersistenceData = MasterSingleton.Instance.EnemyPersistenceManager.GetDataFromID(id);
+        enemyPersistenceData = MasterSingleton.Instance.WorldPersistenceManager.GetDataFromID(id);
 
         if (enemyPersistenceData != null)
         {
@@ -67,7 +67,7 @@ public class EnemyHealthManager : MonoBehaviour , IDamageable<int>, IHealable<in
 
             enemyPersistenceData = blank;
 
-            MasterSingleton.Instance.EnemyPersistenceManager.enemyPersistenceDatas.Add(blank);
+            MasterSingleton.Instance.WorldPersistenceManager.enemyPersistenceDatas.Add(blank);
         }
     }
 

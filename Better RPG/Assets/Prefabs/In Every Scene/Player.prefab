@@ -690,9 +690,9 @@ MonoBehaviour:
   sceneNameSO: {fileID: 11400000, guid: 9fb7f93360fc44a46926079d7549ad21, type: 2}
   invulnerable: 0
   onHealthChanged: {fileID: 11400000, guid: 78a0332011e29724f94e747e0d9436df, type: 2}
+  onNewSceneLoaded: {fileID: 11400000, guid: c482a24ee626aec43b2ffc3bbfa991cb, type: 2}
   timerLength: 0.03
   delay: 0.5
-  onNewSceneLoaded: {fileID: 11400000, guid: c482a24ee626aec43b2ffc3bbfa991cb, type: 2}
 --- !u!114 &5598120536260541508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,8 +755,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0dd51ce946ff14882567034f63f4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Experience: {fileID: 11400000, guid: c6d1ae30fd0c874409da3958c93e86fb, type: 2}
-  Level: {fileID: 11400000, guid: 1b4b594d8396f10499ad05db1c0306aa, type: 2}
+  experience: {fileID: 11400000, guid: c6d1ae30fd0c874409da3958c93e86fb, type: 2}
+  level: {fileID: 11400000, guid: 1b4b594d8396f10499ad05db1c0306aa, type: 2}
   maxLevel: 25
   expLevels: 
   expToFirstLevelUp: 3

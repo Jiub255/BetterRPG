@@ -54,6 +54,7 @@ public class DialogueController : MonoBehaviour
         {
             dialoguePanel.SetActive(false);
             onDialogueOver.Raise();
+            Debug.Log("Dialogue over signal sent");
         }
 
         StartCoroutine(ScrollCo());

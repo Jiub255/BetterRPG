@@ -28,6 +28,7 @@ public class ClickInteract : MonoBehaviour
     private void OnDisable()
     {
         interact.Disable();
+        interact.performed -= Interact;
     }
 
     public virtual void Interact(InputAction.CallbackContext context)

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExperienceManager : MonoBehaviour
+public class ExperienceManager : MonoBehaviour, IDataPersistence
 {
-    public IntSO Experience;
-    public IntSO Level;
+    public IntSO experience;
+    public IntSO level;
     // do I even want there to be a max level?
     [SerializeField] 
     private int maxLevel = 25;
@@ -50,15 +50,15 @@ public class ExperienceManager : MonoBehaviour
         {
             bool notMaxLevel = false;
 
-            if (Experience.value < expLevels[i])
+            if (experience.value < expLevels[i])
             {
-                Level.value = i + 1;
+                level.value = i + 1;
                 notMaxLevel = true;
                 break;
             }
             if (!notMaxLevel)
             {
-                Level.value = maxLevel;
+                level.value = maxLevel;
             }
         }
 
@@ -67,11 +67,11 @@ public class ExperienceManager : MonoBehaviour
 
     public void GainExperience(int amount)
     {
-        if (Level.value < maxLevel)
+        if (level.value < maxLevel)
         {
-            Experience.value += amount;
+            experience.value += amount;
 
-            if (Experience.value >= expLevels[Level.value - 1])
+            if (experience.value >= expLevels[level.value - 1])
             {
                 LevelUp();
             }
@@ -82,18 +82,30 @@ public class ExperienceManager : MonoBehaviour
 
     private void LevelUp()
     {
-        if (Level.value < maxLevel)
+        if (level.value < maxLevel)
         {
-            Level.value++;
+            level.value++;
         }
 
         else //if (Level >= maxLevel)
         {
-            Level.value = maxLevel;
+            level.value = maxLevel;
             // say exp: max? or something
         }
         // maybe give some stat points?
         statManager.skillPoints++;
         onLevelUp.Raise();
+    }
+
+    public void LoadData(GameData data)
+    {
+        experience.value = data.experience;
+        level.value = data.level;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.experience = experience.value;
+        data.level = level.value;
     }
 }

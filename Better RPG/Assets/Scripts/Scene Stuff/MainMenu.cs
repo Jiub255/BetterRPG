@@ -76,20 +76,22 @@ public class MainMenu : Menu
         DisableAllButtons();
 
         // Don't think I want to do persistence between scenes this way
-        // Using SO's instead
+        // Using SO's and singleton Managers instead
+
         // Save the game anytime before loading a new scene
         //DataPersistenceManager.instance.SaveGame();
 
         // Initialize Player/SO's
         // Do I need to initialize the scene after it's loaded too?
         // Can't do it from here since ChangeScene unloads this scene which destroys this script
-        DataPersistenceManager.instance.LoadGame(); // ??
+        GameData data = DataPersistenceManager.instance.LoadGame(); // ??
 
         // Set HUD to active
         MasterSingleton.Instance.Canvas.transform.GetChild(5).gameObject.SetActive(true);
 
-        // Load FirstScene
-        MasterSingleton.Instance.SceneTransitionManager.ChangeScene("FirstScene", Vector2.zero);
+        // Load currentScene
+        MasterSingleton.Instance.SceneTransitionManager.ChangeScene(
+            data.currentSceneName, Vector2.zero, true);
     }
 
     private void DisableAllButtons()

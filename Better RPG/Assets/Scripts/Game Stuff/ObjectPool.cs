@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[System.Serializable] // makes instances of this class editable from within the inspector
+[System.Serializable]
 public class ObjectPoolItem
 {
     public GameObject objectToPool;
@@ -49,22 +49,6 @@ public class ObjectPool : MonoBehaviour
         }
 
         Debug.Log("Object Pool Populated");
-    }
-
-    private void Awake()
-    {
-        // necessary? will sceneLoaded do this too?
-/*        pooledObjects = new List<GameObject>();
-        foreach (ObjectPoolItem item in itemsToPool)
-        {
-            GameObject tmp;
-            for (int i = 0; i < item.amountToPool; i++)
-            {
-                tmp = Instantiate(item.objectToPool);
-                tmp.SetActive(false);
-                pooledObjects.Add(tmp);
-            }
-        }*/
     }
 
     public GameObject GetPooledObject(string tag)

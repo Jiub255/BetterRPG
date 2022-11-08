@@ -14,11 +14,13 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        // start with player controller enabled
-        ToggleActionMap(inputActions.Player);
+        // Want to make it so player controls are disabled on main menu and UI controls aren't
+
+        // start with Player controls enabled
+        ChangeActionMap(inputActions.UI);
     }
 
-    public static void ToggleActionMap(InputActionMap actionMap)
+    public static void ChangeActionMap(InputActionMap actionMap)
     {
         inputActions.Disable();
 

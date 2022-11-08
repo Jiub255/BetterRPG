@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 // put an instance of this on each merchant
@@ -7,8 +8,21 @@ using UnityEngine;
 // Could use for trading with NPCs, maybe even chests/containers
 public class ShopInventoryManager : InventoryManager
 {
-    [SerializeField]
-    private InventorySO shopInventorySO;
+    public InventorySO shopInventorySO { get; private set; }
+
+    public static event Action<InventorySO> OnShopChanged;
+
+    private void OnEnable()
+    {
+        ShopSlot.OnBuyItem += Buy;
+        ShopSlot.OnSellItem += Sell;
+    }
+
+    private void OnDisable()
+    {
+        ShopSlot.OnBuyItem -= Buy;
+        ShopSlot.OnSellItem -= Sell;
+    }
 
     public void Buy(ItemSO item)
     {
@@ -17,6 +31,9 @@ public class ShopInventoryManager : InventoryManager
 
         // Take one from shopInventory's item.
         Remove(item, shopInventorySO);
+
+        // ShopUI listens and updates
+        OnShopChanged?.Invoke(shopInventorySO);
     }
 
     public void Sell(ItemSO item)
@@ -26,5 +43,8 @@ public class ShopInventoryManager : InventoryManager
 
         // Add one to shopInventory's item.
         Add(item, shopInventorySO);
+
+        // ShopUI listens and updates
+        OnShopChanged?.Invoke(shopInventorySO);
     }
 }

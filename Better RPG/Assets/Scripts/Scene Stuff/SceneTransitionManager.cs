@@ -14,35 +14,17 @@ public class SceneTransitionManager : MonoBehaviour
     [SerializeField]
     private Transform playerTransform;
 
-    // Are these necessary?
-    private GameObject fadeInCanvasInstance;
-    private GameObject fadeOutCanvasInstance;
-
-    // listens for onPlayerInstantiated? or onSceneLoaded?
-    // or just get reference in awake? 
-    // Or just assign it in the inspector? Since this and Player are don't destroy on load
-    public void GetPlayerReference(Transform transform)
+    public void ChangeScene(string sceneName, Vector2 startingPosition, bool isLoading)
     {
-        playerTransform = transform;
+        StartCoroutine(ChangeSceneCO(sceneName, startingPosition, isLoading));
     }
 
-    public void ChangeScene(string sceneName, Vector2 startingPosition)
+    IEnumerator ChangeSceneCO(string sceneName, Vector2 startingPosition, bool isLoading)
     {
-        StartCoroutine(ChangeSceneCO(sceneName, startingPosition));
-    }
-
-    IEnumerator ChangeSceneCO(string sceneName, Vector2 startingPosition)
-    {
-        if (fadeOutCanvas != null)
-        {
-            if (fadeOutCanvasInstance == null)
-            {
-                fadeOutCanvasInstance = Instantiate(
-                    fadeOutCanvas, Vector3.zero, Quaternion.identity);
-                Debug.Log("Instantiated Fade Out Canvas");
-                // no need to destroy, gets destroyed by scene unload?
-            }
-        }
+        // Instantiate fade out canvas
+        Instantiate(fadeOutCanvas, Vector3.zero, Quaternion.identity);
+        Debug.Log("Instantiated Fade Out Canvas");
+        // no need to destroy, gets destroyed by scene unload
 
         yield return new WaitForSeconds(fadeTime);
 
@@ -66,14 +48,23 @@ public class SceneTransitionManager : MonoBehaviour
         // Set newly loaded scene as active
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
 
-        if (fadeInCanvas != null)
+        // Instantiate fade in canvas
+        GameObject fadeInCanvasInstance = Instantiate(
+            fadeInCanvas, Vector3.zero, Quaternion.identity);
+        Debug.Log("Instantiated Fade In Canvas: " + fadeInCanvasInstance.name);
+
+        // Unload previous scene here so it doesn't block fade in canvas
+        // and so you don't see both scenes 
+        SceneManager.UnloadSceneAsync(currentScene);
+
+        // Make player visible if not (when coming from start menu)
+        if (!playerTransform.GetComponent<SpriteRenderer>().enabled)
         {
-            if (fadeInCanvasInstance == null)
-            {
-                fadeInCanvasInstance = Instantiate(
-                    fadeInCanvas, Vector3.zero, Quaternion.identity);
-                Debug.Log("Instantiated Fade In Canvas");
-            }
+            playerTransform.GetComponent<SpriteRenderer>().enabled = true;
+        }
+        if (!playerTransform.GetChild(0).GetComponent<SpriteRenderer>().enabled)
+        {
+            playerTransform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
         }
 
         // In case swing was disabled while you went through scene transition.
@@ -82,7 +73,12 @@ public class SceneTransitionManager : MonoBehaviour
             playerTransform.GetComponent<PlayerMelee>().EnableSwing();
         }
 
-        playerTransform.position = startingPosition;
+        // This is messing/overriding loading and setting loaded player position.
+        // Use an isLoading bool check here.
+        if (!isLoading)
+        {
+            playerTransform.position = startingPosition;
+        }
 
         yield return new WaitForSeconds(fadeTime);
 
@@ -91,8 +87,5 @@ public class SceneTransitionManager : MonoBehaviour
 
         Destroy(fadeInCanvasInstance);
         Debug.Log("Destroyed Fade In Canvas");
-
-        // Unload previous scene
-        SceneManager.UnloadSceneAsync(currentScene);
     }
 }

@@ -1,7 +1,8 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
-public class StatManager : MonoBehaviour
+public class StatManager : MonoBehaviour, IDataPersistence
 {
     public StatSO attack;
     public StatSO defense;
@@ -20,7 +21,7 @@ public class StatManager : MonoBehaviour
 
     private void Awake()
     {
-        CalculateMods(); 
+        CalculateStatModifiers(); 
     }
 
     private void OnEnable()
@@ -43,7 +44,8 @@ public class StatManager : MonoBehaviour
         }
     }
 
-    public void CalculateMods()
+    // Wait a frame then do this on load, so equipmentSO will be initialized
+    public void CalculateStatModifiers()
     {
         attack.ClearModifiers();
         defense.ClearModifiers();
@@ -87,5 +89,34 @@ public class StatManager : MonoBehaviour
 
             onStatsChanged.Raise();
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        // load ONLY BASE VALUES, the rest is calculated from equipment
+        attack.baseValue = data.attackBaseValue;
+        defense.baseValue = data.defenseBaseValue;
+        knockbackForce.baseValue = data.knockbackForceBaseValue;
+        knockbackDuration.baseValue = data.knockbackDurationBaseValue;
+        skillPoints = data.skillPoints;
+
+        StartCoroutine(WaitThenCalculateStatModifiers());
+    }
+
+    public void SaveData(GameData data)
+    {
+        // Save ONLY BASE VALUES, the rest is calculated from equipment
+        data.attackBaseValue = attack.baseValue;
+        data.defenseBaseValue = defense.baseValue;
+        data.knockbackForceBaseValue = knockbackForce.baseValue;
+        data.knockbackDurationBaseValue = knockbackDuration.baseValue;
+        data.skillPoints = skillPoints;
+    }
+
+    IEnumerator WaitThenCalculateStatModifiers()
+    {
+        yield return new WaitForEndOfFrame();
+
+        CalculateStatModifiers();
     }
 }

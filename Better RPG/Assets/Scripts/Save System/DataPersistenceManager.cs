@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
-using System;
 using System.Collections;
 
 public class DataPersistenceManager : MonoBehaviour
@@ -66,7 +65,7 @@ public class DataPersistenceManager : MonoBehaviour
         autoSaveCoroutine = StartCoroutine(AutoSave());
 
         // Don't think I want to do persistence between scenes this way
-        // Using SO's instead
+        // Using SO's and singleton Managers instead
         // LoadGame();
     }
 
@@ -85,7 +84,7 @@ public class DataPersistenceManager : MonoBehaviour
         selectedProfileID = dataHandler.GetMostRecentlyUpdatedProfileID();
     }
 
-    public void NewGame()
+    public GameData NewGame()
     {
         gameData = new GameData();
 
@@ -94,9 +93,13 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObject.LoadData(gameData);
         }
+
+        return gameData;
     }
 
-    public void LoadGame()
+    // Have this return loaded GameData so SaveSlotsMenu and MainMenu can load the 
+    // current saved scene
+    public GameData LoadGame()
     {
         // Load any saved data from a file using the data handler.
         gameData = dataHandler.Load(selectedProfileID);
@@ -105,7 +108,7 @@ public class DataPersistenceManager : MonoBehaviour
         if (gameData == null)
         {
             Debug.Log("No data was found. Start a new game.");
-            return;
+            return null;
         }
 
         // Push the loaded data to all other scripts that need it.
@@ -114,7 +117,7 @@ public class DataPersistenceManager : MonoBehaviour
             dataPersistenceObject.LoadData(gameData);
         }
 
-        Debug.Log("Loaded current health = " + gameData.currentHealth);
+        return gameData;
     }
 
     public void SaveGame()
@@ -135,8 +138,6 @@ public class DataPersistenceManager : MonoBehaviour
         // Timestamp the data so we know when it was last saved
         gameData.lastUpdated = System.DateTime.Now.ToBinary();
 
-        Debug.Log("Saved current health = " + gameData.currentHealth);
-
         // Save that data to a file using the data handler.
         dataHandler.Save(gameData, selectedProfileID);
     }
@@ -146,12 +147,14 @@ public class DataPersistenceManager : MonoBehaviour
         SaveGame();
     }
 
-    public void ChangeSelectedProfileID(string newProfileID)
+    // Have this return loaded GameData so SaveSlotsMenu and MainMenu can load the 
+    // current saved scene
+    public GameData ChangeSelectedProfileID(string newProfileID)
     {
         // Update the profile to use for saving and loading
         selectedProfileID = newProfileID;
         // Load the game, which will use that profile, updating our game data accordingly
-        LoadGame();
+        return LoadGame();
     }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()

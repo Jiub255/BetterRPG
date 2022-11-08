@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IDataPersistence
 {
     private Rigidbody2D rb;
     private Animator animator;
@@ -15,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
     PlayerMelee playerMelee;
 
     public bool canMove = true;
+
+    // Probably unnecessary
+    private Vector3 savedPlayerPosition;
+    private string currentSceneName;
 
     // new input system stuff
     private InputAction move;
@@ -33,14 +38,6 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator OnEnableCo()
     {
         yield return new WaitForEndOfFrame();
-
-        //EVERYTHING BELOW WAS IN AWAKE
-/*        Debug.Log(InputManager.invMenuOpen.ToString());
-
-        // no reference to inputActions?
-        Debug.Log(InputManager.inputActions.ToString());
-        Debug.Log(InputManager.inputActions.Player.ToString());
-        Debug.Log(InputManager.inputActions.Player.Move.ToString());*/
 
         move = InputManager.inputActions.Player.Move;
         move.Enable();
@@ -106,5 +103,25 @@ public class PlayerMovement : MonoBehaviour
                 rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime * atkSpdMultiplier);
             }
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        savedPlayerPosition = new Vector3(data.playerXPosition, data.playerYPosition, 0f);
+
+        transform.transform.position = savedPlayerPosition;
+
+        canMove = data.canMove;
+
+        // Probably unnecessary
+        currentSceneName = data.currentSceneName;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.playerXPosition = transform.position.x;
+        data.playerYPosition = transform.position.y;
+        data.canMove = canMove;
+        data.currentSceneName = SceneManager.GetActiveScene().name;
     }
 }
