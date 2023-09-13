@@ -17,7 +17,7 @@ public class InputManager : MonoBehaviour
         // Want to make it so player controls are disabled on main menu and UI controls aren't
 
         // start with Player controls enabled
-        ChangeActionMap(inputActions.UI);
+ //       ChangeActionMap(inputActions.UI);
     }
 
     public static void ChangeActionMap(InputActionMap actionMap)

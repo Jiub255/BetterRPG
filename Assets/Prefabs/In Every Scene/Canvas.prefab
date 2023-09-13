@@ -11176,6 +11176,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopPanel: {fileID: 8046825772612822719}
+  playerInventorySO: {fileID: 0}
+  onDialogueOver: {fileID: 0}
+  playerInventoryContent: {fileID: 0}
+  shopInventoryContent: {fileID: 0}
 --- !u!1 &8042634751904153123
 GameObject:
   m_ObjectHideFlags: 0
@@ -11390,7 +11394,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -1.0420837, y: 101.9061}
+  m_SizeDelta: {x: -392.1909, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &9013971606384052912
 MonoBehaviour:

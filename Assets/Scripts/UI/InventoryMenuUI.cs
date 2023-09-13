@@ -28,9 +28,9 @@ public class InventoryMenuUI : MonoBehaviour
         openInventory.Enable();
         openInventory.performed += OpenInventoryMenu;
 
-        closeInventory = InputManager.inputActions.UI.CloseInventory;
+/*        closeInventory = InputManager.inputActions.UI.CloseInventory;
         closeInventory.Enable();
-        closeInventory.performed += CloseInventoryMenu;
+        closeInventory.performed += CloseInventoryMenu;*/
     }
 
     private void OnDisable()
@@ -38,8 +38,8 @@ public class InventoryMenuUI : MonoBehaviour
         openInventory.Disable();
         openInventory.performed -= OpenInventoryMenu;
 
-        closeInventory.Disable();
-        closeInventory.performed -= CloseInventoryMenu;
+/*        closeInventory.Disable();
+        closeInventory.performed -= CloseInventoryMenu;*/
     }
 
     void OpenInventoryMenu(InputAction.CallbackContext context)
@@ -49,7 +49,7 @@ public class InventoryMenuUI : MonoBehaviour
         ToggleInventoryPanels(true);
         HUDPanel.SetActive(false);
         OnTogglePause?.Invoke(true);
-        InputManager.ChangeActionMap(InputManager.inputActions.UI);
+ //       InputManager.ChangeActionMap(InputManager.inputActions.UI);
         InputManager.invMenuOpen = true;
 
         onItemChanged.Raise();
@@ -62,7 +62,7 @@ public class InventoryMenuUI : MonoBehaviour
         ToggleInventoryPanels(false);
         HUDPanel.SetActive(true);
         OnTogglePause?.Invoke(false);
-        InputManager.ChangeActionMap(InputManager.inputActions.Player);
+ //       InputManager.ChangeActionMap(InputManager.inputActions.Player);
         InputManager.invMenuOpen = false;
     }
 

@@ -2348,6 +2348,14 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1670596900}
+    - target: {fileID: 3793347903265969438, guid: 46e026d79328d4b4aa4569178195e2bf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201442915818061203, guid: 46e026d79328d4b4aa4569178195e2bf, type: 3}
+      propertyPath: sceneMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 475f4837af487ce4a9e68bb227455e4c, type: 3}
     - target: {fileID: 6573426281940057444, guid: 46e026d79328d4b4aa4569178195e2bf, type: 3}
       propertyPath: m_Name
       value: Master Singleton

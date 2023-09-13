@@ -29,9 +29,9 @@ public class EscapeMenuUI : MonoBehaviour
         openEscapeMenu.Enable();
         openEscapeMenu.performed += OpenEscapeMenu;
 
-        openEscapeMenuFromInv = InputManager.inputActions.UI.OpenEscapeMenu;
+/*        openEscapeMenuFromInv = InputManager.inputActions.UI.OpenEscapeMenu;
         openEscapeMenuFromInv.Enable();
-        openEscapeMenuFromInv.performed += OpenEscapeMenu;
+        openEscapeMenuFromInv.performed += OpenEscapeMenu;*/
 
         closeEscapeMenu = InputManager.inputActions.EscapeMenu.CloseEscapeMenu;
         closeEscapeMenu.Enable();
@@ -43,8 +43,8 @@ public class EscapeMenuUI : MonoBehaviour
         openEscapeMenu.Disable();
         openEscapeMenu.performed -= OpenEscapeMenu;
 
-        openEscapeMenuFromInv.Disable();
-        openEscapeMenuFromInv.performed -= OpenEscapeMenu;
+/*        openEscapeMenuFromInv.Disable();
+        openEscapeMenuFromInv.performed -= OpenEscapeMenu;*/
 
         closeEscapeMenu.Disable();
         closeEscapeMenu.performed -= CloseEscapeMenu;
@@ -78,7 +78,7 @@ public class EscapeMenuUI : MonoBehaviour
         {
             // open inv menu, stay paused
             inventoryMenuUI.ToggleInventoryPanels(true);
-            InputManager.ChangeActionMap(InputManager.inputActions.UI);
+ //           InputManager.ChangeActionMap(InputManager.inputActions.UI);
         }
         else
         {
